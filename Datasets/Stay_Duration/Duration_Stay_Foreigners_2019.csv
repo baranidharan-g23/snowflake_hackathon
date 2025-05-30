@@ -1,0 +1,84 @@
+Region,Country of Nationality,Average duration of stay (in days)
+North America,CANADA,27.1
+North America,UNITED STATES,23.4
+North America,OTHERS,NA
+North America,Total,24
+Central & South America,ARGENTINA,18.1
+Central & South America,BRAZIL,17.9
+Central & South America,MEXICO,13.4
+Central & South America,OTHERS,19
+Central & South America,Total,33
+Western Europe,AUSTRIA,16.8
+Western Europe,BELGIUM,17.5
+Western Europe,DENMARK,13.8
+Western Europe,FINLAND,13.1
+Western Europe,FRANCE,18.2
+Western Europe,GERMANY,14.2
+Western Europe,GREECE,11.9
+Western Europe,IRELAND,18.6
+Western Europe,ITALY,15.5
+Western Europe,NETHERLANDS,14.4
+Western Europe,NORWAY,17.3
+Western Europe,PORTUGAL,27
+Western Europe,SPAIN,15.7
+Western Europe,SWEDEN,17.1
+Western Europe,SWITZERLAND,15.2
+Western Europe,UNITED KINGDOM,18.9
+Western Europe,OTHERS,14
+Western Europe,Total,16
+Eastern Europe,CZECH REPUBLIC,15.5
+Eastern Europe,HUNGARY,15.3
+Eastern Europe,KAZAKHISTAN,14.4
+Eastern Europe,POLAND,13.6
+Eastern Europe,RUSSIAN FEDERATION,15.6
+Eastern Europe,UKRAINE,18.2
+Eastern Europe,OTHERS,14.1
+Eastern Europe,Total,15
+Africa,EGYPT,8.8
+Africa,KENYA,20.1
+Africa,MAURITIUS,13.7
+Africa,NIGERIA,29.2
+Africa,SOUTH AFRICA,15.8
+Africa,SUDAN,22
+Africa,UNITED REPUBLIC OF TANZAN,20.5
+Africa,OTHERS,20.7
+Africa,Total,21.6
+West Asia,BAHRAIN,15.3
+West Asia,IRAQ,17.7
+West Asia,ISRAEL,21
+West Asia,OMAN,11.5
+West Asia,SAUDI ARABIA,13
+West Asia,TURKEY,7.7
+West Asia,UNITED ARAB EMIRATES,11
+West Asia,YEMEN,51.4
+West Asia,OTHERS,11.8
+West Asia,Total,16
+South Asia,AFGHANISTAN,22.2
+South Asia,BANGLADESH,13.9
+South Asia,BHUTAN,16
+South Asia,IRAN,19.8
+South Asia,MALDIVES,13.9
+South Asia,NEPAL,21.9
+South Asia,PAKISTAN,29.9
+South Asia,SRI LANKA,11.1
+South Asia,Total,14
+South East Asia,INDONESIA,16.2
+South East Asia,MALAYSIA,10.2
+South East Asia,MYANMAR (BURMA),10.4
+South East Asia,PHILIPPINES,12.2
+South East Asia,SINGAPORE,10.3
+South East Asia,THAILAND,14.4
+South East Asia,VIETNAM,11.4
+South East Asia,OTHERS,19.5
+South East Asia,Total,12
+East Asia,CHINA,16.2
+East Asia,JAPAN,15
+East Asia,REPUBLIC OF KOREA,20.6
+East Asia,TAIWAN,12.1
+East Asia,OTHERS,31.7
+East Asia,Total,17
+Australasia,AUSTRALIA,23.8
+Australasia,NEW ZEALAND,25.7
+Australasia,OTHERS,29.1
+Australasia,Total,24
+Not Classified Elsewhere,Not Classified Elsewhere,24.4

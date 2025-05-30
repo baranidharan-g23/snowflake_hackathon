@@ -1,0 +1,72 @@
+Category,Nationality,Average Duration of Stay (in Days)
+North America,Canada,34.2
+North America,United States Of America,29.2
+Central & South America,Argentina,17.7
+Central & South America,Brazil,21.3
+Central & South America,Mexico,15.9
+Central & South America,Others,22.6
+Western Europe,Austria,20
+Western Europe,Belgium,20.4
+Western Europe,Denmark,16
+Western Europe,Finland,17
+Western Europe,France,21.3
+Western Europe,Germany,18.8
+Western Europe,Greece,17.2
+Western Europe,Ireland,22.1
+Western Europe,Italy,19.1
+Western Europe,Netherlands,18.6
+Western Europe,Norway,19.4
+Western Europe,Portugal,32
+Western Europe,Spain,17.6
+Western Europe,Sweden,19.1
+Western Europe,Switzerland,19.3
+Western Europe,United Kingdom,22.5
+Western Europe,Others,23.9
+Western Europe,Total,20.3
+Eastern Europe,Czech,17.3
+Eastern Europe,Hungury,18.7
+Eastern Europe,Kazakhstan,19
+Eastern Europe,Poland,16.4
+Eastern Europe,Russian Federation,18.9
+Eastern Europe,Ukraine,24.6
+Eastern Europe,Others,17.8
+Africa,Kenya,27.1
+Africa,Mauritius,17.4
+Africa,Nigeria,42
+Africa,South Africa,18.4
+Africa,Sudan,28.2
+Africa,Tanzania,31.2
+Africa,Egypt,19.6
+Africa,Others,33.9
+West Asia,Bahrain,26.1
+West Asia,Iraq,21.6
+West Asia,Israel,24.7
+West Asia,Oman,11.2
+West Asia,Saudi Arabia,19.1
+West Asia,Turkey,16.9
+West Asia,United Arab Emirates,12.2
+West Asia,Yemen,62.1
+West Asia,Others,16.9
+South Asia,Afghanistan,26.3
+South Asia,Bangladesh,14.5
+South Asia,Bhutan,21.3
+South Asia,Iran,26.2
+South Asia,Maldives,17.1
+South Asia,Nepal,22
+South Asia,Pakistan,30.9
+South Asia,Sri Lanka,13.8
+South East Asia,Indonesia,19.1
+South East Asia,Malaysia,14.4
+South East Asia,Myanmar,12.7
+South East Asia,Phillippines,19.8
+South East Asia,Singapore,14.5
+South East Asia,Thailand,17.5
+South East Asia,Vietnam,13.8
+South East Asia,Others,18.2
+East Asia,China,19.1
+East Asia,Japan,17.2
+East Asia,Republic Of China Taiwan,13.7
+East Asia,Others,35.4
+Australasia,Australia,26.4
+Australasia,New Zealand,29.4
+Australasia,Others,27.9
