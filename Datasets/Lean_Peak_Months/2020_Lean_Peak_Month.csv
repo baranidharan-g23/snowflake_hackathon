@@ -1,5 +1,5 @@
 Nationality,Lean Month,Peak Month,Lean Month - Percentage Share,Peak Month - Percentage Share
-Bangladesh,Apr,Feb,0.00,39.33
+Bangladesh,Apr,Feb,0.001,39.33
 United States,May,Jan,0.12,43.48
 United Kingdom,Apr,Feb,0.04,39.59
 Canada,Apr,Jan,0.03,40.98
@@ -11,6 +11,6 @@ Malaysia,Jun & Sep,Jan,0.12,46.15
 Sri Lanka,Apr & May,Feb,0.02,42.73
 Thailand,Jun,Feb,0.18,51.49
 Japan,May,Jan,0.09,47.78
-Afghanistan,Apr & May,Jan,0.00,32.80
-Nepal,Apr,Jan,0.02,38.54
-China,May,Jan,0.25,38.54
+Afghanistan,Apr & May,Jan,0.002,32.80
+Nepal,Apr,Jan,0.019,38.54
+China,May,Jan,0.248,38.54

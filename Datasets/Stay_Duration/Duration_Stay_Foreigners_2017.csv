@@ -1,4 +1,4 @@
-Nationality,Country of Nationality,Average duration of stay (in days)
+Category,Nationality,Average Duration of Stay (in Days)
 North America,Canada,35.8
 North America,U.S.A,29.7
 North America,Total,31
@@ -79,5 +79,3 @@ Australasia,Australia,27.5
 Australasia,New Zealand,29.6
 Australasia,Others,33.6
 Australasia,Total,27.8
-Not Classified elsewhere,Not Classified elsewhere,34.8
-Grand Total,Grand Total,21.1
