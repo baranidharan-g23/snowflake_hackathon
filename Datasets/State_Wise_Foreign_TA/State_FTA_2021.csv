@@ -1,0 +1,38 @@
+Region,State,Foreign_visits(in thousands)
+EAST,A&N Island,1.687
+SOUTH,Andhra Pradesh,27.551
+NORTH EAST,Arunachal Pradesh,0.182
+NORTH EAST,Assam,0.536
+EAST,Bihar,1.046
+NORTH,Chandigarh,5.451
+WEST & CENTRAL,Chhattisgarh,0.008
+WEST & CENTRAL,Dadra & Nagar Haveli,0.080
+WEST & CENTRAL,Daman & Diu,0.105
+NORTH,Delhi,100.178
+WEST & CENTRAL,Goa,22.128
+WEST & CENTRAL,Gujarat,11.319
+NORTH,Haryana,4.578
+NORTH,Himachal Pradesh,4.932
+NORTH,Jammu & Kashmir,1.650
+EAST,Jharkhand,1.637
+SOUTH,Karnataka,72.487
+SOUTH,Kerala,60.487
+SOUTH,Lakshdweep,0.004
+NORTH,Leh Ladakh,1.054
+WEST & CENTRAL,Madhya Pradesh,41.601
+WEST & CENTRAL,Maharashtra,185.643
+NORTH EAST,Manipur,0.648
+NORTH EAST,Meghalaya,0.411
+NORTH EAST,Mizoram,0.234
+NORTH EAST,Nagaland,0.325
+EAST,Odisha,2.269
+SOUTH,Puducherry,0.321
+NORTH,Punjab,308.135
+NORTH,Rajasthan,34.806
+NORTH EAST,Sikkim,11.508
+SOUTH,Tamil Nadu,57.622
+SOUTH,Telangana,5.917
+NORTH EAST,Tripura,0.005
+NORTH,Uttar Pradesh,44.737
+NORTH,Uttarakhand,8.532
+EAST,West Bengal,34.828

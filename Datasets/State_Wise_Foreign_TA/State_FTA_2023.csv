@@ -1,38 +1,37 @@
-State,Foreign_Visits_in_Lakhs
-A&N Island,0.05
-Andhra Pradesh,0.68
-Arunachal Pradesh,0.01
-Assam,0.07
-Bihar,3.08
-Chandigarh,0.12
-Chhattisgarh,0.02
-Dadra & Nagar Haveli,0.0
-Daman & Diu,0.01
-Delhi,6.81
-Goa,3.03
-Gujarat,2.1
-Haryana,0.17
-Himachal Pradesh,0.43
-Jharkhand,0.0
-J&K,0.05
-Karnataka,1.65
-Kerala,3.41
-Lakshdweep,0.0
-Ladakh,0.01
-Madhya Pradesh,1.0
-Maharashtra,12.62
-Manipur,0.03
-Meghalaya,0.02
-Mizoram,0.0
-Nagaland,0.01
-Odisha,0.1
-Puducherry,0.92
-Punjab,3.59
-Rajasthan,4.46
-Sikkim,0.2
-Tamil Nadu,12.28
-Telengana,0.47
-Tripura,0.32
-Uttar Pradesh,8.91
-Uttarakhand,0.41
-West Bengal,4.63
+Region,State,Foreign_visits(in thousands)
+NORTH,Chandigarh,31
+NORTH,Delhi,1828
+NORTH,Haryana,1
+NORTH,Himachal Pradesh,63
+NORTH,Jammu & Kashmir,55
+NORTH,Ladakh,41
+NORTH,Punjab,742
+NORTH,Rajasthan,1700
+NORTH,Uttar Pradesh,1602
+NORTH,Uttarakhand,143
+EAST,Andaman & Nicobar Islands,9
+EAST,Bihar,547
+EAST,Jharkhand,189
+EAST,Odisha,45
+EAST,West Bengal,2707
+NORTH EAST,Arunachal Pradesh,4
+NORTH EAST,Assam,24
+NORTH EAST,Manipur,4
+NORTH EAST,Meghalaya,20
+NORTH EAST,Mizoram,4
+NORTH EAST,Nagaland,5
+NORTH EAST,Sikkim,94
+NORTH EAST,Tripura,67
+WEST & CENTRAL,Chhattisgarh,1
+WEST & CENTRAL,Goa,453
+WEST & CENTRAL,Gujarat,2807
+WEST & CENTRAL,Madhya Pradesh,183
+WEST & CENTRAL,Maharashtra,3388
+WEST & CENTRAL,UT of Dadra & Nagar Haveli and Daman and Diu,4
+SOUTH,Andhra Pradesh,60
+SOUTH,Karnataka,409
+SOUTH,Kerala,649
+SOUTH,Lakshadweep,1
+SOUTH,Puducherry,31
+SOUTH,Tamil Nadu,1175
+SOUTH,Telangana,161

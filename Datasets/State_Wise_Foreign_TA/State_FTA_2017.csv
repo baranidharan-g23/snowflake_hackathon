@@ -1,37 +1,37 @@
-state,foreign_visit(in lakhs)
-Andaman & Nicobar Island,0.15313
-Andhra Pradesh,2.71362
-Arunachal Pradesh,0.07147
-Assam,0.2176
-Bihar,10.82705
-Chandigarh,0.31832
-Chhattisgarh,0.06701
-Dadra & Nagar Haveli,0.01908
-Daman & Diu,0.05535
-Delhi,27.40502
-Goa,8.4222
-Gujarat,4.48853
-Haryana,1.93381
-Himachal Pradesh,4.70992
-Jharkhand,1.70987
-J&K,0.79765
-Karnataka,4.98148
-Kerala,10.9187
-Lakshadweep,0.01027
-Madhya Pradesh,3.59119
-Maharashtra,50.78514
-Manipur,0.03497
-Meghalaya,0.12051
-Mizoram,0.01155
-Nagaland,0.04166
-Odisha,1.00014
-Puducherry,1.31407
-Punjab,11.08635
-Rajasthan,16.09963
-Sikkim,0.49111
-Tamil Nadu,48.60455
-Telangana,2.51846
-Tripura,0.69899
-Uttar Pradesh,35.56204
-Uttarakhand,1.33725
-West Bengal,15.74915
+Region,State,Foreign_visits(in thousands)
+EAST,Andaman & Nicobar Island,15.313
+SOUTH,Andhra Pradesh,271.362
+NORTH EAST,Arunachal Pradesh,7.147
+NORTH EAST,Assam,21.760
+EAST,Bihar,1082.705
+NORTH,Chandigarh,31.832
+WEST & CENTRAL,Chhattisgarh,6.701
+WEST & CENTRAL,Dadra & Nagar Haveli,1.908
+WEST & CENTRAL,Daman & Diu,5.535
+NORTH,Delhi,2740.502
+WEST & CENTRAL,Goa,842.220
+WEST & CENTRAL,Gujarat,448.853
+NORTH,Haryana,193.381
+NORTH,Himachal Pradesh,470.992
+EAST,Jharkhand,170.987
+NORTH,J&K,79.765
+SOUTH,Karnataka,498.148
+SOUTH,Kerala,1091.870
+SOUTH,Lakshadweep,1.027
+WEST & CENTRAL,Madhya Pradesh,359.119
+WEST & CENTRAL,Maharashtra,5078.514
+NORTH EAST,Manipur,3.497
+NORTH EAST,Meghalaya,12.051
+NORTH EAST,Mizoram,1.155
+NORTH EAST,Nagaland,4.166
+EAST,Odisha,100.014
+SOUTH,Puducherry,131.407
+NORTH,Punjab,1108.635
+NORTH,Rajasthan,1609.963
+NORTH EAST,Sikkim,49.111
+SOUTH,Tamil Nadu,4860.455
+SOUTH,Telangana,251.846
+NORTH EAST,Tripura,69.899
+NORTH,Uttar Pradesh,3556.204
+NORTH,Uttarakhand,133.725
+EAST,West Bengal,1574.915
