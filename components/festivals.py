@@ -1,0 +1,430 @@
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+import os
+from PIL import Image
+
+@st.cache_data
+def load_and_cache_festival_image(image_path):
+    """Load and cache festival image to avoid repeated file system calls"""
+    if os.path.exists(image_path):
+        try:
+            image = Image.open(image_path)
+            return image
+        except Exception as e:
+            st.error(f"Error loading festival image {image_path}: {e}")
+            return None
+    return None
+
+@st.cache_data
+def get_festival_image_info(image_path):
+    """Cache festival image existence and basic info"""
+    if os.path.exists(image_path):
+        try:
+            with Image.open(image_path) as img:
+                return {"exists": True, "size": img.size, "format": img.format}
+        except:
+            return {"exists": False, "size": None, "format": None}
+    return {"exists": False, "size": None, "format": None}
+
+# Exact mapping between festival names and their image files
+FESTIVAL_IMAGE_MAPPING = {
+    # National Festivals
+    "Diwali": "diwali-national.jpg",
+    "Holi": "holi-national.jpg",
+    "Dussehra": "dussehra-national.jpg",
+    "Eid ul-Fitr": "eid-national.jpg",
+    "Christmas": "chirstmas-national.jpg",
+    "Ganesh Chaturthi": "ganesh-national.jpg",
+    "Navratri": "navratri-national.jpg",
+    "Janmashtami": "janmashtami-national.jpeg",
+    "Raksha Bandhan": "raksha-national.jpg",
+    "Karva Chauth": "KarvaChauthMoon2-national.jpg",
+    "Makar Sankranti": "makar-national.jpg",
+
+    # State Festivals
+    "Ugadi": "Ugadi_Festival.jpeg",
+    "Losar": "losar.jpeg",
+    "Rongali Bihu": "bihu.jpg",
+    "Chhath Puja": "Chhath_Puja.jpg",
+    "Hareli": "Hareli.jpeg",
+    "Carnival": "Carnival.jpg",
+    "Rann Utsav": "Rann_Utsav.jpeg",
+    "Teej": "Teej.jpg",
+    "Shimla Summer Festival": "shimla-summer-festival.jpg",
+    "Sarhul": "Sarhul.jpg",
+    "Karaga": "Karaga.jpeg",
+    "Onam": "onam.jpg",
+    "Khajuraho Dance Festival": "Khajuraho.jpg",
+    "Gudi Padwa": "Gudi_Padwa.jpg",
+    "Yaoshang": "yaoshang.jpg",
+    "Shad Suk Mynsiem": "Shad_Suk_Mynsiem.jpg",
+    "Chapchar Kut": "ChapChar_Kut.jpg",
+    "Hornbill Festival": "Hornbill.png",
+    "Jagannath Rath Yatra": "Rath_Yatra.jpg",
+    "Baisakhi": "Baisakhi.jpg",
+    "Pushkar Fair": "pushkar.jpg",
+    "Saga Dawa": "saga_dawa.jpg",
+    "Thaipusam": "Thaipusam.jpg",
+    "Kharchi Puja": "Kharachi_Puja.jpg",
+    "Kumbh Mela": "Kumbh_mela.jpg",
+    "Nanda Devi Raj Jat": "Nanda_Devi_Raj.jpg",
+    "Durga Puja": "Durga_Puja.jpg",
+    "Hemis Festival": "Hemis.jpg",
+    "Bonalu": "bonalu.jpg",
+    "Mopin": "mopin.jpg",
+    "Teeja": "teeja.jpg",
+    "Shigmo": "shigmo.png",
+    "Karma": "karma.jpg",
+    "Thrissur Pooram": "thrissur_pooram.jpeg",
+    "Lai Haraoba": "lai_haraoba.jpg",
+    "Kali Puja": "kali-puja.jpg",
+    "Lohri": "lohri.jpg",
+    "Gangaur": "gangaur.jpg",
+    "Pang Lhabsol": "pang_lhabsol.jpg",
+    "Pongal": "pongal.jpg",
+    "Garia Puja": "garia_puja.jpeg",
+    "Kartik Purnima": "kartik_purnima.jpg",
+    "Egoss": "egas.jpeg",
+    "Poila Boishakh": "poila_boishakh.jpg"
+}
+
+@st.cache_data
+def verify_festival_images():
+    """Verify that all festival images exist (cached)"""
+    missing_images = []
+    for festival_name, image_file in FESTIVAL_IMAGE_MAPPING.items():
+        image_path = f"Festivals_images/{image_file}"
+        image_info = get_festival_image_info(image_path)
+        if not image_info["exists"]:
+            missing_images.append(f"{festival_name} -> {image_file}")
+
+    if missing_images:
+        print("Missing festival images:")
+        for missing in missing_images:
+            print(f"  - {missing}")
+    else:
+        print("✅ All festival images are properly mapped and exist!")
+
+    return len(missing_images) == 0
+
+def show_monthly_festival_chart(festivals_df):
+    """Display a beautiful chart showing festival count by month"""
+
+    # Create month mapping for better analysis
+    month_mapping = {
+        'January': ['January', 'Jan'],
+        'February': ['February', 'Feb'],
+        'March': ['March', 'Mar', 'March-April'],
+        'April': ['April', 'Apr', 'March-April', 'April-May'],
+        'May': ['May', 'April-May', 'May-June'],
+        'June': ['June', 'Jun', 'May-June', 'June-July'],
+        'July': ['July', 'Jul', 'June-July', 'July-August'],
+        'August': ['August', 'Aug', 'July-August', 'August-September'],
+        'September': ['September', 'Sep', 'August-September', 'September-October'],
+        'October': ['October', 'Oct', 'September-October', 'October-November'],
+        'November': ['November', 'Nov', 'October-November'],
+        'December': ['December', 'Dec']
+    }
+
+    # Count festivals by month
+    monthly_counts = {}
+    for month in month_mapping.keys():
+        count = 0
+        for _, festival in festivals_df.iterrows():
+            month_season = festival['Month/Season']
+            if any(keyword in month_season for keyword in month_mapping[month]):
+                count += 1
+        monthly_counts[month] = count
+
+    # Create DataFrame for plotting
+    chart_data = pd.DataFrame({
+        'Month': list(monthly_counts.keys()),
+        'Festival Count': list(monthly_counts.values())
+    })
+
+    # Create a beautiful bar chart with better gradient colors
+    fig = px.bar(
+        chart_data,
+        x='Month',
+        y='Festival Count',
+        title="📊 Festival Calendar - Monthly Distribution",
+        color='Festival Count',
+        color_continuous_scale=['#FF6B6B', '#FFEAA7'],
+        text='Festival Count'
+    )
+
+    # Customize the chart
+    fig.update_layout(
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
+        font=dict(color='#033D3C', family='Poppins'),
+        xaxis=dict(
+            title=dict(text="Month", font=dict(size=14, color="#033D3C")),
+            tickfont=dict(size=12, color='#303')
+        ),
+        yaxis=dict(
+            title=dict(text="Number of Festivals", font=dict(size=14, color='#033D3C')),
+            tickfont=dict(size=12, color='#303')
+        ),
+        showlegend=False,
+        margin=dict(l=50, r=50, t=50, b=50)
+    )
+
+    # Update bar appearance
+    fig.update_traces(
+        texttemplate='%{text}',
+        textposition='outside',
+        textfont=dict(size=12, color='#008080'),
+        marker=dict(
+            line=dict(color='#008080', width=2),
+            opacity=0.8
+        )
+    )
+
+    # Display the chart
+    st.plotly_chart(fig, use_container_width=True)
+
+    # Add some insights with better contrasting colors
+    max_month = max(monthly_counts, key=monthly_counts.get)
+    max_count = monthly_counts[max_month]
+
+    st.markdown(f"""
+    <div style="background: linear-gradient(135deg, #FF6B6B, #FECDC4);
+                padding: 1rem; border-radius: 15px; margin: 1rem 0;
+                text-align: center; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+        <strong>🎉 Peak Festival Season: {max_month} with {max_count} festivals!</strong>
+    </div>
+    """, unsafe_allow_html=True)
+
+def show_festivals_section(festivals_df):
+    """Display festivals information with beautiful card layout"""
+    st.markdown('<h2 class="section-header">🎪 Indian Festivals</h2>', unsafe_allow_html=True)
+
+    if festivals_df.empty:
+        st.warning("No festival data available")
+        return
+
+    # Add monthly festival distribution chart first
+    show_monthly_festival_chart(festivals_df)
+
+    # Add a visual divider to separate sections
+    st.markdown("""
+    <div style="margin: 3rem 0 2rem 0;">
+        <hr style="border: none; height: 3px;
+                   background: linear-gradient(90deg, white, #FF6B6B);
+                   border-radius: 2px; margin: 2rem 0;">
+        <div style="text-align: center; margin: 1rem 0;">
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown(f"""
+    <div style="background: linear-gradient(135deg, #008080, #20B2AA);
+                padding: 1rem; border-radius: 15px; margin: 1rem 0;
+                border: 1px solid white;
+                text-align: center; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+        <h3><strong>🗺️ Explore Festivals by State and Month</strong></h3>
+    </div>
+    """, unsafe_allow_html=True)
+
+    col1, col2 = st.columns([1, 1])
+
+    with col1:
+        selected_state = st.selectbox(
+            "🏛️ Select State:",
+            ["All States"] + sorted(list(festivals_df['State'].unique()))
+        )
+
+    with col2:
+        # Extract months from festival data for filtering
+        months = ["All Months", "January", "February", "March", "April", "May", "June",
+                 "July", "August", "September", "October", "November", "December"]
+        selected_month = st.selectbox("📅 Select Month/Season:", months)
+
+    # Filter data based on selection
+    filtered_df = festivals_df.copy()
+
+    if selected_state != "All States":
+        filtered_df = filtered_df[filtered_df['State'] == selected_state]
+
+    if selected_month != "All Months":
+        filtered_df = filtered_df[filtered_df['Month/Season'].str.contains(selected_month, case=False, na=False)]
+
+    # Count festivals with images
+    festivals_with_images = sum(1 for _, festival in filtered_df.iterrows()
+                               if festival['Festival Name'] in FESTIVAL_IMAGE_MAPPING)
+
+    # Display count with beautiful styling
+    st.markdown(f"""
+    <div style="text-align: center; margin: 2rem 0; padding: 1.5rem;
+                background: linear-gradient(135deg, #008080, #20B2AA);
+                border-radius: 15px; color: white; font-weight: bold;
+                font-family: 'Poppins', sans-serif; font-size: 1.1rem;
+                box-shadow: 0 5px 15px rgba(0,128,128,0.3);">
+        🎭 Discovered {len(filtered_df)} Amazing Festivals
+        <br><small style="opacity: 0.9;">📸 {festivals_with_images} festivals with beautiful images!</small>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Display festivals in beautiful cards
+    if not filtered_df.empty:
+        for _, festival in filtered_df.iterrows():
+            display_festival_card(festival)
+    else:
+        st.markdown("""
+        <div style="text-align: center; margin: 3rem 0; padding: 2rem;
+                    background: rgba(255,255,255,0.9); border-radius: 20px;
+                    border: 2px dashed #008080; color: #008080;">
+            <h3>🔍 No festivals found</h3>
+            <p>Try adjusting your filters to discover more festivals!</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+
+def display_festival_card(festival):
+    """Display festival in a beautiful rectangular card with image on left and description on right"""
+
+    # Get image path using exact mapping with caching
+    festival_name = festival['Festival Name']
+    image_path = None
+
+    if festival_name in FESTIVAL_IMAGE_MAPPING:
+        image_filename = FESTIVAL_IMAGE_MAPPING[festival_name]
+        potential_path = f"Festivals_images/{image_filename}"
+        image_info = get_festival_image_info(potential_path)
+        if image_info["exists"]:
+            image_path = potential_path
+
+    # Create the entire card using a different approach - custom CSS with data attributes
+    card_id = f"festival-card-{festival_name.replace(' ', '-').lower()}"
+
+    # Add custom CSS for this specific card
+    st.markdown(f"""
+    <style>
+    #{card_id} {{
+        background: white !important;
+        padding: 2rem !important;
+        margin: 2rem 0 !important;
+        border-radius: 20px !important;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+        border: 3px solid #4ECDC4 !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 2rem !important;
+        min-height: 300px !important;
+    }}
+    #{card_id} .image-section {{
+        flex: 1 !important;
+        max-width: 350px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-height: 300px !important;
+    }}
+    #{card_id} .content-section {{
+        flex: 2 !important;
+        padding-left: 1rem !important;
+    }}
+    #{card_id} .image-container {{
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+    }}
+    #{card_id} img {{
+        border-radius: 15px !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+        max-width: 100% !important;
+        max-height: 250px !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
+    }}
+    </style>
+    """, unsafe_allow_html=True)
+
+    # Get image HTML using cached loading
+    if image_path:
+        img = load_and_cache_festival_image(image_path)
+        if img:
+            try:
+                # Create a copy for thumbnail to avoid modifying cached image
+                img_copy = img.copy()
+                img_copy.thumbnail((350, 250), Image.Resampling.LANCZOS)
+                # Convert to base64 for embedding
+                import base64
+                import io
+                img_buffer = io.BytesIO()
+                img_copy.save(img_buffer, format='PNG')
+                img_str = base64.b64encode(img_buffer.getvalue()).decode()
+                image_html = f'<div class="image-container"><img src="data:image/png;base64,{img_str}" alt="{festival_name}"></div>'
+            except:
+                image_html = f"""
+                <div class="image-container">
+                    <div style="height: 250px; display: flex; align-items: center; justify-content: center;
+                                background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+                                border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+                        <div style="text-align: center; color: white;">
+                            <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">🎪</div>
+                            <div style="font-size: 1rem; font-weight: bold; opacity: 0.9;">{festival_name}</div>
+                        </div>
+                    </div>
+                </div>
+                """
+        else:
+            image_html = f"""
+            <div class="image-container">
+                <div style="height: 250px; display: flex; align-items: center; justify-content: center;
+                            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+                            border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+                    <div style="text-align: center; color: white;">
+                        <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">🎪</div>
+                        <div style="font-size: 1rem; font-weight: bold; opacity: 0.9;">{festival_name}</div>
+                    </div>
+                </div>
+            </div>
+            """
+    else:
+        image_html = f"""
+        <div class="image-container">
+            <div style="height: 250px; display: flex; align-items: center; justify-content: center;
+                        background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+                        border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+                <div style="text-align: center; color: white;">
+                    <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">🎪</div>
+                    <div style="font-size: 1rem; font-weight: bold; opacity: 0.9;">{festival_name}</div>
+                </div>
+            </div>
+        </div>
+        """
+
+    # Create the complete card as a single HTML block
+    st.markdown(f"""
+    <div id="{card_id}">
+        <div class="image-section">
+            {image_html}
+        </div>
+        <div class="content-section">
+            <h2 style="color: #008080; font-family: 'Playfair Display', serif;
+                       font-size: 2rem; margin-bottom: 1rem; font-weight: bold;">
+                🎭 {festival['Festival Name']}
+            </h2>
+            <div style="margin-bottom: 1.5rem;">
+                <p style="color: #20B2AA; font-weight: bold; font-size: 1.1rem; margin-bottom: 0.5rem;">
+                    📍 {festival['State']}
+                </p>
+                <p style="color: #008080; font-weight: bold; font-size: 1rem; margin-bottom: 1rem;">
+                    📅 {festival['Month/Season']}
+                </p>
+            </div>
+            <div style="color: #333; line-height: 1.6; font-family: 'Poppins', sans-serif; font-size: 0.95rem;">
+                {festival['Description']}
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Add spacing between cards
+    st.markdown("<br>", unsafe_allow_html=True)

@@ -1,0 +1,438 @@
+STATE_NAME,CITY_NAME,HERITAGE_NAME,HERITAGE_TYPE,IMAGE_NAME
+Tamil Nadu,TIRUPPUR,"Eswaran Temple, Nallur",Temple,TIRUPPUR_Eswaran_Temple_Nallur.jpg
+Tamil Nadu,TIRUPPUR,Perumal Temple,Temple,TIRUPPUR_Perumal_Temple.jpg
+Tamil Nadu,TIRUPPUR,"Angalamman Temple, Muthanampalayam",Temple,TIRUPPUR_Angalamman_Temple_Muthanampalayam.jpg
+Karnataka,Shivamogga,Shivappa Nayak Palace,Monument,Shivamogga_Shivappa_Nayak_Palace.jpg
+Karnataka,Hubli,Chandramouleshwar temple,monument,Hubli_Chandramouleshwar_temple.jpg
+Karnataka,Hubli,banashankari temple,monument,Hubli_banashankari_temple.jpg
+Karnataka,Hubli,Someshwar temple,monument,Hubli_Someshwar_temple.jpg
+Karnataka,Hubli,Amruteshwar temple,monument,Hubli_Amruteshwar_temple.jpg
+Andhra Pradesh,Kakinada,Sri Bhavannarayana Swami Temple,Temple,Kakinada_Sri_Bhavannarayana_Swami_Temple.jpg
+Madhya Pradesh,Indore,Rajawada Palace,Monument,Indore_Rajawada_Palace.jpg
+Madhya Pradesh,Indore,Krishnapura chhatri,Monument,Indore_Krishnapura_chhatri.jpg
+Madhya Pradesh,Indore,Lal bagh Palace,Monument,Indore_Lal_bagh_Palace.jpg
+Madhya Pradesh,Indore,Boliya sarkar chatri,Monument,Indore_Boliya_sarkar_chatri.jpg
+Madhya Pradesh,Indore,Mahatama gandhi hall,Monument,Indore_Mahatama_gandhi_hall.jpg
+Madhya Pradesh,Indore,Phooti Kothi,Old Building,Indore_Phooti_Kothi.jpg
+Madhya Pradesh,Indore,Bilawali talab,Old Building,Indore_Bilawali_talab.jpg
+Madhya Pradesh,Indore,Sirpur talab,Old Building,Indore_Sirpur_talab.jpg
+Madhya Pradesh,Indore,Dev Dharam,Old Building,Indore_Dev_Dharam.jpg
+Madhya Pradesh,Indore,Yeswant Sagar Dam,Old Building,Indore_Yeswant_Sagar_Dam.jpg
+Madhya Pradesh,Indore,"Malhar Ashram, School",Old Building,Indore_Malhar_Ashram_School.jpg
+Madhya Pradesh,Indore,Ahilya Ashram,Old Building,Indore_Ahilya_Ashram.jpg
+Madhya Pradesh,Indore,Gopal mandir,Temple,Indore_Gopal_mandir.jpg
+Madhya Pradesh,Indore,Yashwant Niwas Palace,Old Building,Indore_Yashwant_Niwas_Palace.jpg
+Madhya Pradesh,Indore,Harshidi temple,Old Building,Indore_Harshidi_temple.jpg
+Madhya Pradesh,Indore,Bhandari Kothi,Old Building,Indore_Bhandari_Kothi.jpg
+Madhya Pradesh,Indore,Annop Bhawan,Old Building,Indore_Annop_Bhawan.jpg
+Madhya Pradesh,Indore,KEM Medical Colloge,Monument,Indore_KEM_Medical_Colloge.jpg
+Madhya Pradesh,Indore,MGM Hospital,Old Building,Indore_MGM_Hospital.jpg
+Madhya Pradesh,Indore,Holkar College,Old Building,Indore_Holkar_College.jpg
+Madhya Pradesh,Indore,Yashwant Club,Old Building,Indore_Yashwant_Club.jpg
+Madhya Pradesh,Indore,Devilalikar Kala Vitika,Old Building,Indore_Devilalikar_Kala_Vitika.jpg
+Madhya Pradesh,Indore,Devilalikar art school,Old Building,Indore_Devilalikar_art_school.jpg
+Madhya Pradesh,Indore,Kanch Mandir,Old Building,Indore_Kanch_Mandir.jpg
+Madhya Pradesh,Indore,Rang Mahal,Old Building,Indore_Rang_Mahal.jpg
+Madhya Pradesh,Indore,Sheesh mahal,Old Building,Indore_Sheesh_mahal.jpg
+Madhya Pradesh,Indore,Ahilya bai libaray,Old Building,Indore_Ahilya_bai_libaray.jpg
+Madhya Pradesh,Indore,General Library,Old Building,Indore_General_Library.jpg
+Madhya Pradesh,Indore,Nath mandir,Old Building,Indore_Nath_mandir.jpg
+Madhya Pradesh,Indore,Vir savarkar market,Old Building,Indore_Vir_savarkar_market.jpg
+Madhya Pradesh,Indore,Kahrajan mandir,Old Building,Indore_Kahrajan_mandir.jpg
+Madhya Pradesh,Indore,Residency kothi,Old Building,Indore_Residency_kothi.jpg
+Madhya Pradesh,Indore,Indrsehawar temple,Old Building,Indore_Indrsehawar_temple.jpg
+Madhya Pradesh,Indore,Hukumchand tower (Indra Bhawan),Old Building,Indore_Hukumchand_tower_Indra_Bhawan.jpg
+Madhya Pradesh,Indore,Daly college,Old Building,Indore_Daly_college.jpg
+Madhya Pradesh,Indore,Indore press club,Old Building,Indore_Indore_press_club.jpg
+Madhya Pradesh,Indore,Ranisarai (Sp Office),Old Building,Indore_Ranisarai_Sp_Office.jpg
+Madhya Pradesh,Indore,Sukhniwas palace,Old Building,Indore_Sukhniwas_palace.jpg
+Madhya Pradesh,Indore,Manik bgah palace,Old Building,Indore_Manik_bgah_palace.jpg
+Madhya Pradesh,Indore,Circuit house,Old Building,Indore_Circuit_house.jpg
+Madhya Pradesh,Indore,Residency of superintending officer,Old Building,Indore_Residency_of_superintending_officer.jpg
+Madhya Pradesh,Indore,IG bunglaow,Old Building,Indore_IG_bunglaow.jpg
+Madhya Pradesh,Indore,Indore residency club,Old Building,Indore_Indore_residency_club.jpg
+Madhya Pradesh,Indore,Robert nursing home,Old Building,Indore_Robert_nursing_home.jpg
+Madhya Pradesh,Indore,Red chruch,Old Building,Indore_Red_chruch.jpg
+Madhya Pradesh,Indore,The dak bungalow,Old Building,Indore_The_dak_bungalow.jpg
+Madhya Pradesh,Indore,White chruch,Old Building,Indore_White_chruch.jpg
+Madhya Pradesh,Indore,Public service commissions office,Old Building,Indore_Public_service_commissions_office.jpg
+Madhya Pradesh,Indore,Christian college,Old Building,Indore_Christian_college.jpg
+Madhya Pradesh,Indore,Mth compound,Old Building,Indore_Mth_compound.jpg
+Madhya Pradesh,Indore,Victoria library,Old Building,Indore_Victoria_library.jpg
+Madhya Pradesh,Indore,Bada ganpati mandir,Old Building,Indore_Bada_ganpati_mandir.jpg
+Madhya Pradesh,Indore,Govardhan nath mandir,Old Building,Indore_Govardhan_nath_mandir.jpg
+Madhya Pradesh,Indore,Bijasen Mandir,Old Building,Indore_Bijasen_Mandir.jpg
+Madhya Pradesh,Indore,Ghat Hanuman Mandir,Old Building,Indore_Ghat_Hanuman_Mandir.jpg
+Madhya Pradesh,Indore,Jam Darwaza,Old Building,Indore_Jam_Darwaza.jpg
+Madhya Pradesh,Indore,Kevadeshwar Temple,Old Building,Indore_Kevadeshwar_Temple.jpg
+Madhya Pradesh,Indore,Mastanis Tomb,Old Building,Indore_Mastanis_Tomb.jpg
+Madhya Pradesh,Indore,Imam Bada,Old Building,Indore_Imam_Bada.jpg
+Madhya Pradesh,Indore,Kalyan Mal Narsing Homa,Old Building,Indore_Kalyan_Mal_Narsing_Homa.jpg
+Madhya Pradesh,Indore,PWD Building,Old Building,Indore_PWD_Building.jpg
+Madhya Pradesh,Indore,Swami Vivekanad H. S. School,Old Building,Indore_Swami_Vivekanad_H_S_School.jpg
+Karnataka,Davanagere,SRI DURGAMBHIKA TEMPLE,Monuments,Davanagere_SRI_DURGAMBHIKA_TEMPLE.jpg
+Tripura,Agartala,Ujjayanta Palace,Royal Palace,Agartala_Ujjayanta_Palace.jpg
+Tamil Nadu,Coimbatore,Victoria Hall 1892,Council Meeting Hall,Coimbatore_Victoria_Hall_1892.jpg
+Orissa,Rourkela,Vedvyas Mandir,Madir,Rourkela_Vedvyas_Mandir.jpg
+Orissa,Rourkela,Dhabaleswar Temple,Temple,Rourkela_Dhabaleswar_Temple.jpg
+Orissa,Rourkela,Hanuman Vatika,Group of temple,Rourkela_Hanuman_Vatika.jpg
+Orissa,Rourkela,DAV Pond,old pond,Rourkela_DAV_Pond.jpg
+Orissa,Rourkela,Pond,pond,Rourkela_DAV_Pond.jpg
+Orissa,Rourkela,Baishnodevi Temple,Templr,Rourkela_Baishnodevi_Temple.jpg
+Orissa,Rourkela,Birsamunda Statue,monuments,Rourkela_Birsamunda_Statue.jpg
+Orissa,Rourkela,Birsa Munda Field,Open Space,Rourkela_Birsa_Munda_Field.jpg
+Orissa,Rourkela,Ganesh Puja,Open Space,Rourkela_Ganesh_Puja.jpg
+Orissa,Rourkela,Church,Church,Rourkela_Church.jpg
+Maharashtra,Solapur Smart City,Bhukot Ford Solapur,Fort,Solapur_Smart_City_Bhukot_Ford_Solapur.jpg
+Maharashtra,Solapur Smart City,Shri . Siddeshwar Maindar,Religious,Solapur_Smart_City_Shri_Siddeshwar_Maindar.jpg
+Maharashtra,Solapur Smart City,Shri Siddeshwar Lake,Religious,Solapur_Smart_City_Shri_Siddeshwar_Lake.jpg
+Maharashtra,Solapur Smart City,Solapur Mahanagarpalika Oppisite Building,monuments,Solapur_Smart_City_Solapur_Mahanagarpalika_Oppisite_Building.jpg
+Maharashtra,Solapur Smart City,Shri. Malikarjun Mandir,Religious,Solapur_Smart_City_Shri_Malikarjun_Mandir.jpg
+Maharashtra,Solapur Smart City,Narsingh Girji Mill,Monuments,Solapur_Smart_City_Narsingh_Girji_Mill.jpg
+Maharashtra,Solapur Smart City,Ganpate Ghat,Religious,Solapur_Smart_City_Ganpate_Ghat.jpg
+Maharashtra,Solapur Smart City,Udgiri galli and simma,Open Space,Solapur_Smart_City_Udgiri_galli_and_simma.jpg
+Maharashtra,Solapur Smart City,HajiBhai Darga,Religious,Solapur_Smart_City_HajiBhai_Darga.jpg
+Maharashtra,Solapur Smart City,Juni Vitthal Mandir,Religious,Solapur_Smart_City_Juni_Vitthal_Mandir.jpg
+Maharashtra,Solapur Smart City,Mahasiddeshwar Mandir Duffrin Chowk,Religious,Solapur_Smart_City_Mahasiddeshwar_Mandir_Duffrin_Chowk.jpg
+Maharashtra,Solapur Smart City,Siddeshwar Lake,Open Space,Solapur_Smart_City_Shri_Siddeshwar_Lake.jpg
+Maharashtra,Solapur Smart City,Kambar Lake Sambhaja Talave,Religious,Solapur_Smart_City_Kambar_Lake_Sambhaja_Talave.jpg
+Maharashtra,Solapur Smart City,Ramchandra Gandhi Parshwanath Jain mandir,Religious,Solapur_Smart_City_Ramchandra_Gandhi_Parshwanath_Jain_mandir.jpg
+Maharashtra,Solapur Smart City,Umedpur Chruch,Religious,Solapur_Smart_City_Umedpur_Chruch.jpg
+Maharashtra,Solapur Smart City,Sonnalaggi Siddeshwar mandir,Religious,Solapur_Smart_City_Sonnalaggi_Siddeshwar_mandir.jpg
+Maharashtra,Solapur Smart City,Rupabhavani Mandir,Religious,Solapur_Smart_City_Rupabhavani_Mandir.jpg
+Maharashtra,Solapur Smart City,Jammi Mashid,Religious,Solapur_Smart_City_Jammi_Mashid.jpg
+Gujarat,AHMEDABAD,Achyut  kuki  s   Bibi  s Masjid and tomb,Protected Monument under A.S.I.,AHMEDABAD_Achyut_kuki_s_Bibi_s_Masjid_and_tomb.jpg
+Gujarat,AHMEDABAD,Sidi Bashir  s Minars  Tomb              shaking minars,Protected Monument under A.S.I.,AHMEDABAD_Sidi_Bashir_s_Minars_Tomb_shaking_minars.jpg
+Gujarat,AHMEDABAD,Brick Minar,Protected Monument under A.S.I.,AHMEDABAD_Brick_Minar.jpg
+Gujarat,AHMEDABAD,Three Gates,Protected Monument under A.S.I.,AHMEDABAD_Three_Gates.jpg
+Gujarat,AHMEDABAD,Bhadra Tower,Protected Monument under A.S.I.,AHMEDABAD_Bhadra_Tower.jpg
+Gujarat,AHMEDABAD,Delhi Gate,Protected Monument under A.S.I.,AHMEDABAD_Delhi_Gate.jpg
+Gujarat,AHMEDABAD,Rani Rupavati  s Mosque,Protected Monument under A.S.I.,AHMEDABAD_Rani_Rupavati_s_Mosque.jpg
+Gujarat,AHMEDABAD,Kazi Mohmed Chisti  s Masjid  Shaikh Hasan,Protected Monument under A.S.I.,AHMEDABAD_Kazi_Mohmed_Chisti_s_Masjid_Shaikh_Hasan.jpg
+Gujarat,AHMEDABAD,Astodia Gate,Protected Monument under A.S.I.,AHMEDABAD_Astodia_Gate.jpg
+Gujarat,AHMEDABAD,Rani Sipri  s Mosque and tomb,Protected Monument under A.S.I.,AHMEDABAD_Rani_Sipri_s_Mosque_and_tomb.jpg
+Gujarat,AHMEDABAD,Dasturkhan  s Masjid,Protected Monument under A.S.I.,AHMEDABAD_Dasturkhan_s_Masjid.jpg
+Gujarat,AHMEDABAD,Dariyapur Gate,Protected Monument under A.S.I.,AHMEDABAD_Dariyapur_Gate.jpg
+Gujarat,AHMEDABAD,Premabhai Gate,Protected Monument under A.S.I.,AHMEDABAD_Premabhai_Gate.jpg
+Gujarat,AHMEDABAD,Panchkuwa Gate,Protected Monument under A.S.I.,AHMEDABAD_Panchkuwa_Gate.jpg
+Gujarat,AHMEDABAD,Kalupur Gate,Protected Monument under A.S.I.,AHMEDABAD_Kalupur_Gate.jpg
+Gujarat,AHMEDABAD,Sarangpur Gate,Protected Monument under A.S.I.,AHMEDABAD_Sarangpur_Gate.jpg
+Gujarat,AHMEDABAD,Tomb,Protected Monument under A.S.I.,AHMEDABAD_Tomb.jpg
+Gujarat,AHMEDABAD,Raipur Gate,Protected Monument under A.S.I.,AHMEDABAD_Raipur_Gate.jpg
+Gujarat,AHMEDABAD,Ahmed Shah  s Mosque,Protected Monument under A.S.I.,AHMEDABAD_Ahmed_Shah_s_Mosque.jpg
+Gujarat,AHMEDABAD,Jami Masjid,Protected Monument under A.S.I.,AHMEDABAD_Jami_Masjid.jpg
+Gujarat,AHMEDABAD,Ahmed Shah  s Tomb,Protected Monument under A.S.I.,AHMEDABAD_Ahmed_Shah_s_Tomb.jpg
+Gujarat,AHMEDABAD,Tomb of Queens of Ahmed Shah,Protected Monument under A.S.I.,AHMEDABAD_Tomb_of_Queens_of_Ahmed_Shah.jpg
+Gujarat,AHMEDABAD,Mata Bhavani  s well,Protected Monument under A.S.I.,AHMEDABAD_Mata_Bhavani_s_well.jpg
+Gujarat,AHMEDABAD,Dada Harir  s Mosque and tomb,Protected Monument under A.S.I.,AHMEDABAD_Dada_Harir_s_Mosque_and_tomb.jpg
+Gujarat,AHMEDABAD,Dada  Bai   Harir  s stepwell,Protected Monument under A.S.I.,AHMEDABAD_Dada_Bai_Harir_s_stepwell.jpg
+Gujarat,AHMEDABAD,Bibiji  s Mosque,Protected Monument under A.S.I.,AHMEDABAD_Bibiji_s_Mosque.jpg
+Gujarat,AHMEDABAD,Small stone Mosque  Rani Masjid,Protected Monument under A.S.I.,AHMEDABAD_Small_stone_Mosque_Rani_Masjid.jpg
+Gujarat,AHMEDABAD,Great Mosque,Protected Monument under A.S.I.,AHMEDABAD_Great_Mosque.jpg
+Gujarat,AHMEDABAD,"Great Tank, Palace and Harem",Protected Monument under A.S.I.,AHMEDABAD_Great_Tank_Palace_and_Harem.jpg
+Gujarat,AHMEDABAD,Pavilion   before the Tomb of shaikh Ahemed KhatunGanj Baksh,Protected Monument under A.S.I.,AHMEDABAD_Pavilion_before_the_Tomb_of_shaikh_Ahemed_KhatunGanj_Baksh.jpg
+Gujarat,AHMEDABAD,Rauzas of Bava Alisar and Bava Ganj Baksh,Protected Monument under A.S.I.,AHMEDABAD_Rauzas_of_Bava_Alisar_and_Bava_Ganj_Baksh.jpg
+Gujarat,AHMEDABAD,Tomb of Muhammad Begarah,Protected Monument under A.S.I.,AHMEDABAD_Tomb_of_Muhammad_Begarah.jpg
+Gujarat,AHMEDABAD,Tomb of Shaikh Ahmed Khatun GanjBaksh,Protected Monument under A.S.I.,AHMEDABAD_Tomb_of_Shaikh_Ahmed_Khatun_GanjBaksh.jpg
+Gujarat,AHMEDABAD,Baba Lauli  s Mosque,Protected Monument under A.S.I.,AHMEDABAD_Baba_Lauli_s_Mosque.jpg
+Gujarat,AHMEDABAD,Jethabhai  s Stepwell,Protected Monument under A.S.I.,AHMEDABAD_Jethabhai_s_Stepwell.jpg
+Gujarat,AHMEDABAD,Small stone Mosque  Gumte masjid,Protected Monument under A.S.I.,AHMEDABAD_Small_stone_Mosque_Gumte_masjid.jpg
+Gujarat,AHMEDABAD,Amrut Varsini Vav  state Govt. list,Protected Monument under A.S.I.,AHMEDABAD_Amrut_Varsini_Vav_state_Govt_list.jpg
+Gujarat,AHMEDABAD,Dutch tomb,Protected Monument under A.S.I.,AHMEDABAD_Dutch_tomb.jpg
+Gujarat,AHMEDABAD,Old Mosque  Isan Malik  s Masjid,Protected Monument under A.S.I.,AHMEDABAD_Old_Mosque_Isan_Malik_s_Masjid.jpg
+Tamil Nadu,Thoothukudi,Sankararameswar Koil,Temple,Thoothukudi_Sankararameswar_Koil.jpg
+Tamil Nadu,Thoothukudi,Vaikunda Perumal Koil,Temple,Thoothukudi_Vaikunda_Perumal_Koil.jpg
+Tamil Nadu,Thanjavur,Bragadeeswarar Temple,Monuments,Thanjavur_Bragadeeswarar_Temple.jpg
+Tamil Nadu,Thanjavur,Palace,Monuments,Thanjavur_Palace.jpg
+Tamil Nadu,Thanjavur,Manora,Monuments,Thanjavur_Manora.jpg
+Tamil Nadu,Thanjavur,Old District Collectorate museum,Monuments,Thanjavur_Old_District_Collectorate_museum.jpg
+Orissa,Bhubaneswar,Ananta Basudev Temple (Precinct),Temple,Bhubaneswar_Ananta_Basudev_Temple_Precinct.jpg
+Orissa,Bhubaneswar,Asokan Rock Edict And Sculpture Of Elephant (Precinct),Rock cut Caves,Bhubaneswar_Asokan_Rock_Edict_And_Sculpture_Of_Elephant_Precinct.jpg
+Orissa,Bhubaneswar,Bakresvara Temple,Temple,Bhubaneswar_Bakresvara_Temple.jpg
+Orissa,Bhubaneswar,Bhaskareswar Temple,Temple,Bhubaneswar_Bhaskareswar_Temple.jpg
+Orissa,Bhubaneswar,Megheswar Temple (Precinct),Temple,Bhubaneswar_Megheswar_Temple_Precinct.jpg
+Orissa,Bhubaneswar,Nagesvara/ Sampoorna Jaleswar Temple,Temple,Bhubaneswar_Nagesvara_Sampoorna_Jaleswar_Temple.jpg
+Orissa,Bhubaneswar,Residence Of Dhrubacharan Sahu (Heritage Building),Temple,Bhubaneswar_Residence_Of_Dhrubacharan_Sahu_Heritage_Building.jpg
+Orissa,Bhubaneswar,Sari Temple,Temple,Bhubaneswar_Sari_Temple.jpg
+Orissa,Bhubaneswar,Sisiresvara Temple,Temple,Bhubaneswar_Sisiresvara_Temple.jpg
+Orissa,Bhubaneswar,Sisupalgarh,Fort,Bhubaneswar_Sisupalgarh.jpg
+Orissa,Bhubaneswar,Small Rock Cut Cell With A Niche And Inscription Of Santikaradeva,Rock cut caves,Bhubaneswar_Small_Rock_Cut_Cell_With_A_Niche_And_Inscription_Of_Santikaradeva.jpg
+Orissa,Bhubaneswar,Vaital Deul,Temple,Bhubaneswar_Vaital_Deul.jpg
+Kerala,Thiruvananthapuram,ROCK CUT TEMPLE,open space,Thiruvananthapuram_ROCK_CUT_TEMPLE.jpg
+Kerala,Thiruvananthapuram,Thrivikramangalam temple,temple,Thiruvananthapuram_Thrivikramangalam_temple.jpg
+Kerala,Thiruvananthapuram,niramankara,temple,Thiruvananthapuram_niramankara.jpg
+Kerala,Thiruvananthapuram,fort gate and wall of padmanabha temple,monument,Thiruvananthapuram_fort_gate_and_wall_of_padmanabha_temple.jpg
+Kerala,Thiruvananthapuram,Travancore military headquarters,military base,Thiruvananthapuram_Travancore_military_headquarters.jpg
+Kerala,Thiruvananthapuram,vadakke nabimada,house,Thiruvananthapuram_vadakke_nabimada.jpg
+Kerala,Thiruvananthapuram,Nityachelavu Buglow and Rangavilasom palace,palace,Thiruvananthapuram_Nityachelavu_Buglow_and_Rangavilasom_palace.jpg
+Kerala,Thiruvananthapuram,Navaratri mandapom,building,Thiruvananthapuram_Navaratri_mandapom.jpg
+Kerala,Thiruvananthapuram,Krishna vilasam palace,palace,Thiruvananthapuram_Krishna_vilasam_palace.jpg
+Kerala,Thiruvananthapuram,Bhajanappura malika,building,Thiruvananthapuram_Bhajanappura_malika.jpg
+Kerala,Thiruvananthapuram,Ananthavilasom Palace,palace,Thiruvananthapuram_Ananthavilasom_Palace.jpg
+Kerala,Thiruvananthapuram,Sreepadam Palace,palace,Thiruvananthapuram_Sreepadam_Palace.jpg
+Kerala,Thiruvananthapuram,Kawdiar palace,palace,Thiruvananthapuram_Kawdiar_palace.jpg
+Nagaland,KOHIMA,World War II tank,Open Space,KOHIMA_World_War_II_tank.jpg
+Nagaland,KOHIMA,World War II Cemetary,Open Space,KOHIMA_World_War_II_Cemetary.jpg
+Manipur,Imphal,Shahid Minar,Monuments,Imphal_Shahid_Minar.jpg
+Manipur,Imphal,Hapta Kangjeibung,Open Space,Imphal_Hapta_Kangjeibung.jpg
+Manipur,Imphal,Imphal War Cemetery,Monuments,Imphal_Imphal_War_Cemetery.jpg
+Manipur,Imphal,Khwairamband Bazar,Market,Imphal_Khwairamband_Bazar.jpg
+Manipur,Imphal,Shree Shree Govindajee Temple,Temple,Imphal_Shree_Shree_Govindajee_Temple.jpg
+Uttar Pradesh,Prayagraj,Allahabad Museum,It is one of the First Public Museum in India.,Prayagraj_Allahabad_Museum.jpg
+Uttar Pradesh,Prayagraj,Senate Hall,The Senate building houses the offices of the university Administration,Prayagraj_Senate_Hall.jpg
+Uttar Pradesh,Prayagraj,Central Library,The Central Library had its genesis in the library of Muir central College,Prayagraj_Central_Library.jpg
+Uttar Pradesh,Prayagraj,Holy Trinity Church,The Holy Trinity Church was built in 1839,Prayagraj_Holy_Trinity_Church.jpg
+Uttar Pradesh,Prayagraj,Anand Bhawan,The Anand Bhawan is a historic house museum in Allahabad. Our First Primeminister born here.,Prayagraj_Anand_Bhawan.jpg
+Uttar Pradesh,Prayagraj,Khusrau Bagh,"This large walled Mughal Garden surrounding the tombs of Khusrau, The eldest soon of Jahangir.",Prayagraj_Khusrau_Bagh.jpg
+Uttar Pradesh,Prayagraj,Bhardwaj Ashram,Bhardwaj Rishi also spelled Bhardwaj was one of the greatest Hindu sages Maharshi descendant of Rishi Angirasa,Prayagraj_Bhardwaj_Ashram.jpg
+Uttar Pradesh,Prayagraj,Pathar Girijaghar,it was the main church of Canning Town before Independence,Prayagraj_Pathar_Girijaghar.jpg
+Tamil Nadu,Tiruchirappalli,Rockfort,Fort Temple,Tiruchirappalli_Rockfort.jpg
+Tamil Nadu,Tiruchirappalli,Srirangam,Temple,Tiruchirappalli_Srirangam.jpg
+Tamil Nadu,Tiruchirappalli,Thiruvanaikaval,Temple,Tiruchirappalli_Thiruvanaikaval.jpg
+Tamil Nadu,Tiruchirappalli,St. Lourdes Church,Church,Tiruchirappalli_St_Lourdes_Church.jpg
+Tamil Nadu,Tiruchirappalli,Nadhirsha Dharga,Dharga,Tiruchirappalli_Nadhirsha_Dharga.jpg
+Tamil Nadu,Tiruchirappalli,Vayalur,Temple,Tiruchirappalli_Vayalur.jpg
+Tamil Nadu,Tiruchirappalli,Uthamar Koil,Temple,Tiruchirappalli_Uthamar_Koil.jpg
+Tamil Nadu,Tiruchirappalli,Thiruverumbur,Temple,Tiruchirappalli_Thiruverumbur.jpg
+Tamil Nadu,Tiruchirappalli,Kallanai,Dam,Tiruchirappalli_Kallanai.jpg
+Tamil Nadu,PUDUCHERRY,"Old Administrative building, Dumas Street",Office building,PUDUCHERRY_Old_Administrative_building_Dumas_Street.jpg
+Tamil Nadu,PUDUCHERRY,"Old Band stand near Nehru Statue, Gandhi thidal",Monument,PUDUCHERRY_Old_Band_stand_near_Nehru_Statue_Gandhi_thidal.jpg
+Tamil Nadu,PUDUCHERRY,"Old Mother Theresa Institute, Campagnie Street",Health Institution,PUDUCHERRY_Old_Mother_Theresa_Institute_Campagnie_Street.jpg
+Tamil Nadu,PUDUCHERRY,"Tourism Office, Beach road",Office building,PUDUCHERRY_Tourism_Office_Beach_road.jpg
+Tamil Nadu,PUDUCHERRY,"Aye Mandapam, Bharathi park",Monument,PUDUCHERRY_Aye_Mandapam_Bharathi_park.jpg
+Tamil Nadu,PUDUCHERRY,"Foyer du Soldat, rue law de lauriston",Museum,PUDUCHERRY_Foyer_du_Soldat_rue_law_de_lauriston.jpg
+Tamil Nadu,PUDUCHERRY,"Pondicherry Museum building, St Louis street",Museum,PUDUCHERRY_Pondicherry_Museum_building_St_Louis_street.jpg
+Tamil Nadu,PUDUCHERRY,"Old Light house, Beach road",Monument,PUDUCHERRY_Old_Light_house_Beach_road.jpg
+Tamil Nadu,PUDUCHERRY,"Old court building, Beach road",Building,PUDUCHERRY_Old_court_building_Beach_road.jpg
+Tamil Nadu,PUDUCHERRY,"Circle de Pondicherry, Victor Simonel street",Recreation club,PUDUCHERRY_Circle_de_Pondicherry_Victor_Simonel_street.jpg
+Tamil Nadu,PUDUCHERRY,"Assembly building, Victor Simonel street",Legislative assembly building,PUDUCHERRY_Assembly_building_Victor_Simonel_street.jpg
+Tamil Nadu,PUDUCHERRY,Raj Nivas,Lt Governors Residence,PUDUCHERRY_Raj_Nivas.jpg
+Tamil Nadu,PUDUCHERRY,"Bharathidasan Museum, Perumal koil street",Museum,PUDUCHERRY_Bharathidasan_Museum_Perumal_koil_street.jpg
+Tamil Nadu,PUDUCHERRY,"Clock towers, Grand bazaar and Bussy street",Monument,PUDUCHERRY_Clock_towers_Grand_bazaar_and_Bussy_street.jpg
+Tamil Nadu,PUDUCHERRY,"Calve college, Mission street",Educational institution,PUDUCHERRY_Calve_college_Mission_street.jpg
+Tamil Nadu,PUDUCHERRY,"PWD office, Bussy street",Office building,PUDUCHERRY_PWD_office_Bussy_street.jpg
+Tamil Nadu,PUDUCHERRY,"Bharathiar Museum, Iswaran koil street",Museum,PUDUCHERRY_Bharathiar_Museum_Iswaran_koil_street.jpg
+Tamil Nadu,Salem,Raja Rani Theppa kulam,Monuments,Salem_Raja_Rani_Theppa_kulam.jpg
+Bihar,Patna,Ruins of Patliputra,Ruins,Patna_Ruins_of_Patliputra.jpg
+Bihar,Patna,Agam Kuan,Monument,Patna_Agam_Kuan.jpg
+Bihar,Patna,Patna Museum,Museum,Patna_Patna_Museum.jpg
+Bihar,Patna,Naghol Kothi,Monument,Patna_Naghol_Kothi.jpg
+Bihar,Patna,Begu Hajjam Mosque,Mosque,Patna_Begu_Hajjam_Mosque.jpg
+Bihar,Patna,Gandhi Maidan,Open Space,Patna_Gandhi_Maidan.jpg
+Maharashtra,AURANGABAD,Bhadkal gate,Monument,AURANGABAD_Bhadkal_gate.jpg
+Maharashtra,AURANGABAD,Chota Bhadkal,Monument,AURANGABAD_Chota_Bhadkal.jpg
+Maharashtra,AURANGABAD,Mehmood gate,Monument,AURANGABAD_Mehmood_gate.jpg
+Maharashtra,AURANGABAD,Rangeen gate,Monument,AURANGABAD_Rangeen_gate.jpg
+Maharashtra,AURANGABAD,Kaala gate,Monument,AURANGABAD_Kaala_gate.jpg
+Maharashtra,AURANGABAD,Baijipura gate,Monument,AURANGABAD_Baijipura_gate.jpg
+Maharashtra,AURANGABAD,Dehli gate,Monument,AURANGABAD_Dehli_gate.jpg
+Maharashtra,AURANGABAD,Katkat gate,Monument,AURANGABAD_Katkat_gate.jpg
+Maharashtra,AURANGABAD,Hathi gate,Monument,AURANGABAD_Hathi_gate.jpg
+Maharashtra,AURANGABAD,Roshan gate,Monument,AURANGABAD_Roshan_gate.jpg
+Maharashtra,AURANGABAD,Jafar gate,Monument,AURANGABAD_Jafar_gate.jpg
+Maharashtra,AURANGABAD,Paithan gate,Monument,AURANGABAD_Paithan_gate.jpg
+Maharashtra,AURANGABAD,Barapulla gate,Monument,AURANGABAD_Barapulla_gate.jpg
+Maharashtra,AURANGABAD,Makai gate,Monument,AURANGABAD_Makai_gate.jpg
+Maharashtra,AURANGABAD,Khadkeshwar Mandir,Monument,AURANGABAD_Khadkeshwar_Mandir.jpg
+Maharashtra,AURANGABAD,Sunehri Mahal,Monument,AURANGABAD_Sunehri_Mahal.jpg
+Maharashtra,AURANGABAD,Shahaganj clock tower,Monument,AURANGABAD_Shahaganj_clock_tower.jpg
+Maharashtra,AURANGABAD,Himayat baag,open space,AURANGABAD_Himayat_baag.jpg
+Uttar Pradesh,Agra,RED FORT,MONUMENT,Agra_RED_FORT.jpg
+Uttar Pradesh,Agra,TAJ MAHAL,MONUMENT,Agra_TAJ_MAHAL.jpg
+Uttar Pradesh,Agra,FATEHPURI SIKRI,MONUMENT,Agra_FATEHPURI_SIKRI.jpg
+Madhya Pradesh,Gwalior,Gwalior Fort,"Monuments , Open space",Gwalior_Gwalior_Fort.jpg
+Madhya Pradesh,Gwalior,Hathi Pol,"Monuments , Open space",Gwalior_Hathi_Pol.jpg
+Madhya Pradesh,Gwalior,Tomb of Tansen,"Monuments , Open space",Gwalior_Tomb_of_Tansen.jpg
+Madhya Pradesh,Gwalior,Gujari Mahal,"Monuments , Open space",Gwalior_Gujari_Mahal.jpg
+Madhya Pradesh,Gwalior,Dev Kho,"Monuments , Open space",Gwalior_Dev_Kho.jpg
+Madhya Pradesh,Gwalior,Jai Vilas Mahal,"Monuments , Open space",Gwalior_Jai_Vilas_Mahal.jpg
+Madhya Pradesh,Gwalior,Teli Ka Mandir,Monuments,Gwalior_Teli_Ka_Mandir.jpg
+Madhya Pradesh,Gwalior,Gopachal Parvat,"Monuments , Open space",Gwalior_Gopachal_Parvat.jpg
+Madhya Pradesh,Gwalior,Sasbahu Ka Mandir,Monuments,Gwalior_Sasbahu_Ka_Mandir.jpg
+Madhya Pradesh,Gwalior,Man Singh Palace,"Monuments , Open space",Gwalior_Man_Singh_Palace.jpg
+Madhya Pradesh,Gwalior,Assi Khamba Ki Baori,Monuments,Gwalior_Assi_Khamba_Ki_Baori.jpg
+Tamil Nadu,Chennai,Big Warehouse,Monument,Chennai_Big_Warehouse.jpg
+Tamil Nadu,Chennai,Clives House,Monument,Chennai_Clives_House.jpg
+Uttar Pradesh,Agra,AKBARS TOMB,TOMB,Agra_AKBARS_TOMB.jpg
+Uttar Pradesh,Agra,MEHTAB GARDEN,OPEN SPACE,Agra_MEHTAB_GARDEN.jpg
+Tamil Nadu,ERODE,ARCHAEOLOGICAL MUSEUM,GOVERNMENT MUSEUM,ERODE_ARCHAEOLOGICAL_MUSEUM.jpg
+Tamil Nadu,ERODE,MEMORIAL HOUSE,PERIYAR ANNA MEMORIAL HOUSE,ERODE_MEMORIAL_HOUSE.jpg
+Tamil Nadu,ERODE,VOC PARK,RECREATIONAL PARK MAINTAINED BY ERODE CITY CORPORATION,ERODE_VOC_PARK.jpg
+Tamil Nadu,ERODE,CSI CHURCH,CSI BROUGH MEMORIAL CHURCH,ERODE_CSI_CHURCH.jpg
+Tamil Nadu,ERODE,ANAICUT (Water Storage Dam),KALINGARAYAN ANAICUT,ERODE_ANAICUT_Water_Storage_Dam.jpg
+Uttar Pradesh,Bareilly,Allah Hazrat,Yes,Bareilly_Allah_Hazrat.jpg
+Karnataka,Belgaum,KamalBasti,monuments,Belgaum_KamalBasti.jpg
+Uttar Pradesh,Jhansi,Monument of F W Pinkney; situated on the hillock near the premises of Messers Eduljee Boyce & Co,Centrally protected monument,Jhansi_Monument_of_F_W_Pinkney_situated_on_the_hillock_near_the_premises_of_Messers_Eduljee_Boyce_Co.jpg
+Uttar Pradesh,Jhansi,Rani Laxmi Bai Mahal,Centrally protected monument,Jhansi_Rani_Laxmi_Bai_Mahal.jpg
+Uttar Pradesh,Jhansi,Chhatari of Raja Gangadhar Rao along with and tank,Centrally protected monument,Jhansi_Chhatari_of_Raja_Gangadhar_Rao_along_with_and_tank.jpg
+Uttar Pradesh,Jhansi,Jhansi Fort,Centrally protected monument,Jhansi_Jhansi_Fort.jpg
+Uttar Pradesh,Jhansi,Laxmi Mandir,Monument,Jhansi_Laxmi_Mandir.jpg
+Jammu and Kashmir,Srinagar,Hari parbat fort,Monument,Srinagar_Hari_parbat_fort.jpg
+Jammu and Kashmir,Srinagar,Mazari salateen,Monument,Srinagar_Mazari_salateen.jpg
+Jammu and Kashmir,Srinagar,Shankar achariya,Temple,Srinagar_Shankar_achariya.jpg
+Jammu and Kashmir,Srinagar,Shalimar,open space,Srinagar_Shalimar.jpg
+Jammu and Kashmir,Srinagar,Nishat,open space,Srinagar_Nishat.jpg
+Jammu and Kashmir,Srinagar,Harwan,open space,Srinagar_Harwan.jpg
+Madhya Pradesh,Satna,Venktesh Temple,Monument,Satna_Venktesh_Temple.jpg
+Maharashtra,Thane,Central Jail,Jail,Thane_Central_Jail.jpg
+Maharashtra,Thane,Mumbradevi Temple,Temple,Thane_Mumbradevi_Temple.jpg
+Maharashtra,Thane,Kaldate House,House,Thane_Kaldate_House.jpg
+Maharashtra,Thane,Ganga Bhauva,House,Thane_Ganga_Bhauva.jpg
+Maharashtra,Thane,Rodrigues Bungalow,House,Thane_Rodrigues_Bungalow.jpg
+Maharashtra,Thane,Shivgiri,Bunglow,Thane_Shivgiri.jpg
+Maharashtra,Thane,van Bhavan,Bunglow,Thane_van_Bhavan.jpg
+Maharashtra,Thane,Kalwa Bridge,Bridge,Thane_Kalwa_Bridge.jpg
+Maharashtra,Thane,Masunda lake,Lake,Thane_Masunda_lake.jpg
+Maharashtra,Thane,Castle Lake,Lake,Thane_Castle_Lake.jpg
+Maharashtra,Thane,Kacharali Lake,Lake,Thane_Kacharali_Lake.jpg
+Maharashtra,Thane,Makhmali Lake,Lake,Thane_Makhmali_Lake.jpg
+Maharashtra,Thane,Ghosali Lake,Lake,Thane_Ghosali_Lake.jpg
+Maharashtra,Thane,Upvan lake,Lake,Thane_Upvan_lake.jpg
+Maharashtra,Thane,Kolbad Lake,Lake,Thane_Kolbad_Lake.jpg
+Maharashtra,Thane,Yeoor Hills,Hill,Thane_Yeoor_Hills.jpg
+Andhra Pradesh,Tirupati,Sri Venkateswara Temple,Temple,Tirupati_Sri_Venkateswara_Temple.jpg
+Andhra Pradesh,Tirupati,Kapila Theertham,Temple,Tirupati_Kapila_Theertham.jpg
+Andhra Pradesh,Tirupati,Sri Govindaraja Swamy Temple,Temple,Tirupati_Sri_Govindaraja_Swamy_Temple.jpg
+Andhra Pradesh,Tirupati,Sri Perundevi Thayar Sametha Sri Varadaraja Perumal Temple,Temple,Tirupati_Sri_Perundevi_Thayar_Sametha_Sri_Varadaraja_Perumal_Temple.jpg
+Andhra Pradesh,Tirupati,Prakasham Park,Open Space,Tirupati_Prakasham_Park.jpg
+Karnataka,KOTA,Brjvilas,monuments,KOTA_Brjvilas.jpg
+Karnataka,KOTA,Bada Talab and jug mandir,monuments,KOTA_Bada_Talab_and_jug_mandir.jpg
+Karnataka,KOTA,Graves for Kesar khan and Dokar khan,monuments,KOTA_Graves_for_Kesar_khan_and_Dokar_khan.jpg
+Karnataka,KOTA,Caves & Rocks paintings at Alaniya,monuments/ open space,KOTA_Caves_Rocks_paintings_at_Alaniya.jpg
+Karnataka,KOTA,Shiva temple Gapernath,monuments/ open space,KOTA_Shiva_temple_Gapernath.jpg
+Karnataka,KOTA,Shiva math mandirs at Chandresal,monuments,KOTA_Shiva_math_mandirs_at_Chandresal.jpg
+Karnataka,KOTA,Temple with inscription at Kanswa,monuments,KOTA_Temple_with_inscription_at_Kanswa.jpg
+Maharashtra,KALYAN DOMBIVALI,SHRI RAM MANDIR,TEMPLE,KALYAN_DOMBIVALI_SHRI_RAM_MANDIR.jpg
+Maharashtra,KALYAN DOMBIVALI,KASARHAT MANDIR,TEMPLE,KALYAN_DOMBIVALI_KASARHAT_MANDIR.jpg
+Maharashtra,KALYAN DOMBIVALI,LAXMINARAYAN MANDIR,TEMPLE,KALYAN_DOMBIVALI_LAXMINARAYAN_MANDIR.jpg
+Maharashtra,KALYAN DOMBIVALI,DURGADI FORT,"TEMPLE, FORT",KALYAN_DOMBIVALI_DURGADI_FORT.jpg
+Maharashtra,KALYAN DOMBIVALI,BHATALE TALAO (LAKE),LAKE,KALYAN_DOMBIVALI_BHATALE_TALAO_LAKE.jpg
+Maharashtra,KALYAN DOMBIVALI,DAVJE TALAO,NATURAL LAKE,KALYAN_DOMBIVALI_DAVJE_TALAO.jpg
+Maharashtra,KALYAN DOMBIVALI,KOTBAHAR MASJID,PRAYER HALL,KALYAN_DOMBIVALI_KOTBAHAR_MASJID.jpg
+Maharashtra,KALYAN DOMBIVALI,FORT WALL,RUBBLE MASORY WALL AT DURGADI FORT,KALYAN_DOMBIVALI_FORT_WALL.jpg
+Maharashtra,KALYAN DOMBIVALI,THAKURDWAR MANDIR,TEMPLE,KALYAN_DOMBIVALI_THAKURDWAR_MANDIR.jpg
+Maharashtra,KALYAN DOMBIVALI,KALI MASJID,PRAYER HALL,KALYAN_DOMBIVALI_KALI_MASJID.jpg
+Maharashtra,KALYAN DOMBIVALI,CHURCH,PRAYER HALL,KALYAN_DOMBIVALI_CHURCH.jpg
+Maharashtra,KALYAN DOMBIVALI,CLOCK TOWER,URBAN LANDMARK,KALYAN_DOMBIVALI_CLOCK_TOWER.jpg
+Maharashtra,KALYAN DOMBIVALI,NEW VISHNU MANDIR,PRAYER HALL,KALYAN_DOMBIVALI_NEW_VISHNU_MANDIR.jpg
+Uttar Pradesh,Lucknow,Alambagh Gate,Monuments,Lucknow_Alambagh_Gate.jpg
+Uttar Pradesh,Lucknow,Chatter Manjil,Monuments,Lucknow_Chatter_Manjil.jpg
+Uttar Pradesh,Lucknow,Farhat Baksh Kothi,Monuments,Lucknow_Farhat_Baksh_Kothi.jpg
+Uttar Pradesh,Lucknow,Roshan Ud Daula Kothi,Monuments,Lucknow_Roshan_Ud_Daula_Kothi.jpg
+Uttar Pradesh,Lucknow,Gulistan e Eram,Monuments,Lucknow_Gulistan_e_Eram.jpg
+Uttar Pradesh,Lucknow,Darshan Vilas Kothi,Monuments,Lucknow_Darshan_Vilas_Kothi.jpg
+Sikkim,Namchi,Chardham Solophok,Temple,Namchi_Chardham_Solophok.jpg
+Sikkim,Namchi,Samdruptse,Monastery,Namchi_Samdruptse.jpg
+Sikkim,Namchi,Shirdi Sai Mandir,Temple,Namchi_Shirdi_Sai_Mandir.jpg
+Sikkim,Namchi,Sorok Tamang Monastery,Monastery,Namchi_Sorok_Tamang_Monastery.jpg
+Sikkim,Namchi,Ahaley Dechen Choling Monastery,Monastery,Namchi_Ahaley_Dechen_Choling_Monastery.jpg
+Sikkim,Namchi,Ngadak Gumpa,Monastery,Namchi_Ngadak_Gumpa.jpg
+Sikkim,Namchi,Rock Garden,Open Space,Namchi_Rock_Garden.jpg
+Arunachal Pradesh,Pasighat,Donyi Polo Ganggine,Monuments/Open Space,Pasighat_Donyi_Polo_Ganggine.jpg
+Maharashtra,Pune City,Agakhan Palace Complex (Kasturba Gandhi Samadhi and Grounds),Monument,Pune_City_Agakhan_Palace_Complex_Kasturba_Gandhi_Samadhi_and_Grounds.jpg
+Maharashtra,Pune City,"Ahilyabai Holkar Ghat, Sangmeshwar Temple & other temple",Monument,Pune_City_Ahilyabai_Holkar_Ghat_Sangmeshwar_Temple_other_temple.jpg
+Maharashtra,Pune City,Bhandarkar Oriental Research Inst Complex,Monument,Pune_City_Bhandarkar_Oriental_Research_Inst_Complex.jpg
+Maharashtra,Pune City,Bharat Itihaas Samshodhan Mandal,Monument,Pune_City_Bharat_Itihaas_Samshodhan_Mandal.jpg
+Maharashtra,Pune City,Bhavani Mata Mandir,Monument,Pune_City_Bhavani_Mata_Mandir.jpg
+Maharashtra,Pune City,Central Building Complex,Monumnet,Pune_City_Central_Building_Complex.jpg
+Maharashtra,Pune City,Chaturshringi Temple and Hill,Monumnet,Pune_City_Chaturshringi_Temple_and_Hill.jpg
+Maharashtra,Pune City,Council Hall,Monumnet,Pune_City_Council_Hall.jpg
+Maharashtra,Pune City,Deccan College complex,Monumnet,Pune_City_Deccan_College_complex.jpg
+Maharashtra,Pune City,Don Bosco Youth Centre,Monumnet,Pune_City_Don_Bosco_Youth_Centre.jpg
+Maharashtra,Pune City,Fergusson College Complex,Monumnet,Pune_City_Fergusson_College_Complex.jpg
+Maharashtra,Pune City,Hari Mandir (Prarthana Samaj),Monumnet,Pune_City_Hari_Mandir_Prarthana_Samaj.jpg
+Maharashtra,Pune City,Harihareshwar Mandir,Monumnet,Pune_City_Harihareshwar_Mandir.jpg
+Maharashtra,Pune City,Jangli Maharaj Samadhi Complex,Monumnet,Pune_City_Jangli_Maharaj_Samadhi_Complex.jpg
+Maharashtra,Pune City,Jaykar Bungalow,Monumnet,Pune_City_Jaykar_Bungalow.jpg
+Maharashtra,Pune City,a) Maharshi Karve Kutir b) Karve hostel c) Anandibai Karve prathmic Shala,Monumnet,Pune_City_a_Maharshi_Karve_Kutir_b_Karve_hostel_c_Anandibai_Karve_prathmic_Shala.jpg
+Maharashtra,Pune City,Kasba Ganpati Mandir,Monumnet,Pune_City_Kasba_Ganpati_Mandir.jpg
+Maharashtra,Pune City,Lal Mahal,Monumnet,Pune_City_Lal_Mahal.jpg
+Maharashtra,Pune City,Mahatma Phule Mandai Complex,Monumnet,Pune_City_Mahatma_Phule_Mandai_Complex.jpg
+Maharashtra,Pune City,Mahatma Phule Wada,Street,Pune_City_Mahatma_Phule_Wada.jpg
+Maharashtra,Pune City,Nageshwar Temple Complex,Monumnet,Pune_City_Nageshwar_Temple_Complex.jpg
+Maharashtra,Pune City,Nana Wada,Monumnet,Pune_City_Nana_Wada.jpg
+Maharashtra,Pune City,Ohel David Synagogue and Memorial (Lal Dewal),Monumnet,Pune_City_Ohel_David_Synagogue_and_Memorial_Lal_Dewal.jpg
+Maharashtra,Pune City,"Parvati Hill, steps, Landscape and Temple complex",Monumnet,Pune_City_Parvati_Hill_steps_Landscape_and_Temple_complex.jpg
+Maharashtra,Pune City,Pataleshwar Caves,Monumnet,Pune_City_Pataleshwar_Caves.jpg
+Maharashtra,Pune City,Pune Archives (Peshwe Daftar),Monumnet,Pune_City_Pune_Archives_Peshwe_Daftar.jpg
+Maharashtra,Pune City,a) Main Building Pune University b) Millenium Gate Police Chowky c) Main Gate Police Chowky,Monumnet,Pune_City_a_Main_Building_Pune_University_b_Millenium_Gate_Police_Chowky_c_Main_Gate_Police_Chowky.jpg
+Maharashtra,Pune City,Pushtimarg Mandir,Monumnet,Pune_City_Pushtimarg_Mandir.jpg
+Maharashtra,Pune City,"Sarasbaug Temple, Dharan & Bridge",Monumnet,Pune_City_Sarasbaug_Temple_Dharan_Bridge.jpg
+Maharashtra,Pune City,Shaniwarwada,Monumnet,Pune_City_Shaniwarwada.jpg
+Maharashtra,Pune City,Someshwar Mandir,Monumnet,Pune_City_Someshwar_Mandir.jpg
+Maharashtra,Pune City,Trishund Ganpati Mandir,Monumnet,Pune_City_Trishund_Ganpati_Mandir.jpg
+Maharashtra,Pune City,Tulshibaug Mandir Complex,Monumnet,Pune_City_Tulshibaug_Mandir_Complex.jpg
+Maharashtra,Pune City,Vitthalwadi Temple Complex and Ghat,Monumnet,Pune_City_Vitthalwadi_Temple_Complex_and_Ghat.jpg
+Maharashtra,Pune City,Agharkar Research Institute,Building,Pune_City_Agharkar_Research_Institute.jpg
+Maharashtra,Pune City,Akra Maruti and Ram Mandir Complex,Monumnet,Pune_City_Akra_Maruti_and_Ram_Mandir_Complex.jpg
+Maharashtra,Pune City,Aryabhushan Bhavan,Monumnet,Pune_City_Aryabhushan_Bhavan.jpg
+Maharashtra,Pune City,Ashley House,Building,Pune_City_Ashley_House.jpg
+Maharashtra,Pune City,Aundh Shiv Mandir,Monumnet,Pune_City_Aundh_Shiv_Mandir.jpg
+Maharashtra,Pune City,Aundh Vitthal Mandir,Monumnet,Pune_City_Aundh_Vitthal_Mandir.jpg
+Maharashtra,Pune City,Commonwealth Building,Building,Pune_City_Commonwealth_Building.jpg
+Maharashtra,Pune City,Dulya Maruti Mandir,Monumnet,Pune_City_Dulya_Maruti_Mandir.jpg
+Maharashtra,Pune City,Holkar Bridge,Open Space,Pune_City_Holkar_Bridge.jpg
+Maharashtra,Pune City,Kedareshwar Mandir,Monument,Pune_City_Kedareshwar_Mandir.jpg
+Maharashtra,Pune City,"Narayaneshwar Mandir (Mahadeo Mandir, Next to Natuwada Complex)",Monument,Pune_City_Narayaneshwar_Mandir_Mahadeo_Mandir_Next_to_Natuwada_Complex.jpg
+Maharashtra,Pune City,Narsimha Laxmi Mandir,Monument,Pune_City_Narsimha_Laxmi_Mandir.jpg
+Maharashtra,Pune City,a) Natuwada b) Mahadev Mandir inside Natuwada,Monument,Pune_City_a_Natuwada_b_Mahadev_Mandir_inside_Natuwada.jpg
+Maharashtra,Pune City,Navin Marathi School Complex (Raman Baug Shala),Building,Pune_City_Navin_Marathi_School_Complex_Raman_Baug_Shala.jpg
+Maharashtra,Pune City,New English School,Building,Pune_City_New_English_School.jpg
+Maharashtra,Pune City,Das Marutu Mandir and Paar,Monument,Pune_City_Das_Marutu_Mandir_and_Paar.jpg
+Maharashtra,Pune City,Poona Club,Building,Pune_City_Poona_Club.jpg
+Maharashtra,Pune City,Sangam Bungalow,Building,Pune_City_Sangam_Bungalow.jpg
+Maharashtra,Pune City,Vriddheshwar Temple and Ghats,Monument,Pune_City_Vriddheshwar_Temple_and_Ghats.jpg
+Maharashtra,Pune City,All India Radio,Building,Pune_City_All_India_Radio.jpg
+Maharashtra,Pune City,Anand Ashram,Building,Pune_City_Anand_Ashram.jpg
+Maharashtra,Pune City,Ardeshir Baug complex and Campus,Building,Pune_City_Ardeshir_Baug_complex_and_Campus.jpg
+Maharashtra,Pune City,Cecilia Building,Building,Pune_City_Cecilia_Building.jpg
+Maharashtra,Pune City,Christ Prem Seva Sangh,Building,Pune_City_Christ_Prem_Seva_Sangh.jpg
+Maharashtra,Pune City,Church of Holy Angels,Monument,Pune_City_Church_of_Holy_Angels.jpg
+Maharashtra,Pune City,Dagdi Nagoba Temple,Monument,Pune_City_Dagdi_Nagoba_Temple.jpg
+Maharashtra,Pune City,Dashnam Gosavi Samstha Math and Temple,Monument,Pune_City_Dashnam_Gosavi_Samstha_Math_and_Temple.jpg
+Maharashtra,Pune City,European Tombs,Monument,Pune_City_European_Tombs.jpg
+Maharashtra,Pune City,Jageshwar Temple,Monument,Pune_City_Jageshwar_Temple.jpg
+Maharashtra,Pune City,Jhanshichi Rani Kanyashala,Building,Pune_City_Jhanshichi_Rani_Kanyashala.jpg
+Maharashtra,Pune City,Laxminaryan temple,Monument,Pune_City_Laxminaryan_temple.jpg
+Maharashtra,Pune City,MES Boys Highschool,Building,Pune_City_MES_Boys_Highschool.jpg
+Maharashtra,Pune City,Nanasaheb Peshwe Samadhi,Monument,Pune_City_Nanasaheb_Peshwe_Samadhi.jpg
+Maharashtra,Pune City,Pandav caves/ Mandir,Monument,Pune_City_Pandav_caves_Mandir.jpg
+Maharashtra,Pune City,Pune Vidyarthi Griha and Ram Mandir,Monument,Pune_City_Pune_Vidyarthi_Griha_and_Ram_Mandir.jpg
+Maharashtra,Pune City,Temple in Narsimha Bhavan,Monument,Pune_City_Temple_in_Narsimha_Bhavan.jpg
+Maharashtra,Pune City,Samadhi + temples at Omkareshwar Ghat,Monument,Pune_City_Samadhi_temples_at_Omkareshwar_Ghat.jpg
+Maharashtra,Pune City,"Siddheshwar Mandir, ",Monument,Pune_City_Siddheshwar_Mandir.jpg
+Maharashtra,Pune City,"Siddhivinayak Ganapati Mandir, ",Monument,Pune_City_Siddhivinayak_Ganapati_Mandir.jpg
+Maharashtra,Pune City,Steps of Old Konkan Darwaza of Pandharicha Kot,Monument,Pune_City_Steps_of_Old_Konkan_Darwaza_of_Pandharicha_Kot.jpg
+Maharashtra,Pune City,Trimbakeshwar Mandir,Monument,Pune_City_Trimbakeshwar_Mandir.jpg
+Maharashtra,Pune City,War Memorial (Hutatma Smarak),Monument,Pune_City_War_Memorial_Hutatma_Smarak.jpg
+Gujarat,Vadodara,Mandvi Gate,monument,Vadodara_Mandvi_Gate.jpg
+Gujarat,Vadodara,Gendi Gate,Entry Gate,Vadodara_Gendi_Gate.jpg
+Gujarat,Vadodara,Khanderao Market Building,Built,Vadodara_Khanderao_Market_Building.jpg
+Gujarat,Vadodara,Kriti Mandir,monument,Vadodara_Kriti_Mandir.jpg
+Gujarat,Vadodara,Sayaji Garden,Recreational garden,Vadodara_Sayaji_Garden.jpg
+Gujarat,Vadodara,Sursagar Lake,Natural,Vadodara_Sursagar_Lake.jpg
+Andhra Pradesh,Visakhapatnam,St. Pauls Church,Religious architecture,Visakhapatnam_St_Pauls_Church.jpg
+Andhra Pradesh,Visakhapatnam,Waltair Club,Recreational architecture,Visakhapatnam_Waltair_Club.jpg
+Andhra Pradesh,Visakhapatnam,Kurupam Tomb,Commemorative architecture,Visakhapatnam_Kurupam_Tomb.jpg
+Andhra Pradesh,Visakhapatnam,Light House (Park Hotel),Transport systems,Visakhapatnam_Light_House_Park_Hotel.jpg
+Andhra Pradesh,Visakhapatnam,King George Hospital,Public buildings,Visakhapatnam_King_George_Hospital.jpg
+Andhra Pradesh,Visakhapatnam,King Edward VII Market,Trade,Visakhapatnam_King_Edward_VII_Market.jpg
+Andhra Pradesh,Visakhapatnam,Victoria Jubilee Town Hall,Public-cum-Recreational buildings,Visakhapatnam_Victoria_Jubilee_Town_Hall.jpg
+Andhra Pradesh,Visakhapatnam,Dutch Cemetery,Cemetry,Visakhapatnam_Dutch_Cemetery.jpg
+Andhra Pradesh,Visakhapatnam,Hamilton Memorial Masonic Temple,Cultural associations,Visakhapatnam_Hamilton_Memorial_Masonic_Temple.jpg
+Andhra Pradesh,Visakhapatnam,Light House (St. Aloysius),Transport systems,Visakhapatnam_Light_House_St_Aloysius.jpg
+Andhra Pradesh,Visakhapatnam,Queen Victoria Pavilion,Commemorative architecture,Visakhapatnam_Queen_Victoria_Pavilion.jpg
+Andhra Pradesh,Visakhapatnam,Sacred Heart Church,Religious architecture,Visakhapatnam_Sacred_Heart_Church.jpg
+Andhra Pradesh,Visakhapatnam,St. Aloysius Church,Religious architecture,Visakhapatnam_St_Aloysius_Church.jpg
+Andhra Pradesh,Visakhapatnam,Turners Choultry,Domestic habitat,Visakhapatnam_Turners_Choultry.jpg
+Andhra Pradesh,Visakhapatnam,Railway Guest House,Residences,Visakhapatnam_Railway_Guest_House.jpg
+Andhra Pradesh,Visakhapatnam,Hawa Mahal,Residences,Visakhapatnam_Hawa_Mahal.jpg
+Andhra Pradesh,Visakhapatnam,Sri Kasi Visweswara Swamy Temple,Temple,Visakhapatnam_Sri_Kasi_Visweswara_Swamy_Temple.jpg
+Andhra Pradesh,Visakhapatnam,St. Anns Cathedral,Religious architecture,Visakhapatnam_St_Anns_Cathedral.jpg
+Andhra Pradesh,Visakhapatnam,St. Josephs Church,Religious architecture,Visakhapatnam_St_Josephs_Church.jpg
+Andhra Pradesh,Visakhapatnam,Sri Someswara Swami Temple,Temple,Visakhapatnam_Sri_Someswara_Swami_Temple.jpg
+Andhra Pradesh,Visakhapatnam,Sri Varaha Lakshmi Narasimha Swami Temple,Temple,Visakhapatnam_Sri_Varaha_Lakshmi_Narasimha_Swami_Temple.jpg
+Andhra Pradesh,Visakhapatnam,Floral Garden,Gardens,Visakhapatnam_Floral_Garden.jpg
+Andhra Pradesh,Visakhapatnam,Siva Temple,Temple,Visakhapatnam_Siva_Temple.jpg
+Andhra Pradesh,Visakhapatnam,Bavikonda,Monument,Visakhapatnam_Bavikonda.jpg
+Andhra Pradesh,Visakhapatnam,Thotlakonda,Monument,Visakhapatnam_Thotlakonda.jpg
