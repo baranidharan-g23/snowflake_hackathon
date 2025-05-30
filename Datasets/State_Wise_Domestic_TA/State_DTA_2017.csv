@@ -1,37 +1,37 @@
-state,domestic_visit(in lakhs)
-Andaman & Nicobar Island,4.71919
-Andhra Pradesh,1654.33898
-Arunachal Pradesh,4.44005
-Assam,60.52667
-Bihar,324.14063
-Chandigarh,14.25781
-Chhattisgarh,173.5003
-Dadra & Nagar Haveli,6.14182
-Daman & Diu,8.58131
-Delhi,291.14423
-Goa,68.95234
-Gujarat,483.43121
-Haryana,60.50325
-Himachal Pradesh,191.30541
-Jharkhand,337.23185
-J&K,142.35473
-Karnataka,1799.80191
-Kerala,146.7352
-Lakshadweep,0.0662
-Madhya Pradesh,780.38522
-Maharashtra,1191.91539
-Manipur,1.53454
-Meghalaya,9.90856
-Mizoram,0.67772
-Nagaland,0.63362
-Odisha,140.11229
-Puducherry,15.31972
-Punjab,402.93352
-Rajasthan,459.16573
-Sikkim,13.75854
-Tamil Nadu,3450.6114
-Telangana,852.66596
-Tripura,3.98669
-Uttar Pradesh,2339.77619
-Uttarakhand,343.59989
-West Bengal,796.30345
+Region,state,domestic_visit(in lakhs)
+EAST,Andaman & Nicobar Island,4.71919
+SOUTH,Andhra Pradesh,1654.33898
+NORTH EAST,Arunachal Pradesh,4.44005
+NORTH EAST,Assam,60.52667
+EAST,Bihar,324.14063
+NORTH,Chandigarh,14.25781
+WEST & CENTRAL,Chhattisgarh,173.5003
+WEST & CENTRAL,Dadra & Nagar Haveli,6.14182
+WEST & CENTRAL,Daman & Diu,8.58131
+NORTH,Delhi,291.14423
+WEST & CENTRAL,Goa,68.95234
+WEST & CENTRAL,Gujarat,483.43121
+NORTH,Haryana,60.50325
+NORTH,Himachal Pradesh,191.30541
+EAST,Jharkhand,337.23185
+NORTH,J&K,142.35473
+SOUTH,Karnataka,1799.80191
+SOUTH,Kerala,146.7352
+SOUTH,Lakshadweep,0.0662
+WEST & CENTRAL,Madhya Pradesh,780.38522
+WEST & CENTRAL,Maharashtra,1191.91539
+NORTH EAST,Manipur,1.53454
+NORTH EAST,Meghalaya,9.90856
+NORTH EAST,Mizoram,0.67772
+NORTH EAST,Nagaland,0.63362
+EAST,Odisha,140.11229
+SOUTH,Puducherry,15.31972
+NORTH,Punjab,402.93352
+NORTH,Rajasthan,459.16573
+NORTH EAST,Sikkim,13.75854
+SOUTH,Tamil Nadu,3450.6114
+SOUTH,Telangana,852.66596
+NORTH EAST,Tripura,3.98669
+NORTH,Uttar Pradesh,2339.77619
+NORTH,Uttarakhand,343.59989
+EAST,West Bengal,796.30345

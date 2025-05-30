@@ -1,38 +1,38 @@
-State,Domestic_Visits_in_Lakhs
-A&N Island,5.05
-Andhra Pradesh,2370.52
-Arunachal Pradesh,5.56
-Assam,54.48
-Bihar,339.9
-Chandigarh,15.64
-Chhattisgarh,173.05
-Dadra & Nagar Haveli,6.18
-Daman & Diu,8.98
-Delhi,364.68
-Goa,71.27
-Gujarat,588.65
-Haryana,45.49
-Himachal Pradesh,168.29
-Jharkhand,355.81
-J&K,161.63
-Karnataka,2279.35
-Kerala,183.84
-Lakshdweep,0.07
-Ladakh,2.41
-Madhya Pradesh,887.07
-Maharashtra,1492.95
-Manipur,1.68
-Meghalaya,12.46
-Mizoram,1.64
-Nagaland,1.26
-Odisha,153.08
-Puducherry,17.13
-Punjab,473.85
-Rajasthan,522.2
-Sikkim,14.22
-Tamil Nadu,4948.65
-Telengana,830.36
-Tripura,4.37
-Uttar Pradesh,5358.55
-Uttarakhand,375.86
-West Bengal,923.66
+Region,State,Domestic_Visits_in_Lakhs
+EAST,A&N Island,5.05
+SOUTH,Andhra Pradesh,2370.52
+NORTH EAST,Arunachal Pradesh,5.56
+NORTH EAST,Assam,54.48
+EAST,Bihar,339.9
+NORTH,Chandigarh,15.64
+WEST & CENTRAL,Chhattisgarh,173.05
+WEST & CENTRAL,Dadra & Nagar Haveli,6.18
+WEST & CENTRAL,Daman & Diu,8.98
+NORTH,Delhi,364.68
+WEST & CENTRAL,Goa,71.27
+WEST & CENTRAL,Gujarat,588.65
+NORTH,Haryana,45.49
+NORTH,Himachal Pradesh,168.29
+EAST,Jharkhand,355.81
+NORTH,J&K,161.63
+SOUTH,Karnataka,2279.35
+SOUTH,Kerala,183.84
+SOUTH,Lakshdweep,0.07
+NORTH,Ladakh,2.41
+WEST & CENTRAL,Madhya Pradesh,887.07
+WEST & CENTRAL,Maharashtra,1492.95
+NORTH EAST,Manipur,1.68
+NORTH EAST,Meghalaya,12.46
+NORTH EAST,Mizoram,1.64
+NORTH EAST,Nagaland,1.26
+EAST,Odisha,153.08
+SOUTH,Puducherry,17.13
+NORTH,Punjab,473.85
+NORTH,Rajasthan,522.2
+NORTH EAST,Sikkim,14.22
+SOUTH,Tamil Nadu,4948.65
+SOUTH,Telengana,830.36
+NORTH EAST,Tripura,4.37
+NORTH,Uttar Pradesh,5358.55
+NORTH,Uttarakhand,375.86
+EAST,West Bengal,923.66
