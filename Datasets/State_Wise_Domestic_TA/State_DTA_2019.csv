@@ -1,24 +1,23 @@
 Region,State,Domestic_Visits_in_Lakhs
-EAST,A&N Island,5.05
+EAST,Andaman & Nicobar Islands,5.05
 SOUTH,Andhra Pradesh,2370.52
 NORTH EAST,Arunachal Pradesh,5.56
 NORTH EAST,Assam,54.48
 EAST,Bihar,339.9
 NORTH,Chandigarh,15.64
 WEST & CENTRAL,Chhattisgarh,173.05
-WEST & CENTRAL,Dadra & Nagar Haveli,6.18
-WEST & CENTRAL,Daman & Diu,8.98
+WEST & CENTRAL,UT of Dadra & Nagar Haveli and Daman and Diu,15.16
 NORTH,Delhi,364.68
 WEST & CENTRAL,Goa,71.27
 WEST & CENTRAL,Gujarat,588.65
 NORTH,Haryana,45.49
 NORTH,Himachal Pradesh,168.29
 EAST,Jharkhand,355.81
-NORTH,J&K,161.63
+NORTH,Jammu & Kashmir,161.63
 SOUTH,Karnataka,2279.35
 SOUTH,Kerala,183.84
-SOUTH,Lakshdweep,0.07
-NORTH,Ladakh,2.41
+SOUTH,Lakshadweep,0.07
+NORTH,Leh Ladakh,2.41
 WEST & CENTRAL,Madhya Pradesh,887.07
 WEST & CENTRAL,Maharashtra,1492.95
 NORTH EAST,Manipur,1.68
@@ -31,7 +30,7 @@ NORTH,Punjab,473.85
 NORTH,Rajasthan,522.2
 NORTH EAST,Sikkim,14.22
 SOUTH,Tamil Nadu,4948.65
-SOUTH,Telengana,830.36
+SOUTH,Telangana,830.36
 NORTH EAST,Tripura,4.37
 NORTH,Uttar Pradesh,5358.55
 NORTH,Uttarakhand,375.86
