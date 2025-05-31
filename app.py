@@ -2,12 +2,23 @@ import streamlit as st
 import pandas as pd
 
 # Import components
-from components.data_loader import load_all_data
+from components.data_loader import (
+    load_all_data, load_unesco_data, load_top_monuments_domestic_data, load_top_monuments_foreign_data,
+    load_centrally_protected_domestic_data, load_centrally_protected_foreign_data,
+    load_tourism_gdp_data, load_tourism_employment_data, load_fee_earnings_data,
+    load_india_world_share_data, load_ita_data, load_ita_monthly_data,
+    load_duration_stay_data, load_age_statistics_data, load_all_lean_peak_data,
+    load_state_tourism_data, load_state_foreign_tourism_data, load_dance_data,
+    load_festivals_data
+)
 from components.homepage import show_homepage
 from components.festivals import show_festivals_section
 from components.dance_forms import show_dance_section
 from components.heritage_sites import show_heritage_section
-from components.tourism_analytics import show_tourism_analytics
+from components.chapter1_heritage_heartbeat import show_heritage_heartbeat
+from components.chapter2_economic_multiplier import show_economic_multiplier
+from components.chapter3_travelers_journey import show_travelers_journey
+from components.chapter4_regional_tapestry import show_regional_tapestry
 from styles.css_styles import apply_custom_css, apply_dance_styles, apply_sidebar_styles
 
 # Page configuration
@@ -51,11 +62,14 @@ def main():
         [
             "🏠 Home",
             "🎭 Traditional Art Forms",
-            "📊 Tourism Analytics"
+            "🏛️ Chapter 1: Heritage Heartbeat",
+            "💰 Chapter 2: Economic Multiplier",
+            "🌍 Chapter 3: Traveler's Journey",
+            "🗺️ Chapter 4: Regional Tapestry"
         ]
     )
 
-    # Load all data using the data loader
+    # Load all data using the data loader (for existing components)
     data = load_all_data()
 
     if page == "🏠 Home":
@@ -73,13 +87,71 @@ def main():
             data['heritage_sites_df'],
             data['unesco_df']
         )
-    elif page == "📊 Tourism Analytics":
-        show_tourism_analytics(
-            data['ita_df'], data['ita_monthly_df'], data['state_tourism_df'],
-            data['centrally_protected_domestic_df'], data['duration_stay_df'], data['fee_earnings_df'],
-            data['india_world_share_df'], data['lean_peak_df'], data.get('state_foreign_tourism_df', pd.DataFrame()),
-            data.get('top_monuments_domestic_df', pd.DataFrame()), data.get('top_monuments_foreign_df', pd.DataFrame()), data['age_statistics_df'],
-            data['tourism_gdp_df'], data['tourism_employment_df']
+    elif page == "🏛️ Chapter 1: Heritage Heartbeat":
+        # Load heritage data
+        unesco_df = load_unesco_data()
+        top_monuments_domestic_df = load_top_monuments_domestic_data()
+        top_monuments_foreign_df = load_top_monuments_foreign_data()
+        centrally_protected_domestic_df = load_centrally_protected_domestic_data()
+        centrally_protected_foreign_df = load_centrally_protected_foreign_data()
+
+        show_heritage_heartbeat(
+            unesco_df,
+            top_monuments_domestic_df,
+            top_monuments_foreign_df,
+            centrally_protected_domestic_df,
+            centrally_protected_foreign_df
+        )
+
+    elif page == "💰 Chapter 2: Economic Multiplier":
+        # Load economic data
+        tourism_gdp_df = load_tourism_gdp_data()
+        tourism_employment_df = load_tourism_employment_data()
+        fee_earnings_df = load_fee_earnings_data()
+        india_world_share_df = load_india_world_share_data()
+
+        show_economic_multiplier(
+            tourism_gdp_df,
+            tourism_employment_df,
+            fee_earnings_df,
+            india_world_share_df
+        )
+
+    elif page == "🌍 Chapter 3: Traveler's Journey":
+        # Load traveler data
+        ita_df = load_ita_data()
+        ita_monthly_df = load_ita_monthly_data()
+        stay_duration_df = load_duration_stay_data()
+        age_statistics_df = load_age_statistics_data()
+        all_lean_peak_data = load_all_lean_peak_data()
+
+        show_travelers_journey(
+            ita_df,
+            ita_monthly_df,
+            stay_duration_df,
+            age_statistics_df,
+            all_lean_peak_data
+        )
+
+    elif page == "🗺️ Chapter 4: Regional Tapestry":
+        # Load regional data
+        state_total_df = load_state_tourism_data()  # This loads total arrivals
+        state_foreign_df = load_state_foreign_tourism_data()
+        dance_df = load_dance_data()
+        festivals_df = load_festivals_data()
+
+        # Load domestic data separately
+        try:
+            state_domestic_df = pd.read_csv('Datasets/State_Wise_Domestic_Tourist_Arrivals_2017_2023.csv')
+        except:
+            state_domestic_df = pd.DataFrame()
+
+        show_regional_tapestry(
+            state_total_df,
+            state_domestic_df,
+            state_foreign_df,
+            dance_df,
+            festivals_df
         )
 
 if __name__ == "__main__":

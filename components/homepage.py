@@ -27,11 +27,14 @@ def show_homepage(festivals_df, ita_df, state_tourism_df, tourism_gdp_df=None, t
         # Tourism GDP contribution
         if tourism_gdp_df is not None and not tourism_gdp_df.empty:
             latest_gdp_contribution = tourism_gdp_df['DIRECT_CONTRIBUTION_GDP_PERCENT'].iloc[-1]
+            latest_year = tourism_gdp_df['YEAR'].iloc[-1]
+            first_year = tourism_gdp_df['YEAR'].iloc[0]
             st.markdown(f"""
             <div class="metric-card">
                 <div class="metric-icon">💰</div>
                 <div class="metric-number">{latest_gdp_contribution:.1f}%</div>
                 <div class="metric-label">GDP Contribution</div>
+                <div class="metric-sublabel">Since {first_year} | Latest: {latest_year}</div>
             </div>
             """, unsafe_allow_html=True)
         else:
@@ -40,6 +43,7 @@ def show_homepage(festivals_df, ita_df, state_tourism_df, tourism_gdp_df=None, t
                 <div class="metric-icon">💰</div>
                 <div class="metric-number">2.6%</div>
                 <div class="metric-label">GDP Contribution</div>
+                <div class="metric-sublabel">Since 2015-16</div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -47,11 +51,14 @@ def show_homepage(festivals_df, ita_df, state_tourism_df, tourism_gdp_df=None, t
         # Tourism employment
         if tourism_employment_df is not None and not tourism_employment_df.empty:
             latest_employment = tourism_employment_df['TOURISM_CHARACTERISTIC_INDUSTRIES_MILLION'].iloc[-1]
+            latest_year = tourism_employment_df['YEAR'].iloc[-1]
+            first_year = tourism_employment_df['YEAR'].iloc[0]
             st.markdown(f"""
             <div class="metric-card">
                 <div class="metric-icon">👥</div>
                 <div class="metric-number">{latest_employment:.1f}M</div>
                 <div class="metric-label">Tourism Jobs</div>
+                <div class="metric-sublabel">Since {first_year} | Latest: {latest_year}</div>
             </div>
             """, unsafe_allow_html=True)
         else:
@@ -60,6 +67,7 @@ def show_homepage(festivals_df, ita_df, state_tourism_df, tourism_gdp_df=None, t
                 <div class="metric-icon">👥</div>
                 <div class="metric-number">33M</div>
                 <div class="metric-label">Tourism Jobs</div>
+                <div class="metric-sublabel">Since 2015-16</div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -67,11 +75,14 @@ def show_homepage(festivals_df, ita_df, state_tourism_df, tourism_gdp_df=None, t
         # Total tourism employment (direct + indirect)
         if tourism_employment_df is not None and not tourism_employment_df.empty:
             total_employment = tourism_employment_df['DIRECT_INDIRECT_EMPLOYMENT_MILLION'].iloc[-1]
+            latest_year = tourism_employment_df['YEAR'].iloc[-1]
+            first_year = tourism_employment_df['YEAR'].iloc[0]
             st.markdown(f"""
             <div class="metric-card">
                 <div class="metric-icon">🏢</div>
                 <div class="metric-number">{total_employment:.1f}M</div>
                 <div class="metric-label">Total Tourism Employment</div>
+                <div class="metric-sublabel">Since {first_year} | Latest: {latest_year}</div>
             </div>
             """, unsafe_allow_html=True)
         else:
@@ -80,6 +91,7 @@ def show_homepage(festivals_df, ita_df, state_tourism_df, tourism_gdp_df=None, t
                 <div class="metric-icon">🏢</div>
                 <div class="metric-number">76M</div>
                 <div class="metric-label">Total Tourism Employment</div>
+                <div class="metric-sublabel">Since 2015-16</div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -87,11 +99,14 @@ def show_homepage(festivals_df, ita_df, state_tourism_df, tourism_gdp_df=None, t
         # Tourism's share in total employment
         if tourism_employment_df is not None and not tourism_employment_df.empty:
             employment_share = tourism_employment_df['DIRECT_INDIRECT_SHARE_PERCENT'].iloc[-1]
+            latest_year = tourism_employment_df['YEAR'].iloc[-1]
+            first_year = tourism_employment_df['YEAR'].iloc[0]
             st.markdown(f"""
             <div class="metric-card">
                 <div class="metric-icon">📊</div>
                 <div class="metric-number">{employment_share:.1f}%</div>
                 <div class="metric-label">Employment Share</div>
+                <div class="metric-sublabel">Since {first_year} | Latest: {latest_year}</div>
             </div>
             """, unsafe_allow_html=True)
         else:
@@ -100,40 +115,14 @@ def show_homepage(festivals_df, ita_df, state_tourism_df, tourism_gdp_df=None, t
                 <div class="metric-icon">📊</div>
                 <div class="metric-number">12.6%</div>
                 <div class="metric-label">Employment Share</div>
+                <div class="metric-sublabel">Since 2015-16</div>
             </div>
             """, unsafe_allow_html=True)
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # Call to Action - moved above Explore India
-    st.markdown("""
-    <div style="background: white; padding: 2rem; border-radius: 15px; margin: 3rem 0; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-        <h2 style="color: #008080; margin-bottom: 1rem;">🚀 Start Your Cultural Journey</h2>
-        <p style="color: #333; font-size: 1.1rem;">
-            Use the navigation menu to explore different sections and discover India's incredible cultural diversity!
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Tourism Trends Visualization - moved below Start Cultural Journey
-    if not ita_df.empty:
-        # 1. Tourism Growth Trend
-        st.markdown('<h3 style="color: white; text-align: center; margin-bottom: 1rem;">📊 Tourism Growth Trend</h3>', unsafe_allow_html=True)
-        fig_trend = create_tourism_growth_trend_chart(ita_df)
-        st.plotly_chart(fig_trend, use_container_width=True)
-
-        # 2. Year-over-Year Growth and Decade Comparison side by side
-        col1, col2 = st.columns(2)
-
-        with col1:
-            st.markdown('<h3 style="color: white; text-align: center; margin-bottom: 1rem;">📈 Year-over-Year Growth</h3>', unsafe_allow_html=True)
-            fig_growth = create_year_over_year_growth_chart(ita_df)
-            st.plotly_chart(fig_growth, use_container_width=True)
-
-        with col2:
-            st.markdown('<h3 style="color: white; text-align: center; margin-bottom: 1rem;">📊 Decade Comparison</h3>', unsafe_allow_html=True)
-            fig_decade = create_decade_comparison_chart(ita_df)
-            st.plotly_chart(fig_decade, use_container_width=True)
+    # Interactive Tourism Story Section
+    create_tourism_story_section(ita_df, tourism_gdp_df, tourism_employment_df)
 
     # Interactive India Map Section
     st.markdown('<h2 class="section-header">🗺️ Explore India</h2>', unsafe_allow_html=True)
@@ -488,3 +477,37 @@ def show_dance_highlights():
                 </div>
             </div>
             """, unsafe_allow_html=True)
+
+def create_tourism_story_section(ita_df, tourism_gdp_df, tourism_employment_df):
+    """Create a simple tourism trend section"""
+
+    if not ita_df.empty:
+
+        # Interactive Tourism Trend Visualization
+        st.markdown('<h3 style="color: #667eea; text-align: center; margin: 2rem 0 1rem 0;">📊 India\'s Tourism Journey Through Time</h3>', unsafe_allow_html=True)
+        fig_trend = create_tourism_growth_trend_chart(ita_df)
+        st.plotly_chart(fig_trend, use_container_width=True)
+
+        # Story Insights
+        st.markdown("""
+        <div style="background: rgba(255,248,220,0.8); padding: 2rem; border-radius: 15px; margin: 2rem 0; border-left: 5px solid #FFD700;">
+            <h4 style="color: #B8860B; margin-bottom: 1rem; display: flex; align-items: center;">
+                <span style="font-size: 1.5rem; margin-right: 0.5rem;">💡</span>
+                The Story Behind the Numbers
+            </h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <h5 style="color: #008080; margin: 0 0 0.5rem 0;">🚀 Growth Trajectory</h5>
+                    <p style="margin: 0; color: #666; font-size: 0.95rem;">Steady upward trend showcasing India's growing appeal as a global destination, with remarkable resilience and recovery patterns.</p>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <h5 style="color: #008080; margin: 0 0 0.5rem 0;">🌍 Global Recognition</h5>
+                    <p style="margin: 0; color: #666; font-size: 0.95rem;">From ancient heritage sites to modern infrastructure, India's tourism story reflects its journey as a rising global power.</p>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <h5 style="color: #008080; margin: 0 0 0.5rem 0;">🏛️ Cultural Wealth</h5>
+                    <p style="margin: 0; color: #666; font-size: 0.95rem;">Every visitor experiences 5,000 years of civilization, from UNESCO World Heritage Sites to living traditions.</p>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)

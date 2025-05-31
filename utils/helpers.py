@@ -50,30 +50,40 @@ def create_india_map(state_tourism_df):
         'Uttar Pradesh': 'Uttar Pradesh',
         'Uttarakhand': 'Uttarakhand',
         'West Bengal': 'West Bengal',
-        'Andaman and Nicobar Islands': 'Andaman & Nicobar Island',
+        'Andaman & Nicobar Island': 'Andaman & Nicobar',
         'Chandigarh': 'Chandigarh',
-        'Dadra and Nagar Haveli and Daman and Diu': 'Dadara & Nagar Havelli',
+        'Dadra & Nagar Haveli': 'Dadra and Nagar Haveli and Daman and Diu',
         'Delhi': 'Delhi',
-        'Jammu and Kashmir': 'Jammu & Kashmir',
+        'Jammu & Kashmir': 'Jammu & Kashmir',
         'Ladakh': 'Ladakh',
         'Lakshadweep': 'Lakshadweep',
         'Puducherry': 'Puducherry'
     }
 
-    # Prepare map data with total tourism for 2022+2023
+    # Prepare map data with total tourism across all years (2017-2023)
     map_data = []
+    year_columns = ['YEAR_2017', 'YEAR_2018', 'YEAR_2019', 'YEAR_2020', 'YEAR_2021', 'YEAR_2022', 'YEAR_2023']
+
     for idx, row in state_tourism_df.iterrows():
         state_name = row['STATE']
-        total_tourism_2_years = row['YEAR_2022'] + row['YEAR_2023']
+
+        # Calculate total across all years
+        total_all_years = sum([row[col] for col in year_columns if col in row and pd.notna(row[col])])
+
+        # Calculate recent growth (2022 to 2023)
         growth = ((row['YEAR_2023'] - row['YEAR_2022']) / row['YEAR_2022']) * 100 if row['YEAR_2022'] > 0 else 0
+
+        # Calculate average per year
+        avg_per_year = total_all_years / len(year_columns)
 
         map_data.append({
             'State': state_name,
             'State_Mapped': state_name_mapping.get(state_name, state_name),
             'Tourism_2023': row['YEAR_2023'],
             'Tourism_2022': row['YEAR_2022'],
-            'Total_Tourism_2Years': total_tourism_2_years,
-            'Growth': growth,
+            'Total_All_Years': total_all_years,
+            'Avg_Per_Year': avg_per_year,
+            'Growth_2022_23': growth,
             'Region': row['REGION']
         })
 
@@ -85,63 +95,75 @@ def create_india_map(state_tourism_df):
             fig = px.choropleth(
                 map_df,
                 locations='State_Mapped',
-                color='Total_Tourism_2Years',
+                color='Total_All_Years',
                 hover_name='State',
                 hover_data={
-                    'Tourism_2023': ':,.1f',
-                    'Tourism_2022': ':,.1f',
-                    'Total_Tourism_2Years': ':,.1f',
-                    'Growth': ':+.1f%',
+                    'Total_All_Years': ':,.1f',
                     'Region': True,
-                    'State_Mapped': False
+                    'State_Mapped': False,
+                    'Tourism_2023': False,
+                    'Tourism_2022': False,
+                    'Avg_Per_Year': False,
+                    'Growth_2022_23': False
                 },
-                color_continuous_scale='Greens',
+                color_continuous_scale=[[0, '#E8F5E8'], [0.2, '#B8E6B8'], [0.4, '#7DD87D'], [0.6, '#4CAF50'], [0.8, '#2E7D32'], [1, '#1B5E20']],
                 geojson="https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson",
                 featureidkey='properties.ST_NM',
                 projection='mercator',
-                title='🗺️ India Tourism Map - Total Tourist Arrivals (2022 + 2023)',
+                title='🗺️ India Tourism Map - Total Tourist Arrivals (2017-2023)',
                 labels={
-                    'Total_Tourism_2Years': 'Total Tourists (M)',
+                    'Total_All_Years': 'Total Tourists (M)',
+                    'Avg_Per_Year': 'Avg Per Year (M)',
                     'Tourism_2023': '2023 Arrivals (M)',
                     'Tourism_2022': '2022 Arrivals (M)',
-                    'Growth': 'Growth Rate (%)'
+                    'Growth_2022_23': 'Growth Rate 2022-23 (%)'
                 }
             )
 
-            # Update map layout to focus on India
+            # Update map layout to focus only on India (crop to India's boundaries)
             fig.update_geos(
                 fitbounds="locations",
                 visible=False,
                 showframe=False,
-                showcoastlines=True,
-                coastlinecolor="white",
-                showland=True,
-                landcolor="lightgray",
-                showocean=True,
-                oceancolor="lightblue"
+                showcoastlines=False,
+                showland=False,
+                showocean=False,
+                bgcolor='rgba(0,0,0,0)'  # Transparent background
             )
 
             fig.update_layout(
                 height=600,
                 font=dict(size=12),
-                title_font_size=16,
-                title_x=0.5,
-                margin={"r":0,"t":50,"l":0,"b":0},
+                title=dict(
+                    text='🗺️ India Tourism Map - Total Tourist Arrivals (2017-2023)',
+                    font=dict(size=18, color='#008080', family="Arial Black"),
+                    x=0.5,
+                    y=0.95
+                ),
+                margin={"r":0,"t":60,"l":0,"b":0},
+                paper_bgcolor='white',  # White background
+                plot_bgcolor='white',   # White plot area
                 coloraxis_colorbar=dict(
-                    title="Total Tourists<br>(Million)",
-                    title_font_size=12,
-                    tickfont_size=10
+                    title=dict(
+                        text="Total Tourists<br>2017-2023 (Million)",
+                        font=dict(size=14, color='#008080', family="Arial Black")
+                    ),
+                    tickfont=dict(size=11, color='#008080', family="Arial"),
+                    thickness=15,
+                    len=0.7,
+                    x=1.02
                 )
             )
 
             st.plotly_chart(fig, use_container_width=True)
 
-            # Map legend as small bold text below the map
+            # Map legend as compact single line
             st.markdown("""
-            <p style="font-size: 0.85rem; color: #333; text-align: center; margin-top: 0.5rem; font-weight: bold;">
-                <strong>Color Intensity:</strong> Total tourist arrivals (2022 + 2023) - Darker shades indicate higher tourist volume |
-                <strong>Hover:</strong> Click on states to see detailed tourism statistics and growth rates
-            </p>
+            <div style="background-color: #f0f0f0; padding: 6px; border-radius: 5px; margin: 8px 0;">
+                <p style="font-size: 0.8rem; color: black; text-align: center; margin: 0; font-weight: bold;">
+                    <strong>📍 Color Guide:</strong> Darker green = Higher tourist arrivals (2017-2023) | <strong>🖱️ Interactive:</strong> Hover for details
+                </p>
+            </div>
             """, unsafe_allow_html=True)
 
         except Exception as e:
@@ -209,41 +231,59 @@ def create_fallback_scatter_map(map_df):
             map_df,
             lat='lat',
             lon='lon',
-            size='Total_Tourism_2Years',
-            color='Total_Tourism_2Years',
+            size='Total_All_Years',
+            color='Total_All_Years',
             hover_name='State',
             hover_data={
-                'Tourism_2023': ':,.1f',
-                'Tourism_2022': ':,.1f',
-                'Total_Tourism_2Years': ':,.1f',
-                'Growth': ':+.1f%',
+                'Total_All_Years': ':,.1f',
                 'Region': True,
                 'lat': False,
-                'lon': False
+                'lon': False,
+                'Tourism_2023': False,
+                'Tourism_2022': False,
+                'Avg_Per_Year': False,
+                'Growth_2022_23': False
             },
-            color_continuous_scale='Greens',
+            color_continuous_scale=[[0, '#E8F5E8'], [0.2, '#B8E6B8'], [0.4, '#7DD87D'], [0.6, '#4CAF50'], [0.8, '#2E7D32'], [1, '#1B5E20']],
             size_max=30,
             zoom=4,
             center={'lat': 20.5937, 'lon': 78.9629},
-            title='🗺️ India Tourism Map - Total Tourist Arrivals (2022 + 2023)',
+            title='🗺️ India Tourism Map - Total Tourist Arrivals (2017-2023)',
             labels={
-                'Total_Tourism_2Years': 'Total Tourists (M)'
+                'Total_All_Years': 'Total Tourists (M)'
             }
         )
 
         fig.update_layout(
             height=600,
             font=dict(size=12),
-            title_font_size=16
+            title=dict(
+                text='🗺️ India Tourism Map - Total Tourist Arrivals (2017-2023)',
+                font=dict(size=18, color='#008080', family="Arial Black"),
+                x=0.5,
+                y=0.95
+            ),
+            margin={"r":0,"t":60,"l":0,"b":0},
+            coloraxis_colorbar=dict(
+                title=dict(
+                    text="Total Tourists<br>2017-2023 (Million)",
+                    font=dict(size=14, color='#008080', family="Arial Black")
+                ),
+                tickfont=dict(size=11, color='#008080', family="Arial"),
+                thickness=15,
+                len=0.7,
+                x=1.02
+            )
         )
 
         st.plotly_chart(fig, use_container_width=True)
 
         st.markdown("""
-        <p style="font-size: 0.85rem; color: #333; text-align: center; margin-top: 0.5rem; font-weight: bold;">
-            <strong>Circle Size & Color:</strong> Total tourist arrivals (2022 + 2023) - Larger and darker circles indicate higher tourist volume |
-            <strong>Hover:</strong> Click on circles to see detailed information
-        </p>
+        <div style="background-color: #f0f0f0; padding: 6px; border-radius: 5px; margin: 8px 0;">
+            <p style="font-size: 0.8rem; color: black; text-align: center; margin: 0; font-weight: bold;">
+                <strong>🔵 Circle Guide:</strong> Larger & darker circles = Higher tourist arrivals (2017-2023) | <strong>🖱️ Interactive:</strong> Click for details
+            </p>
+        </div>
         """, unsafe_allow_html=True)
 
 def create_enhanced_tourism_chart(ita_df):
@@ -367,69 +407,105 @@ def create_enhanced_tourism_chart(ita_df):
     return fig
 
 def create_tourism_growth_trend_chart(ita_df):
-    """Create tourism growth trend chart"""
+    """Create enhanced tourism growth trend chart with attractive styling"""
 
     fig = go.Figure()
 
-    # Main trend line - minimalist style
+    # Add area fill first (behind the line)
+    fig.add_trace(
+        go.Scatter(
+            x=ita_df['YEAR'],
+            y=ita_df['INDIA_ARRIVALS_MILLION'],
+            mode='lines',
+            name='Tourist Arrivals',
+            line=dict(color='rgba(0,128,128,0)', width=0),
+            fill='tozeroy',
+            fillcolor='rgba(0,128,128,0.1)',
+            showlegend=False
+        )
+    )
+
+    # Main trend line with enhanced styling
     fig.add_trace(
         go.Scatter(
             x=ita_df['YEAR'],
             y=ita_df['INDIA_ARRIVALS_MILLION'],
             mode='lines+markers',
             name='Tourist Arrivals',
-            line=dict(color='#008080', width=2),
-            marker=dict(size=6, color='#008080'),
-            fill=None
+            line=dict(color='#008080', width=4, shape='spline'),
+            marker=dict(
+                size=8,
+                color='#008080',
+                line=dict(color='white', width=2),
+                symbol='circle'
+            ),
+            hovertemplate='<b>Year:</b> %{x}<br><b>Arrivals:</b> %{y:.2f}M<extra></extra>'
         )
     )
 
-    # Add COVID impact annotation - minimalist style
-    fig.add_annotation(
-        x=2020, y=ita_df[ita_df['YEAR'] == 2020]['INDIA_ARRIVALS_MILLION'].iloc[0],
-        text="COVID-19",
-        showarrow=True,
-        arrowhead=1,
-        arrowcolor="#666",
-        bgcolor="rgba(255,255,255,0.9)",
-        bordercolor="#ccc",
-        borderwidth=1,
-        font=dict(size=10, color="#666")
-    )
+    # Add milestone markers for significant years
+    milestones = {
+        2001: "Tourism Year",
+        2008: "Global Crisis",
+        2020: "COVID-19 Impact",
+        2023: "Recovery"
+    }
 
-    # Update layout - minimalist style
+    for year, label in milestones.items():
+        if year in ita_df['YEAR'].values:
+            y_val = ita_df[ita_df['YEAR'] == year]['INDIA_ARRIVALS_MILLION'].iloc[0]
+            color = '#FF6B6B' if year in [2008, 2020] else '#4ECDC4'
+
+            fig.add_annotation(
+                x=year, y=y_val,
+                text=f"<b>{label}</b>",
+                showarrow=True,
+                arrowhead=2,
+                arrowcolor=color,
+                arrowwidth=2,
+                bgcolor=f"rgba{(*[int(color[i:i+2], 16) for i in (1, 3, 5)], 0.9)}",
+                bordercolor=color,
+                borderwidth=2,
+                font=dict(size=10, color='white'),
+                ax=0, ay=-40 if year != 2020 else 40
+            )
+
+    # Update layout with enhanced styling
     fig.update_layout(
-        height=300,
+        height=350,
         showlegend=False,
-        plot_bgcolor='white',
+        plot_bgcolor='rgba(248,249,250,0.8)',
         paper_bgcolor='white',
-        font=dict(color='black', size=11),
+        font=dict(color='#2C3E50', size=12),
         title_text="",
-        margin=dict(l=40, r=40, t=20, b=40),
-        xaxis_title="Year",
-        yaxis_title="Tourist Arrivals (Million)"
+        margin=dict(l=50, r=50, t=30, b=50),
+        xaxis_title="<b>Year</b>",
+        yaxis_title="<b>Tourist Arrivals (Million)</b>",
+        hovermode='x unified'
     )
 
-    # Update axes - minimal grid with black bold labels
+    # Enhanced axes styling
     fig.update_xaxes(
         showgrid=True,
         gridwidth=1,
-        gridcolor='rgba(200,200,200,0.3)',
+        gridcolor='rgba(200,200,200,0.4)',
         showline=True,
-        linewidth=1,
-        linecolor='rgba(200,200,200,0.5)',
-        tickfont=dict(color='black', size=11),
-        title_font=dict(color='black', size=12)
+        linewidth=2,
+        linecolor='#34495E',
+        tickfont=dict(color='#2C3E50', size=11, family='Arial Black'),
+        title_font=dict(color='#2C3E50', size=13, family='Arial Black'),
+        zeroline=False
     )
     fig.update_yaxes(
         showgrid=True,
         gridwidth=1,
-        gridcolor='rgba(200,200,200,0.3)',
+        gridcolor='rgba(200,200,200,0.4)',
         showline=True,
-        linewidth=1,
-        linecolor='rgba(200,200,200,0.5)',
-        tickfont=dict(color='black', size=11),
-        title_font=dict(color='black', size=12)
+        linewidth=2,
+        linecolor='#34495E',
+        tickfont=dict(color='#2C3E50', size=11, family='Arial Black'),
+        title_font=dict(color='#2C3E50', size=13, family='Arial Black'),
+        zeroline=False
     )
 
     return fig

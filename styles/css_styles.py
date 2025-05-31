@@ -113,6 +113,15 @@ def apply_custom_css():
             font-weight: 500;
         }
 
+        .metric-sublabel {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem;
+            color: #888;
+            font-weight: 400;
+            margin-top: 0.3rem;
+            opacity: 0.8;
+        }
+
         /* Section Headers */
         .section-header {
             font-family: 'Playfair Display', serif;

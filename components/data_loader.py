@@ -59,11 +59,11 @@ def load_ita_monthly_data():
 
 @st.cache_data
 def load_state_tourism_data():
-    """Load state-wise tourism data"""
+    """Load state-wise tourism data - prioritize total arrivals dataset"""
     try:
-        # Try both possible files
-        for filename in ['State_Wise_Domestic_Tourist_Arrivals_2017_2023.csv',
-                        'State_Wise_Domestic_Total_Arrivals_2017_2023.csv.csv']:
+        # Try total arrivals first (preferred), then tourist arrivals as fallback
+        for filename in ['State_Wise_Total_Tourist_Arrivals_2017_2023.csv',
+                        'State_Wise_Domestic_Tourist_Arrivals_2017_2023.csv']:
             filepath = f'Datasets/{filename}'
             if os.path.exists(filepath):
                 return pd.read_csv(filepath)
@@ -77,9 +77,9 @@ def load_state_tourism_data():
 def load_state_foreign_tourism_data():
     """Load state-wise foreign tourist arrivals data"""
     try:
-        return pd.read_csv('Datasets/State_Wise_Foreign_Tourist_Arrivals_2017_2023.csv.csv')
+        return pd.read_csv('Datasets/State_Wise_Foreign_Tourist_Arrivals_2017_2023.csv')
     except FileNotFoundError:
-        st.error("Datasets/State_Wise_Foreign_Tourist_Arrivals_2017_2023.csv.csv file not found!")
+        st.error("Datasets/State_Wise_Foreign_Tourist_Arrivals_2017_2023.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
@@ -194,6 +194,23 @@ def load_tourism_employment_data():
         st.error("Datasets/Tourism_Employment.csv file not found!")
         return pd.DataFrame()
 
+@st.cache_data
+def load_lean_peak_data_by_year(year):
+    """Load lean peak months data for a specific year"""
+    try:
+        return pd.read_csv(f'Datasets/Lean_Peak_Months/{year}_Lean_Peak_Month.csv')
+    except FileNotFoundError:
+        st.error(f"Datasets/Lean_Peak_Months/{year}_Lean_Peak_Month.csv file not found!")
+        return pd.DataFrame()
+
+@st.cache_data
+def load_all_lean_peak_data():
+    """Load all lean peak months data from 2017-2023"""
+    all_data = {}
+    for year in range(2017, 2024):
+        all_data[year] = load_lean_peak_data_by_year(year)
+    return all_data
+
 def clear_dance_cache():
     """Clear the cache for dance data"""
     load_dance_data.clear()
@@ -238,7 +255,8 @@ def load_all_data():
         'duration_stay_df': load_duration_stay_data(),
         'fee_earnings_df': load_fee_earnings_data(),
         'india_world_share_df': load_india_world_share_data(),
-        'lean_peak_df': load_lean_peak_data(),
+        'lean_peak_df': load_lean_peak_data(),  # Load combined data
+        'all_lean_peak_df': load_all_lean_peak_data(),
         'age_statistics_df': load_age_statistics_data(),
         'tourism_gdp_df': load_tourism_gdp_data(),
         'tourism_employment_df': load_tourism_employment_data()
