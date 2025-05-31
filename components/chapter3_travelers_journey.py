@@ -48,9 +48,26 @@ def apply_chapter3_background():
         box-shadow: 0 3px 12px rgba(79, 70, 229, 0.2);
     }
 
-    /* Header styling - exclude chapter banner headers */
-    h1:not(.chapter-banner-title), h2, h3 {
+    /* Header styling - exclude chapter banner headers and sidebar */
+    .main .block-container h1:not(.chapter-banner-title),
+    .main .block-container h2,
+    .main .block-container h3 {
         color: #4338ca !important;
+    }
+
+    /* Ensure sidebar text remains white */
+    .css-1d391kg, .css-1d391kg * {
+        color: white !important;
+    }
+
+    /* Sidebar button text */
+    .stSidebar .stButton > button {
+        color: white !important;
+    }
+
+    /* Sidebar markdown text */
+    .stSidebar .stMarkdown {
+        color: white !important;
     }
     </style>
     """, unsafe_allow_html=True)
