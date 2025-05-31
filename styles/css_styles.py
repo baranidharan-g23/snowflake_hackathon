@@ -747,6 +747,65 @@ def apply_sidebar_styles():
             margin: 2rem 0;
         }
 
+        /* Recovery Story Cards - Much Darker for Better Contrast */
+        .recovery-metric-card {
+            background: rgba(0,0,0,0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            color: white !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Strong override for all light background cards */
+        div[style*="rgba(255,255,255,0.2)"],
+        div[style*="background: rgba(255,255,255,0.2)"] {
+            background: rgba(0,0,0,0.85) !important;
+            color: white !important;
+            border: 1px solid rgba(255,255,255,0.3) !important;
+        }
+
+        /* Ensure ALL text in recovery cards is white with strong specificity */
+        div[style*="rgba(255,255,255,0.2)"] h5,
+        div[style*="rgba(255,255,255,0.2)"] p,
+        div[style*="rgba(255,255,255,0.2)"] h4,
+        div[style*="rgba(255,255,255,0.2)"] span,
+        div[style*="background: rgba(255,255,255,0.2)"] h5,
+        div[style*="background: rgba(255,255,255,0.2)"] p,
+        div[style*="background: rgba(255,255,255,0.2)"] h4,
+        div[style*="background: rgba(255,255,255,0.2)"] span {
+            color: white !important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Tourism overview cards - darker */
+        div[style*="rgba(255,255,255,0.1)"],
+        div[style*="background: rgba(255,255,255,0.1)"] {
+            background: rgba(0,0,0,0.8) !important;
+            color: white !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+        }
+
+        div[style*="rgba(255,255,255,0.1)"] h4,
+        div[style*="rgba(255,255,255,0.1)"] p,
+        div[style*="background: rgba(255,255,255,0.1)"] h4,
+        div[style*="background: rgba(255,255,255,0.1)"] p {
+            color: white !important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Additional override for any remaining light cards */
+        .stColumn > div > div[style*="rgba(255,255,255"] {
+            background: rgba(0,0,0,0.85) !important;
+            color: white !important;
+        }
+
+        .stColumn > div > div[style*="rgba(255,255,255"] * {
+            color: white !important;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero-title {

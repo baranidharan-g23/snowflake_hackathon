@@ -8,8 +8,7 @@ from components.data_loader import (
     load_tourism_gdp_data, load_tourism_employment_data, load_fee_earnings_data,
     load_india_world_share_data, load_ita_data, load_ita_monthly_data,
     load_duration_stay_data, load_age_statistics_data, load_all_lean_peak_data,
-    load_state_tourism_data, load_state_foreign_tourism_data, load_dance_data,
-    load_festivals_data
+    load_state_tourism_data, load_state_foreign_tourism_data
 )
 from components.homepage import show_homepage
 from components.festivals import show_festivals_section
@@ -134,11 +133,9 @@ def main():
         )
 
     elif page == "🗺️ Chapter 4: Regional Tapestry":
-        # Load regional data
+        # Load regional tourism data only
         state_total_df = load_state_tourism_data()  # This loads total arrivals
         state_foreign_df = load_state_foreign_tourism_data()
-        dance_df = load_dance_data()
-        festivals_df = load_festivals_data()
 
         # Load domestic data separately
         try:
@@ -149,9 +146,7 @@ def main():
         show_regional_tapestry(
             state_total_df,
             state_domestic_df,
-            state_foreign_df,
-            dance_df,
-            festivals_df
+            state_foreign_df
         )
 
 if __name__ == "__main__":
