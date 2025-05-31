@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 # Import components
 from components.data_loader import load_all_data
@@ -22,7 +23,7 @@ apply_custom_css()
 apply_dance_styles()
 apply_sidebar_styles()
 
-def show_art_forms(festivals_df, dance_df):
+def show_art_forms(festivals_df, dance_df, heritage_sites_df, unesco_df):
     """Display traditional art forms section"""
     st.markdown('<h1 class="main-header">🎭 Traditional Art Forms</h1>', unsafe_allow_html=True)
 
@@ -35,7 +36,7 @@ def show_art_forms(festivals_df, dance_df):
         show_dance_section(dance_df)
 
     with tab3:
-        show_heritage_section()
+        show_heritage_section(heritage_sites_df, unesco_df)
 
 def main():
     # Clear cache button for development
@@ -66,13 +67,18 @@ def main():
             data['tourism_employment_df']
         )
     elif page == "🎭 Traditional Art Forms":
-        show_art_forms(data['festivals_df'], data['dance_df'])
+        show_art_forms(
+            data['festivals_df'],
+            data['dance_df'],
+            data['heritage_sites_df'],
+            data['unesco_df']
+        )
     elif page == "📊 Tourism Analytics":
         show_tourism_analytics(
             data['ita_df'], data['ita_monthly_df'], data['state_tourism_df'],
-            data['centrally_protected_df'], data['duration_stay_df'], data['fee_earnings_df'],
-            data['india_world_share_df'], data['lean_peak_df'], data['monthly_foreigners_df'],
-            data['state_footfall_df'], data['top_monuments_df'], data['age_statistics_df'],
+            data['centrally_protected_domestic_df'], data['duration_stay_df'], data['fee_earnings_df'],
+            data['india_world_share_df'], data['lean_peak_df'], data.get('state_foreign_tourism_df', pd.DataFrame()),
+            data.get('top_monuments_domestic_df', pd.DataFrame()), data.get('top_monuments_foreign_df', pd.DataFrame()), data['age_statistics_df'],
             data['tourism_gdp_df'], data['tourism_employment_df']
         )
 

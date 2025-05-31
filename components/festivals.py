@@ -132,7 +132,7 @@ def show_monthly_festival_chart(festivals_df):
     for month in month_mapping.keys():
         count = 0
         for _, festival in festivals_df.iterrows():
-            month_season = festival['Month/Season']
+            month_season = festival['MONTH_SEASON']
             if any(keyword in month_season for keyword in month_mapping[month]):
                 count += 1
         monthly_counts[month] = count
@@ -233,7 +233,7 @@ def show_festivals_section(festivals_df):
     with col1:
         selected_state = st.selectbox(
             "🏛️ Select State:",
-            ["All States"] + sorted(list(festivals_df['State'].unique()))
+            ["All States"] + sorted(list(festivals_df['STATE'].unique()))
         )
 
     with col2:
@@ -246,14 +246,14 @@ def show_festivals_section(festivals_df):
     filtered_df = festivals_df.copy()
 
     if selected_state != "All States":
-        filtered_df = filtered_df[filtered_df['State'] == selected_state]
+        filtered_df = filtered_df[filtered_df['STATE'] == selected_state]
 
     if selected_month != "All Months":
-        filtered_df = filtered_df[filtered_df['Month/Season'].str.contains(selected_month, case=False, na=False)]
+        filtered_df = filtered_df[filtered_df['MONTH_SEASON'].str.contains(selected_month, case=False, na=False)]
 
     # Count festivals with images
     festivals_with_images = sum(1 for _, festival in filtered_df.iterrows()
-                               if festival['Festival Name'] in FESTIVAL_IMAGE_MAPPING)
+                               if festival['FESTIVAL_NAME'] in FESTIVAL_IMAGE_MAPPING)
 
     # Display count with beautiful styling
     st.markdown(f"""
@@ -286,12 +286,12 @@ def display_festival_card(festival):
     """Display festival in a beautiful rectangular card with image on left and description on right"""
 
     # Get image path using exact mapping with caching
-    festival_name = festival['Festival Name']
+    festival_name = festival['FESTIVAL_NAME']
     image_path = None
 
     if festival_name in FESTIVAL_IMAGE_MAPPING:
         image_filename = FESTIVAL_IMAGE_MAPPING[festival_name]
-        potential_path = f"Festivals_images/{image_filename}"
+        potential_path = f"Images/Festivals_images/{image_filename}"
         image_info = get_festival_image_info(potential_path)
         if image_info["exists"]:
             image_path = potential_path
@@ -409,18 +409,18 @@ def display_festival_card(festival):
         <div class="content-section">
             <h2 style="color: #008080; font-family: 'Playfair Display', serif;
                        font-size: 2rem; margin-bottom: 1rem; font-weight: bold;">
-                🎭 {festival['Festival Name']}
+                🎭 {festival['FESTIVAL_NAME']}
             </h2>
             <div style="margin-bottom: 1.5rem;">
                 <p style="color: #20B2AA; font-weight: bold; font-size: 1.1rem; margin-bottom: 0.5rem;">
-                    📍 {festival['State']}
+                    📍 {festival['STATE']}
                 </p>
                 <p style="color: #008080; font-weight: bold; font-size: 1rem; margin-bottom: 1rem;">
-                    📅 {festival['Month/Season']}
+                    📅 {festival['MONTH_SEASON']}
                 </p>
             </div>
             <div style="color: #333; line-height: 1.6; font-family: 'Poppins', sans-serif; font-size: 0.95rem;">
-                {festival['Description']}
+                {festival['DESCRIPTION']}
             </div>
         </div>
     </div>

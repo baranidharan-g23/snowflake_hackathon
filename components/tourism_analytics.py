@@ -67,12 +67,12 @@ def show_ita_trends(ita_df):
 
     col1, col2, col3, col4 = st.columns(4)
 
-    latest_arrivals = ita_df['India Arrivals (million)'].iloc[-1]
-    previous_arrivals = ita_df['India Arrivals (million)'].iloc[-2] if len(ita_df) > 1 else latest_arrivals
+    latest_arrivals = ita_df['INDIA_ARRIVALS_MILLION'].iloc[-1]
+    previous_arrivals = ita_df['INDIA_ARRIVALS_MILLION'].iloc[-2] if len(ita_df) > 1 else latest_arrivals
     growth_rate = ((latest_arrivals - previous_arrivals) / previous_arrivals) * 100
 
-    peak_year = ita_df.loc[ita_df['India Arrivals (million)'].idxmax(), 'Year']
-    peak_arrivals = ita_df['India Arrivals (million)'].max()
+    peak_year = ita_df.loc[ita_df['INDIA_ARRIVALS_MILLION'].idxmax(), 'YEAR']
+    peak_arrivals = ita_df['INDIA_ARRIVALS_MILLION'].max()
 
     with col1:
         st.markdown(f"""
@@ -97,7 +97,7 @@ def show_ita_trends(ita_df):
         """, unsafe_allow_html=True)
 
     with col3:
-        avg_growth = ita_df['India Arrivals (million)'].pct_change().mean() * 100
+        avg_growth = ita_df['INDIA_ARRIVALS_MILLION'].pct_change().mean() * 100
         st.markdown(f"""
         <div style="background: linear-gradient(135deg, #45B7D1, #6BC5E8); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; margin-bottom: 1rem;">
             <h3 style="margin: 0; font-size: 2rem;">{avg_growth:.1f}%</h3>
@@ -109,9 +109,9 @@ def show_ita_trends(ita_df):
         """, unsafe_allow_html=True)
 
     with col4:
-        covid_impact = ((ita_df[ita_df['Year'] == 2020]['India Arrivals (million)'].iloc[0] -
-                        ita_df[ita_df['Year'] == 2019]['India Arrivals (million)'].iloc[0]) /
-                       ita_df[ita_df['Year'] == 2019]['India Arrivals (million)'].iloc[0]) * 100
+        covid_impact = ((ita_df[ita_df['YEAR'] == 2020]['INDIA_ARRIVALS_MILLION'].iloc[0] -
+                        ita_df[ita_df['YEAR'] == 2019]['INDIA_ARRIVALS_MILLION'].iloc[0]) /
+                       ita_df[ita_df['YEAR'] == 2019]['INDIA_ARRIVALS_MILLION'].iloc[0]) * 100
         st.markdown(f"""
         <div style="background: linear-gradient(135deg, #96CEB4, #A8D5C4); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; margin-bottom: 1rem;">
             <h3 style="margin: 0; font-size: 2rem;">{covid_impact:.1f}%</h3>
@@ -139,8 +139,8 @@ def show_ita_trends(ita_df):
 
     # Add gradient fill area
     fig.add_trace(go.Scatter(
-        x=ita_df['Year'],
-        y=ita_df['India Arrivals (million)'],
+        x=ita_df['YEAR'],
+        y=ita_df['INDIA_ARRIVALS_MILLION'],
         mode='lines+markers',
         name='Tourist Arrivals',
         line=dict(color='#008080', width=4, shape='spline'),
@@ -170,7 +170,7 @@ def show_ita_trends(ita_df):
 
     # Add recovery annotation with more engaging text
     recovery_year = 2023
-    recovery_value = ita_df[ita_df['Year'] == recovery_year]['India Arrivals (million)'].iloc[0]
+    recovery_value = ita_df[ita_df['YEAR'] == recovery_year]['INDIA_ARRIVALS_MILLION'].iloc[0]
     fig.add_annotation(
         x=recovery_year,
         y=recovery_value,
@@ -185,8 +185,8 @@ def show_ita_trends(ita_df):
     )
 
     # Add milestone annotations for peak years
-    peak_year = ita_df.loc[ita_df['India Arrivals (million)'].idxmax(), 'Year']
-    peak_value = ita_df['India Arrivals (million)'].max()
+    peak_year = ita_df.loc[ita_df['INDIA_ARRIVALS_MILLION'].idxmax(), 'YEAR']
+    peak_value = ita_df['INDIA_ARRIVALS_MILLION'].max()
     fig.add_annotation(
         x=peak_year,
         y=peak_value,
@@ -267,14 +267,14 @@ def show_ita_trends(ita_df):
     with col1:
         # Year-over-year growth with improved colors
         ita_df_growth = ita_df.copy()
-        ita_df_growth['Growth Rate'] = ita_df_growth['India Arrivals (million)'].pct_change() * 100
+        ita_df_growth['Growth Rate'] = ita_df_growth['INDIA_ARRIVALS_MILLION'].pct_change() * 100
 
         # Create custom colors based on growth rate
         colors = ['#FF4444' if x < 0 else '#FFA500' if x < 5 else '#32CD32' for x in ita_df_growth['Growth Rate'].fillna(0)]
 
         fig = go.Figure(data=[
             go.Bar(
-                x=ita_df_growth['Year'][1:],
+                x=ita_df_growth['YEAR'][1:],
                 y=ita_df_growth['Growth Rate'][1:],
                 marker_color=colors[1:],
                 text=[f"{x:.1f}%" for x in ita_df_growth['Growth Rate'][1:]],
@@ -302,9 +302,9 @@ def show_ita_trends(ita_df):
     with col2:
         # Decade comparison with gradient colors
         decades = {
-            '2001-2010': ita_df[(ita_df['Year'] >= 2001) & (ita_df['Year'] <= 2010)]['India Arrivals (million)'].mean(),
-            '2011-2020': ita_df[(ita_df['Year'] >= 2011) & (ita_df['Year'] <= 2020)]['India Arrivals (million)'].mean(),
-            '2021-2023': ita_df[(ita_df['Year'] >= 2021) & (ita_df['Year'] <= 2023)]['India Arrivals (million)'].mean()
+            '2001-2010': ita_df[(ita_df['YEAR'] >= 2001) & (ita_df['YEAR'] <= 2010)]['INDIA_ARRIVALS_MILLION'].mean(),
+            '2011-2020': ita_df[(ita_df['YEAR'] >= 2011) & (ita_df['YEAR'] <= 2020)]['INDIA_ARRIVALS_MILLION'].mean(),
+            '2021-2023': ita_df[(ita_df['YEAR'] >= 2021) & (ita_df['YEAR'] <= 2023)]['INDIA_ARRIVALS_MILLION'].mean()
         }
 
         decade_df = pd.DataFrame(list(decades.items()), columns=['Decade', 'Avg Arrivals'])
@@ -387,7 +387,7 @@ def show_seasonal_patterns(ita_monthly_df, lean_peak_df, monthly_foreigners_df):
     monthly_df = ita_monthly_df.copy()
 
     # Convert string numbers to numeric (remove commas)
-    for col in ['2021', '2022', '2023']:
+    for col in ['YEAR_2021', 'YEAR_2022', 'YEAR_2023']:
         if col in monthly_df.columns:
             monthly_df[col] = monthly_df[col].astype(str).str.replace(',', '').astype(float)
 
@@ -409,12 +409,12 @@ def show_seasonal_patterns(ita_monthly_df, lean_peak_df, monthly_foreigners_df):
     # Enhanced color palette for seasonal representation
     colors = ['#FF6B6B', '#4ECDC4', '#45B7D1']  # Warm to cool representing seasonal transition
     year_names = ['2021 - Recovery', '2022 - Rebuilding', '2023 - Revival']
-    years = ['2021', '2022', '2023']
+    years = ['YEAR_2021', 'YEAR_2022', 'YEAR_2023']
 
     for i, year in enumerate(years):
         if year in monthly_df.columns:
             fig.add_trace(go.Scatter(
-                x=monthly_df['Month'],
+                x=monthly_df['MONTH'],
                 y=monthly_df[year],
                 mode='lines+markers',
                 name=year_names[i],
@@ -423,16 +423,16 @@ def show_seasonal_patterns(ita_monthly_df, lean_peak_df, monthly_foreigners_df):
                            line=dict(width=3, color='white')),
                 fill='tonexty' if i == 0 else None,
                 fillcolor=f'rgba({int(colors[i][1:3], 16) if colors[i].startswith("#") else 255},{int(colors[i][3:5], 16) if colors[i].startswith("#") else 107},{int(colors[i][5:7], 16) if colors[i].startswith("#") else 107},0.1)' if i == 0 else None,
-                hovertemplate=f'<b>Month:</b> %{{x}}<br><b>{year} Arrivals:</b> %{{y:,.0f}} travelers<br><i>Discover this month\'s highlights</i><extra></extra>'
+                hovertemplate=f'<b>Month:</b> %{{x}}<br><b>{year.replace("YEAR_", "")} Arrivals:</b> %{{y:,.0f}} travelers<br><i>Discover this month\'s highlights</i><extra></extra>'
             ))
 
     # Add seasonal annotations
-    fig.add_annotation(x="October", y=monthly_df[monthly_df['Month'] == 'October']['2023'].iloc[0] if 'October' in monthly_df['Month'].values else 0,
+    fig.add_annotation(x="October", y=monthly_df[monthly_df['MONTH'] == 'October']['YEAR_2023'].iloc[0] if 'October' in monthly_df['MONTH'].values else 0,
                       text="🎆 Festival Season Peak", showarrow=True, arrowhead=2, arrowcolor="#FFD700",
                       bgcolor="rgba(255,215,0,0.1)", bordercolor="#FFD700", borderwidth=2,
                       font=dict(color="#B8860B", size=11, family="Arial Black"))
 
-    fig.add_annotation(x="December", y=monthly_df[monthly_df['Month'] == 'December']['2023'].iloc[0] if 'December' in monthly_df['Month'].values else 0,
+    fig.add_annotation(x="December", y=monthly_df[monthly_df['MONTH'] == 'December']['YEAR_2023'].iloc[0] if 'December' in monthly_df['MONTH'].values else 0,
                       text="❄️ Winter Wonderland", showarrow=True, arrowhead=2, arrowcolor="#87CEEB",
                       bgcolor="rgba(135,206,235,0.1)", bordercolor="#87CEEB", borderwidth=2,
                       font=dict(color="#4682B4", size=11, family="Arial Black"))
@@ -504,8 +504,8 @@ def show_seasonal_patterns(ita_monthly_df, lean_peak_df, monthly_foreigners_df):
 
     with col1:
         # Enhanced peak months analysis
-        if '2023' in monthly_df.columns:
-            peak_months = monthly_df.nlargest(3, '2023')[['Month', '2023']]
+        if 'YEAR_2023' in monthly_df.columns:
+            peak_months = monthly_df.nlargest(3, 'YEAR_2023')[['MONTH', 'YEAR_2023']]
 
             st.markdown("""
             <div style="background: linear-gradient(135deg, #FF6B6B, #FF8E8E); padding: 1.5rem; border-radius: 15px; margin-bottom: 1rem;">
@@ -517,15 +517,15 @@ def show_seasonal_patterns(ita_monthly_df, lean_peak_df, monthly_foreigners_df):
                 rank_emoji = ["🥇", "🥈", "🥉"][list(peak_months.index).index(idx)]
                 st.markdown(f"""
                 <div style="background: rgba(255,107,107,0.1); padding: 1rem; border-radius: 10px; margin: 0.5rem 0; border-left: 4px solid #FF6B6B;">
-                    <strong>{rank_emoji} {row['Month']}</strong><br>
-                    <span style="color: #FF6B6B; font-size: 1.1rem;">🎯 {row['2023']:,.0f} travelers</span>
+                    <strong>{rank_emoji} {row['MONTH']}</strong><br>
+                    <span style="color: #FF6B6B; font-size: 1.1rem;">🎯 {row['YEAR_2023']:,.0f} travelers</span>
                 </div>
                 """, unsafe_allow_html=True)
 
     with col2:
         # Enhanced Growth rates with storytelling
-        if 'Growth 2023/22 (%)' in monthly_df.columns:
-            growth_data = monthly_df[['Month', 'Growth 2023/22 (%)']].copy()
+        if 'GROWTH_2023_22_PERCENT' in monthly_df.columns:
+            growth_data = monthly_df[['MONTH', 'GROWTH_2023_22_PERCENT']].copy()
             growth_data = growth_data.dropna()
 
             st.markdown("""
@@ -536,7 +536,7 @@ def show_seasonal_patterns(ita_monthly_df, lean_peak_df, monthly_foreigners_df):
 
             # Create enhanced colors based on growth rate with more nuanced categories
             colors = []
-            for x in growth_data['Growth 2023/22 (%)']:
+            for x in growth_data['GROWTH_2023_22_PERCENT']:
                 if x < -20:
                     colors.append('#FF4444')  # Deep red for significant decline
                 elif x < 0:
@@ -550,10 +550,10 @@ def show_seasonal_patterns(ita_monthly_df, lean_peak_df, monthly_foreigners_df):
 
             fig = go.Figure(data=[
                 go.Bar(
-                    x=growth_data['Month'],
-                    y=growth_data['Growth 2023/22 (%)'],
+                    x=growth_data['MONTH'],
+                    y=growth_data['GROWTH_2023_22_PERCENT'],
                     marker_color=colors,
-                    text=[f"{x:+.1f}%" for x in growth_data['Growth 2023/22 (%)']],
+                    text=[f"{x:+.1f}%" for x in growth_data['GROWTH_2023_22_PERCENT']],
                     textposition='outside',
                     hovertemplate='<b>Month:</b> %{x}<br><b>Growth:</b> %{y:+.1f}%<br><i>Recovery strength indicator</i><extra></extra>'
                 )
@@ -722,12 +722,12 @@ def show_state_analysis(state_tourism_df, state_footfall_df):
 
     col1, col2, col3, col4 = st.columns(4)
 
-    total_2023 = tourism_df['2023 TV'].sum()
-    total_2022 = tourism_df['2022 TV'].sum()
+    total_2023 = tourism_df['YEAR_2023'].sum()
+    total_2022 = tourism_df['YEAR_2022'].sum()
     growth = ((total_2023 - total_2022) / total_2022) * 100
 
-    top_state = tourism_df.loc[tourism_df['2023 TV'].idxmax(), 'State/UT']
-    top_state_visitors = tourism_df['2023 TV'].max()
+    top_state = tourism_df.loc[tourism_df['YEAR_2023'].idxmax(), 'STATE']
+    top_state_visitors = tourism_df['YEAR_2023'].max()
 
     with col1:
         st.markdown(f"""
@@ -785,7 +785,7 @@ def show_state_analysis(state_tourism_df, state_footfall_df):
     col1, col2 = st.columns(2)
 
     with col1:
-        top_states = tourism_df.nlargest(10, '2023 TV')[['State/UT', '2023 TV']]
+        top_states = tourism_df.nlargest(10, 'YEAR_2023')[['STATE', 'YEAR_2023']]
 
         # Create state descriptions for context
         state_descriptions = {
@@ -807,11 +807,11 @@ def show_state_analysis(state_tourism_df, state_footfall_df):
 
         fig = go.Figure(data=[
             go.Bar(
-                x=top_states['2023 TV'],
-                y=top_states['State/UT'],
+                x=top_states['YEAR_2023'],
+                y=top_states['STATE'],
                 orientation='h',
                 marker_color=colors,
-                text=[f"{x:.1f}M" for x in top_states['2023 TV']],
+                text=[f"{x:.1f}M" for x in top_states['YEAR_2023']],
                 textposition='outside',
                 hovertemplate='<b>State:</b> %{y}<br><b>Visitors:</b> %{x:.1f}M<br><i>Tourism Powerhouse</i><extra></extra>'
             )
@@ -837,8 +837,8 @@ def show_state_analysis(state_tourism_df, state_footfall_df):
         # Add insights for top states
         st.markdown("#### 🎯 Tourism Powerhouse Insights")
         for idx, row in top_states.head(3).iterrows():
-            state_name = row['State/UT']
-            visitors = row['2023 TV']
+            state_name = row['STATE']
+            visitors = row['YEAR_2023']
             description = state_descriptions.get(state_name, '🌟 Unique Attractions')
 
             st.markdown(f"""
@@ -850,8 +850,8 @@ def show_state_analysis(state_tourism_df, state_footfall_df):
 
     with col2:
         # Enhanced Growth analysis with storytelling
-        tourism_df['Growth'] = ((tourism_df['2023 TV'] - tourism_df['2022 TV']) / tourism_df['2022 TV']) * 100
-        top_growth = tourism_df.nlargest(10, 'Growth')[['State/UT', 'Growth']]
+        tourism_df['Growth'] = ((tourism_df['YEAR_2023'] - tourism_df['YEAR_2022']) / tourism_df['YEAR_2022']) * 100
+        top_growth = tourism_df.nlargest(10, 'Growth')[['STATE', 'Growth']]
 
         # Create enhanced colors based on growth rate categories
         colors = []
@@ -870,7 +870,7 @@ def show_state_analysis(state_tourism_df, state_footfall_df):
         fig = go.Figure(data=[
             go.Bar(
                 x=top_growth['Growth'],
-                y=top_growth['State/UT'],
+                y=top_growth['STATE'],
                 orientation='h',
                 marker_color=colors,
                 text=[f"{x:+.1f}%" for x in top_growth['Growth']],
@@ -899,7 +899,7 @@ def show_state_analysis(state_tourism_df, state_footfall_df):
         # Add insights for growth champions
         st.markdown("#### 🌟 Growth Story Highlights")
         for idx, row in top_growth.head(3).iterrows():
-            state_name = row['State/UT']
+            state_name = row['STATE']
             growth_rate = row['Growth']
 
             if growth_rate >= 50:
@@ -929,12 +929,12 @@ def show_state_analysis(state_tourism_df, state_footfall_df):
     </div>
     """, unsafe_allow_html=True)
 
-    regional_data = tourism_df.groupby('Region').agg({
-        '2022 TV': 'sum',
-        '2023 TV': 'sum'
+    regional_data = tourism_df.groupby('REGION').agg({
+        'YEAR_2022': 'sum',
+        'YEAR_2023': 'sum'
     }).reset_index()
 
-    regional_data['Growth'] = ((regional_data['2023 TV'] - regional_data['2022 TV']) / regional_data['2022 TV']) * 100
+    regional_data['Growth'] = ((regional_data['YEAR_2023'] - regional_data['YEAR_2022']) / regional_data['YEAR_2022']) * 100
 
     # Add regional insights section
     st.markdown("""
@@ -961,10 +961,10 @@ def show_state_analysis(state_tourism_df, state_footfall_df):
 
         fig = go.Figure(data=[
             go.Bar(
-                x=regional_data['Region'],
-                y=regional_data['2023 TV'],
+                x=regional_data['REGION'],
+                y=regional_data['YEAR_2023'],
                 marker_color=region_colors[:len(regional_data)],
-                text=[f"{x:.1f}M" for x in regional_data['2023 TV']],
+                text=[f"{x:.1f}M" for x in regional_data['YEAR_2023']],
                 textposition='outside',
                 hovertemplate='<b>Region:</b> %{x}<br><b>Visitors:</b> %{y:.1f}M<br><i>Regional tourism hub</i><extra></extra>'
             )
@@ -1001,7 +1001,7 @@ def show_state_analysis(state_tourism_df, state_footfall_df):
 
         fig = go.Figure(data=[
             go.Bar(
-                x=regional_data['Region'],
+                x=regional_data['REGION'],
                 y=regional_data['Growth'],
                 marker_color=colors,
                 text=[f"{x:+.1f}%" for x in regional_data['Growth']],
@@ -1103,7 +1103,7 @@ def show_heritage_analytics(centrally_protected_df, top_monuments_df):
             monuments_df = centrally_protected_df.copy()
 
             # Calculate total visitors for 2019-20 (pre-COVID)
-            monuments_df['Total_Visitors_2019'] = monuments_df['Domestic-2019-20'] + monuments_df['Foreign-2019-20']
+            monuments_df['Total_Visitors_2019'] = monuments_df['YEAR_2019_20']
 
             # Get top monuments by visitor count
             top_monuments_by_visitors = monuments_df.nlargest(10, 'Total_Visitors_2019')
@@ -1128,7 +1128,7 @@ def show_heritage_analytics(centrally_protected_df, top_monuments_df):
 
             fig = go.Figure(data=[
                 go.Bar(
-                    y=top_monuments_by_visitors['Name of the Monument '],
+                    y=top_monuments_by_visitors['MONUMENT'],
                     x=top_monuments_by_visitors['Total_Visitors_2019'],
                     orientation='h',
                     marker_color=heritage_colors,
@@ -1157,9 +1157,10 @@ def show_heritage_analytics(centrally_protected_df, top_monuments_df):
             st.plotly_chart(fig, use_container_width=True)
 
             # Enhanced key metrics with heritage storytelling
-            total_domestic = monuments_df['Domestic-2019-20'].sum()
-            total_foreign = monuments_df['Foreign-2019-20'].sum()
-            total_visitors = total_domestic + total_foreign
+            total_visitors = monuments_df['YEAR_2019_20'].sum()
+            # For now, we'll use the total as domestic since we don't have separate columns
+            total_domestic = total_visitors
+            total_foreign = 0
 
             st.markdown("#### 📊 Heritage Tourism Impact")
             col_a, col_b, col_c = st.columns(3)
@@ -1191,7 +1192,7 @@ def show_heritage_analytics(centrally_protected_df, top_monuments_df):
             # Add heritage insights
             st.markdown("#### 🏆 Heritage Highlights")
             for idx, row in top_monuments_by_visitors.head(3).iterrows():
-                monument_name = row['Name of the Monument ']
+                monument_name = row['MONUMENT']
                 visitors = row['Total_Visitors_2019']
                 description = monument_descriptions.get(monument_name, '🏛️ Architectural Wonder')
 
@@ -1217,7 +1218,7 @@ def show_heritage_analytics(centrally_protected_df, top_monuments_df):
             monuments_data = top_monuments_df.copy()
 
             # Filter out non-monument rows
-            monuments_data = monuments_data[monuments_data['Rank'].notna() & (monuments_data['Rank'] != 'NA')]
+            monuments_data = monuments_data[monuments_data['RANK'].notna() & (monuments_data['RANK'] != 'NA')]
 
             if not monuments_data.empty:
                 # Create donut chart for top monuments with vibrant colors
@@ -1225,14 +1226,14 @@ def show_heritage_analytics(centrally_protected_df, top_monuments_df):
                                       '#073B4C', '#EF476F', '#FFD166', '#06D6A0', '#7209B7']
 
                 fig = go.Figure(data=[go.Pie(
-                    labels=monuments_data['Name of Monument'],
-                    values=monuments_data['No. of Foreign visitors'],
+                    labels=monuments_data['MONUMENT_NAME'],
+                    values=monuments_data['FOREIGN_TOTAL_VISITS_LAKHS'],
                     hole=0.4,
                     marker_colors=international_colors,
                     textinfo='label+percent',
                     textfont_size=11,
                     textfont_color='white',
-                    hovertemplate='<b>Monument:</b> %{label}<br><b>Foreign Visitors:</b> %{value:,.0f}<br><b>Share:</b> %{percent}<extra></extra>'
+                    hovertemplate='<b>Monument:</b> %{label}<br><b>Foreign Visitors:</b> %{value:,.0f} lakhs<br><b>Share:</b> %{percent}<extra></extra>'
                 )])
 
                 fig.update_layout(
@@ -1268,9 +1269,9 @@ def show_heritage_analytics(centrally_protected_df, top_monuments_df):
                 }
 
                 for idx, monument in monuments_data.head(5).iterrows():
-                    percentage = monument['Percentage share']
-                    visitors = monument['No. of Foreign visitors']
-                    monument_name = monument['Name of Monument']
+                    percentage = monument['PERCENTAGE_SHARE']
+                    visitors = monument['FOREIGN_TOTAL_VISITS_LAKHS']
+                    monument_name = monument['MONUMENT_NAME']
                     story = monument_stories.get(monument_name, '🏛️ Architectural wonder')
 
                     rank_emoji = ["🥇", "🥈", "🥉", "🏆", "⭐"][idx] if idx < 5 else "🏛️"
@@ -1279,7 +1280,7 @@ def show_heritage_analytics(centrally_protected_df, top_monuments_df):
                     <div style="background: rgba(139,69,19,0.1); padding: 1rem; border-radius: 10px; margin: 0.5rem 0; border-left: 4px solid #8B4513;">
                         <strong>{rank_emoji} {monument_name}</strong><br>
                         <span style="color: #666; font-size: 0.9rem; font-style: italic;">{story}</span><br>
-                        <span style="color: #8B4513; font-size: 1.1rem;">🌍 {visitors:,.0f} international admirers ({percentage}%)</span>
+                        <span style="color: #8B4513; font-size: 1.1rem;">🌍 {visitors:,.0f} lakhs international admirers ({percentage}%)</span>
                     </div>
                     """, unsafe_allow_html=True)
             else:
@@ -1300,8 +1301,8 @@ def show_heritage_analytics(centrally_protected_df, top_monuments_df):
         """, unsafe_allow_html=True)
 
         # Calculate overall impact
-        total_2019 = centrally_protected_df['Domestic-2019-20'].sum() + centrally_protected_df['Foreign-2019-20'].sum()
-        total_2020 = centrally_protected_df['Domestic-2020-21'].sum() + centrally_protected_df['Foreign-2020-21'].sum()
+        total_2019 = centrally_protected_df['YEAR_2019_20'].sum()
+        total_2020 = centrally_protected_df['YEAR_2020_21'].sum()
         impact_percentage = ((total_2020 - total_2019) / total_2019) * 100
 
         # Add narrative context
@@ -1331,25 +1332,27 @@ def show_heritage_analytics(centrally_protected_df, top_monuments_df):
             """, unsafe_allow_html=True)
 
         with col2:
-            foreign_impact = centrally_protected_df['% Growth 2021-21/2019-20-Foreign'].iloc[0]
+            # Calculate growth from available data
+            growth_2020_21 = centrally_protected_df['GROWTH_2020_21_VS_2019_20'].mean()
             st.markdown(f"""
             <div style="background: linear-gradient(135deg, #FF8C00, #FFA500); padding: 1.5rem; border-radius: 15px; text-align: center; color: white; box-shadow: 0 5px 15px rgba(255,140,0,0.3);">
-                <h3 style="margin: 0; font-size: 2rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">{foreign_impact:.1f}%</h3>
-                <p style="margin: 0.5rem 0; font-size: 0.9rem; opacity: 0.9;">International Visitors</p>
+                <h3 style="margin: 0; font-size: 2rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">{growth_2020_21:.1f}%</h3>
+                <p style="margin: 0.5rem 0; font-size: 0.9rem; opacity: 0.9;">Average Growth 2020-21</p>
                 <p style="margin: 0; font-size: 0.8rem; background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 15px; display: inline-block;">
-                    Border Closures
+                    Pandemic Impact
                 </p>
             </div>
             """, unsafe_allow_html=True)
 
         with col3:
-            domestic_impact = centrally_protected_df['% Growth 2021-21/2019-20-Domestic'].iloc[0]
+            # Calculate recovery growth
+            recovery_growth = centrally_protected_df['GROWTH_2021_22_VS_2020_21'].mean()
             st.markdown(f"""
             <div style="background: linear-gradient(135deg, #FFD700, #FFA500); padding: 1.5rem; border-radius: 15px; text-align: center; color: #333; box-shadow: 0 5px 15px rgba(255,215,0,0.3);">
-                <h3 style="margin: 0; font-size: 2rem; text-shadow: 1px 1px 2px rgba(255,255,255,0.5);">{domestic_impact:.1f}%</h3>
-                <p style="margin: 0.5rem 0; font-size: 0.9rem; opacity: 0.8;">Domestic Explorers</p>
+                <h3 style="margin: 0; font-size: 2rem; text-shadow: 1px 1px 2px rgba(255,255,255,0.5);">{recovery_growth:.1f}%</h3>
+                <p style="margin: 0.5rem 0; font-size: 0.9rem; opacity: 0.8;">Recovery Growth 2021-22</p>
                 <p style="margin: 0; font-size: 0.8rem; background: rgba(255,255,255,0.6); padding: 0.3rem 0.8rem; border-radius: 15px; display: inline-block;">
-                    Local Resilience
+                    Bounce Back
                 </p>
             </div>
             """, unsafe_allow_html=True)
@@ -1419,8 +1422,8 @@ def show_economic_impact(fee_earnings_df, india_world_share_df, tourism_gdp_df=N
             earnings_df = fee_earnings_df.copy()
 
             # Use the correct column names from the CSV
-            if 'FEE in US$ terms - US $ Million' in earnings_df.columns:
-                earnings_df = earnings_df[['Year', 'FEE in US$ terms - US $ Million']].copy()
+            if 'FEE_USD_MILLION' in earnings_df.columns:
+                earnings_df = earnings_df[['YEAR', 'FEE_USD_MILLION']].copy()
                 earnings_df.columns = ['Year', 'Earnings_USD']
                 earnings_df = earnings_df.dropna()
 
@@ -1807,22 +1810,22 @@ def show_visitor_demographics(age_statistics_df, duration_stay_df):
             # Process duration data by nationality regions
             duration_df = duration_stay_df.copy()
 
-            # Filter for regional totals only - try different column names
-            if 'Country of Nationality' in duration_df.columns:
-                regional_data = duration_df[duration_df['Country of Nationality'] == 'Total'].copy()
-            elif 'Nationality' in duration_df.columns:
-                regional_data = duration_df.head(8).copy()  # Take first 8 rows as sample
+            # Filter for regional totals only - use the correct column names
+            if 'COUNTRY_OF_NATIONALITY' in duration_df.columns:
+                regional_data = duration_df[duration_df['COUNTRY_OF_NATIONALITY'] == 'Total'].copy()
             else:
-                regional_data = duration_df.head(8).copy()  # Take first 8 rows as sample
+                # Group by nationality region and get average duration for 2023
+                regional_data = duration_df.groupby('NATIONALITY_REGION')['YEAR_2023'].mean().reset_index()
+                regional_data = regional_data.head(8)  # Take first 8 regions
 
             if not regional_data.empty:
                 # Create enhanced bar chart with better colors
                 fig = go.Figure(data=[
                     go.Bar(
-                        x=regional_data['Nationality'],
-                        y=regional_data['Average duration of stay (in days)'],
+                        x=regional_data['NATIONALITY_REGION'],
+                        y=regional_data['YEAR_2023'],
                         marker_color=['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#FF8A80', '#81C784', '#FFB74D'],
-                        text=[f"{x:.1f} days" for x in regional_data['Average duration of stay (in days)']],
+                        text=[f"{x:.1f} days" for x in regional_data['YEAR_2023']],
                         textposition='outside',
                         hovertemplate='<b>Region:</b> %{x}<br><b>Duration:</b> %{y:.1f} days<extra></extra>'
                     )
@@ -1847,9 +1850,9 @@ def show_visitor_demographics(age_statistics_df, duration_stay_df):
                 st.plotly_chart(fig, use_container_width=True)
 
                 # Enhanced duration insights with storytelling
-                longest_stay = regional_data.loc[regional_data['Average duration of stay (in days)'].idxmax()]
-                shortest_stay = regional_data.loc[regional_data['Average duration of stay (in days)'].idxmin()]
-                global_avg = regional_data['Average duration of stay (in days)'].mean()
+                longest_stay = regional_data.loc[regional_data['YEAR_2023'].idxmax()]
+                shortest_stay = regional_data.loc[regional_data['YEAR_2023'].idxmin()]
+                global_avg = regional_data['YEAR_2023'].mean()
 
                 st.markdown("#### ⏰ Journey Duration Stories")
 
@@ -1865,13 +1868,13 @@ def show_visitor_demographics(age_statistics_df, duration_stay_df):
                     <h4 style="color: #4ECDC4; margin-bottom: 1rem;">🌍 The Duration Spectrum</h4>
                     <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
                         <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 10px;">
-                            <strong style="color: #4ECDC4;">🏆 Marathon Explorers:</strong> {longest_stay['Nationality']}<br>
-                            <span style="font-size: 1.1rem; color: #333;">{longest_stay['Average duration of stay (in days)']:.1f} days</span> -
+                            <strong style="color: #4ECDC4;">🏆 Marathon Explorers:</strong> {longest_stay['NATIONALITY_REGION']}<br>
+                            <span style="font-size: 1.1rem; color: #333;">{longest_stay['YEAR_2023']:.1f} days</span> -
                             <span style="color: #666; font-style: italic;">Deep cultural immersion</span>
                         </div>
                         <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 10px;">
-                            <strong style="color: #4ECDC4;">⚡ Sprint Visitors:</strong> {shortest_stay['Nationality']}<br>
-                            <span style="font-size: 1.1rem; color: #333;">{shortest_stay['Average duration of stay (in days)']:.1f} days</span> -
+                            <strong style="color: #4ECDC4;">⚡ Sprint Visitors:</strong> {shortest_stay['NATIONALITY_REGION']}<br>
+                            <span style="font-size: 1.1rem; color: #333;">{shortest_stay['YEAR_2023']:.1f} days</span> -
                             <span style="color: #666; font-style: italic;">Quick taste of India</span>
                         </div>
                         <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 10px; text-align: center;">

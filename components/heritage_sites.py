@@ -31,17 +31,20 @@ def load_heritage_data():
     """Load heritage sites data from CSV files"""
     try:
         # Load heritage sites data
-        heritage_df = pd.read_csv('heritage_sites.csv')
+        heritage_df = pd.read_csv('Datasets/heritage_sites.csv')
 
-        # Load centrally protected monuments data
-        protected_df = pd.read_csv('CENTRALLY_PROTECTED_19-20-21.csv')
+        # Load centrally protected monuments data (if exists)
+        try:
+            protected_df = pd.read_csv('Datasets/Centrally_Protected_Monuments_Domestic_Visits_2019_2024.csv')
+        except:
+            protected_df = pd.DataFrame()
 
         return heritage_df, protected_df
     except Exception as e:
         st.error(f"Error loading heritage data: {e}")
         return pd.DataFrame(), pd.DataFrame()
 
-def show_heritage_section():
+def show_heritage_section(heritage_sites_df=None, unesco_df=None):
     """Display enhanced heritage sites information with real data and creative storytelling"""
     st.markdown('<h2 class="section-header">🏛️ Heritage Sites</h2>', unsafe_allow_html=True)
 
@@ -253,56 +256,56 @@ def show_heritage_slideshow():
         {
             "name": "Taj Mahal",
             "location": "Agra, Uttar Pradesh",
-            "image": "heritage_images/Agra_TAJ_MAHAL.jpg",
+            "image": "Images/heritage_images/Agra_TAJ_MAHAL.jpg",
             "description": "The eternal symbol of love, this ivory-white marble mausoleum stands as a testament to Mughal architectural brilliance and eternal devotion. Built by Shah Jahan for his beloved wife Mumtaz Mahal.",
             "significance": "UNESCO World Heritage Site & New Seven Wonders of the World"
         },
         {
             "name": "Red Fort",
             "location": "Agra, Uttar Pradesh",
-            "image": "heritage_images/Agra_RED_FORT.jpg",
+            "image": "Images/heritage_images/Agra_RED_FORT.jpg",
             "description": "The majestic fortress palace of the Mughal emperors, where India's independence was proclaimed and history was written in red sandstone. A symbol of Mughal power and architectural mastery.",
             "significance": "Symbol of India's sovereignty and Mughal architectural heritage"
         },
         {
             "name": "Gwalior Fort",
             "location": "Madhya Pradesh",
-            "image": "heritage_images/Gwalior_Gwalior_Fort.jpg",
+            "image": "Images/heritage_images/Gwalior_Gwalior_Fort.jpg",
             "description": "The 'Pearl among fortresses in Hind', this hilltop citadel has witnessed the rise and fall of dynasties across a millennium of Indian history. Known for its impregnable defenses and musical heritage.",
             "significance": "One of India's most magnificent forts with rich cultural legacy"
         },
         {
             "name": "Brihadeeswarar Temple",
             "location": "Thanjavur, Tamil Nadu",
-            "image": "heritage_images/Thanjavur_Bragadeeswarar_Temple.jpg",
+            "image": "Images/heritage_images/Thanjavur_Bragadeeswarar_Temple.jpg",
             "description": "A thousand-year-old architectural marvel dedicated to Lord Shiva, showcasing the pinnacle of Chola dynasty's artistic and engineering prowess. The temple's towering vimana is a masterpiece of Dravidian architecture.",
             "significance": "UNESCO World Heritage Site and masterpiece of Dravidian architecture"
         },
         {
             "name": "Shaniwarwada Palace",
             "location": "Pune, Maharashtra",
-            "image": "heritage_images/Pune_City_Shaniwarwada.jpg",
+            "image": "Images/heritage_images/Pune_City_Shaniwarwada.jpg",
             "description": "The historic fortified palace of the Peshwas of the Maratha Empire, representing the zenith of Maratha architecture and political power in the 18th century.",
             "significance": "Symbol of Maratha empire and architectural heritage"
         },
         {
             "name": "Fatehpur Sikri",
             "location": "Agra, Uttar Pradesh",
-            "image": "heritage_images/Agra_FATEHPURI_SIKRI.jpg",
+            "image": "Images/heritage_images/Agra_FATEHPURI_SIKRI.jpg",
             "description": "Emperor Akbar's magnificent capital city, a perfect blend of Hindu and Islamic architectural styles. This ghost city tells the story of Mughal grandeur and religious tolerance.",
             "significance": "UNESCO World Heritage Site and architectural fusion masterpiece"
         },
         {
             "name": "Ujjayanta Palace",
             "location": "Agartala, Tripura",
-            "image": "heritage_images/Agartala_Ujjayanta_Palace.jpg",
+            "image": "Images/heritage_images/Agartala_Ujjayanta_Palace.jpg",
             "description": "The former royal palace of the Kingdom of Tripura, showcasing Indo-Saracenic architecture with beautiful gardens and intricate design elements reflecting royal grandeur.",
             "significance": "Symbol of Tripura's royal heritage and architectural elegance"
         },
         {
             "name": "Akbar's Tomb",
             "location": "Agra, Uttar Pradesh",
-            "image": "heritage_images/Agra_AKBARS_TOMB.jpg",
+            "image": "Images/heritage_images/Agra_AKBARS_TOMB.jpg",
             "description": "The magnificent mausoleum of Emperor Akbar the Great, representing the synthesis of Hindu, Christian, Islamic and Buddhist themes reflecting Akbar's secular philosophy.",
             "significance": "Architectural testament to Akbar's religious tolerance and Mughal grandeur"
         }
@@ -642,7 +645,7 @@ def show_heritage_gallery(heritage_df):
         grouped_sites = {"landscape": [], "square": [], "portrait": [], "placeholder": []}
 
         for _, site in sites_to_show:
-            image_path = f"heritage_images/{site['IMAGE_NAME']}"
+            image_path = f"Images/heritage_images/{site['IMAGE_NAME']}"
             image_info = get_image_info(image_path)  # Use cached function
             if image_info["exists"] and image_info["size"]:
                 category = categorize_by_aspect_ratio(image_info["size"][0], image_info["size"][1])
@@ -682,7 +685,7 @@ def show_heritage_gallery(heritage_df):
                             """, unsafe_allow_html=True)
 
                             # Display image using cached loading
-                            image_path = f"heritage_images/{site['IMAGE_NAME']}"
+                            image_path = f"Images/heritage_images/{site['IMAGE_NAME']}"
                             image = load_and_cache_image(image_path)
                             if image:
                                 st.image(image, use_container_width=True, caption="")

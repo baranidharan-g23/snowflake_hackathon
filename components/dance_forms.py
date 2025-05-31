@@ -37,7 +37,7 @@ def show_dance_section(dance_df):
 
     selected_state = st.selectbox(
         "Select a State to explore its dance traditions:",
-        ["Highlights"] + sorted(list(dance_df['State'].unique())),
+        ["Highlights"] + sorted(list(dance_df['STATE'].unique())),
         key="dance_state_selector"
     )
 
@@ -54,9 +54,9 @@ def show_automatic_dance_slideshow(dance_df):
     # Filter to show only the classical dances including Kathak
     classical_dances = ['Bharatanatyam', 'Kuchipudi', 'Kathakali', 'Odissi', 'Manipuri', 'Mohiniyattam', 'Kathak']
     dances_with_images = dance_df[
-        (dance_df['Downloaded_Dance_Images'].notna()) &
-        (dance_df['Downloaded_Dance_Images'] != 'None') &
-        (dance_df['Folk_Dance'].isin(classical_dances))
+        (dance_df['DOWNLOADED_DANCE_IMAGES'].notna()) &
+        (dance_df['DOWNLOADED_DANCE_IMAGES'] != 'None') &
+        (dance_df['FOLK_DANCE'].isin(classical_dances))
     ].copy()
 
     if dances_with_images.empty:
@@ -79,7 +79,7 @@ def show_automatic_dance_slideshow(dance_df):
 
     with col2:
         # Display image using cached loading
-        img_path = f"dance_photos/{current_dance['Downloaded_Dance_Images']}"
+        img_path = f"Images/dance_photos/{current_dance['DOWNLOADED_DANCE_IMAGES']}"
         img = load_and_cache_dance_image(img_path)
         if img:
             try:
@@ -109,7 +109,7 @@ def show_automatic_dance_slideshow(dance_df):
         st.markdown(f"""
         <div style="text-align: center; padding: 0.5rem; display: flex; align-items: center; justify-content: center; height: 38px;">
             <span style="color: #008080; font-weight: bold; font-size: 1.5rem;">
-                {current_dance['Folk_Dance']}
+                {current_dance['FOLK_DANCE']}
             </span>
         </div>
         """, unsafe_allow_html=True)
@@ -225,7 +225,7 @@ def show_featured_state_dances(dance_df, selected_state):
     """Display featured state dance layout with main dance and descriptions"""
 
     # Get state data - get the first dance with a detailed description
-    state_data = dance_df[dance_df['State'] == selected_state]
+    state_data = dance_df[dance_df['STATE'] == selected_state]
 
     if state_data.empty:
         st.warning(f"No dance data available for {selected_state}")
@@ -237,12 +237,12 @@ def show_featured_state_dances(dance_df, selected_state):
 
     # Special handling for Uttar Pradesh - prioritize Kathak
     if selected_state == "Uttar Pradesh":
-        kathak_dance = state_data[state_data['Folk_Dance'] == 'Kathak']
+        kathak_dance = state_data[state_data['FOLK_DANCE'] == 'Kathak']
         if not kathak_dance.empty:
             main_dance = kathak_dance.iloc[0]
             # Add all other dances to other_dances
             for idx, dance_info in state_data.iterrows():
-                if dance_info['Folk_Dance'] != 'Kathak':
+                if dance_info['FOLK_DANCE'] != 'Kathak':
                     other_dances.append(dance_info)
         else:
             # Fallback if Kathak not found
@@ -251,7 +251,7 @@ def show_featured_state_dances(dance_df, selected_state):
     else:
         # Default logic for other states
         for idx, dance_info in state_data.iterrows():
-            if pd.notna(dance_info['Description']) and len(dance_info['Description']) > 100:
+            if pd.notna(dance_info['DESCRIPTION']) and len(dance_info['DESCRIPTION']) > 100:
                 if main_dance is None:
                     main_dance = dance_info
                 else:
@@ -282,22 +282,22 @@ def show_featured_state_dances(dance_df, selected_state):
         st.markdown(f"""
         <div style="text-align: center; margin-bottom: 1rem;">
             <h3 style="color: black; font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 0.5rem;">
-                {main_dance['Folk_Dance']}
+                {main_dance['FOLK_DANCE']}
             </h3>
             <p style="color: #666; font-style: italic;">Featured Dance of {selected_state}</p>
         </div>
         """, unsafe_allow_html=True)
 
         # Display main dance image using cached loading
-        img_path = f"dance_photos/{main_dance['Downloaded_Dance_Images']}"
-        if pd.notna(main_dance['Downloaded_Dance_Images']):
+        img_path = f"Images/dance_photos/{main_dance['DOWNLOADED_DANCE_IMAGES']}"
+        if pd.notna(main_dance['DOWNLOADED_DANCE_IMAGES']):
             img = load_and_cache_dance_image(img_path)
             if img:
                 try:
                     # Create a copy for thumbnail to avoid modifying cached image
                     img_copy = img.copy()
                     img_copy.thumbnail((400, 350), Image.Resampling.LANCZOS)
-                    st.image(img_copy, caption=main_dance['Folk_Dance'], use_container_width=True)
+                    st.image(img_copy, caption=main_dance['FOLK_DANCE'], use_container_width=True)
                 except Exception as e:
                     st.error(f"Error processing image: {e}")
                     show_dance_placeholder()
@@ -307,11 +307,11 @@ def show_featured_state_dances(dance_df, selected_state):
             show_dance_placeholder()
 
     # Display main dance description if available
-    if pd.notna(main_dance['Description']) and len(main_dance['Description']) > 50:
+    if pd.notna(main_dance['DESCRIPTION']) and len(main_dance['DESCRIPTION']) > 50:
         st.markdown(f"""
         <div class="dance-main-description">
-            <h3>About {main_dance['Folk_Dance']}</h3>
-            <p>{main_dance['Description']}</p>
+            <h3>About {main_dance['FOLK_DANCE']}</h3>
+            <p>{main_dance['DESCRIPTION']}</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -324,7 +324,7 @@ def show_featured_state_dances(dance_df, selected_state):
         for i, dance_info in enumerate(other_dances):
             with cols[i % 2]:
                 # Shorten dance name if too long and add state info
-                dance_name = dance_info['Folk_Dance']
+                dance_name = dance_info['FOLK_DANCE']
                 if len(dance_name) > 15:
                     dance_name = dance_name[:15] + "..."
 
@@ -332,7 +332,7 @@ def show_featured_state_dances(dance_df, selected_state):
                 <div class="dance-description-card">
                     <h4 class="dance-description-title" style="color: #008080;">{dance_name} - {selected_state}</h4>
                     <p class="dance-description-text">
-                        {dance_info['Description'][:150] + '...' if pd.notna(dance_info['Description']) and len(dance_info['Description']) > 150 else dance_info['Description'] if pd.notna(dance_info['Description']) else 'A traditional dance form from ' + selected_state}
+                        {dance_info['DESCRIPTION'][:150] + '...' if pd.notna(dance_info['DESCRIPTION']) and len(dance_info['DESCRIPTION']) > 150 else dance_info['DESCRIPTION'] if pd.notna(dance_info['DESCRIPTION']) else 'A traditional dance form from ' + selected_state}
                     </p>
                 </div>
                 """, unsafe_allow_html=True)

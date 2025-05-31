@@ -63,18 +63,18 @@ def create_india_map(state_tourism_df):
     # Prepare map data with total tourism for 2022+2023
     map_data = []
     for idx, row in state_tourism_df.iterrows():
-        state_name = row['State/UT']
-        total_tourism_2_years = row['2022 TV'] + row['2023 TV']
-        growth = ((row['2023 TV'] - row['2022 TV']) / row['2022 TV']) * 100 if row['2022 TV'] > 0 else 0
+        state_name = row['STATE']
+        total_tourism_2_years = row['YEAR_2022'] + row['YEAR_2023']
+        growth = ((row['YEAR_2023'] - row['YEAR_2022']) / row['YEAR_2022']) * 100 if row['YEAR_2022'] > 0 else 0
 
         map_data.append({
             'State': state_name,
             'State_Mapped': state_name_mapping.get(state_name, state_name),
-            'Tourism_2023': row['2023 TV'],
-            'Tourism_2022': row['2022 TV'],
+            'Tourism_2023': row['YEAR_2023'],
+            'Tourism_2022': row['YEAR_2022'],
             'Total_Tourism_2Years': total_tourism_2_years,
             'Growth': growth,
-            'Region': row['Region']
+            'Region': row['REGION']
         })
 
     if map_data:
@@ -262,8 +262,8 @@ def create_enhanced_tourism_chart(ita_df):
     # Main trend line - minimalist style
     fig.add_trace(
         go.Scatter(
-            x=ita_df['Year'],
-            y=ita_df['India Arrivals (million)'],
+            x=ita_df['YEAR'],
+            y=ita_df['INDIA_ARRIVALS_MILLION'],
             mode='lines+markers',
             name='Tourist Arrivals',
             line=dict(color='#008080', width=2),
@@ -275,7 +275,7 @@ def create_enhanced_tourism_chart(ita_df):
 
     # Add COVID impact annotation - minimalist style
     fig.add_annotation(
-        x=2020, y=ita_df[ita_df['Year'] == 2020]['India Arrivals (million)'].iloc[0],
+        x=2020, y=ita_df[ita_df['YEAR'] == 2020]['INDIA_ARRIVALS_MILLION'].iloc[0],
         text="COVID-19",
         showarrow=True,
         arrowhead=1,
@@ -289,13 +289,13 @@ def create_enhanced_tourism_chart(ita_df):
 
     # Growth rate chart - minimalist colors
     ita_df_growth = ita_df.copy()
-    ita_df_growth['Growth Rate'] = ita_df_growth['India Arrivals (million)'].pct_change() * 100
+    ita_df_growth['Growth Rate'] = ita_df_growth['INDIA_ARRIVALS_MILLION'].pct_change() * 100
 
     colors = ['#008080' if x > 0 else '#999' for x in ita_df_growth['Growth Rate'].fillna(0)]
 
     fig.add_trace(
         go.Bar(
-            x=ita_df_growth['Year'][1:],
+            x=ita_df_growth['YEAR'][1:],
             y=ita_df_growth['Growth Rate'][1:],
             name='Growth Rate',
             marker_color=colors[1:],
@@ -306,9 +306,9 @@ def create_enhanced_tourism_chart(ita_df):
 
     # Decade comparison - minimalist colors
     decades = {
-        '2001-2010': ita_df[(ita_df['Year'] >= 2001) & (ita_df['Year'] <= 2010)]['India Arrivals (million)'].mean(),
-        '2011-2020': ita_df[(ita_df['Year'] >= 2011) & (ita_df['Year'] <= 2020)]['India Arrivals (million)'].mean(),
-        '2021-2023': ita_df[(ita_df['Year'] >= 2021) & (ita_df['Year'] <= 2023)]['India Arrivals (million)'].mean()
+        '2001-2010': ita_df[(ita_df['YEAR'] >= 2001) & (ita_df['YEAR'] <= 2010)]['INDIA_ARRIVALS_MILLION'].mean(),
+        '2011-2020': ita_df[(ita_df['YEAR'] >= 2011) & (ita_df['YEAR'] <= 2020)]['INDIA_ARRIVALS_MILLION'].mean(),
+        '2021-2023': ita_df[(ita_df['YEAR'] >= 2021) & (ita_df['YEAR'] <= 2023)]['INDIA_ARRIVALS_MILLION'].mean()
     }
 
     fig.add_trace(
@@ -374,8 +374,8 @@ def create_tourism_growth_trend_chart(ita_df):
     # Main trend line - minimalist style
     fig.add_trace(
         go.Scatter(
-            x=ita_df['Year'],
-            y=ita_df['India Arrivals (million)'],
+            x=ita_df['YEAR'],
+            y=ita_df['INDIA_ARRIVALS_MILLION'],
             mode='lines+markers',
             name='Tourist Arrivals',
             line=dict(color='#008080', width=2),
@@ -386,7 +386,7 @@ def create_tourism_growth_trend_chart(ita_df):
 
     # Add COVID impact annotation - minimalist style
     fig.add_annotation(
-        x=2020, y=ita_df[ita_df['Year'] == 2020]['India Arrivals (million)'].iloc[0],
+        x=2020, y=ita_df[ita_df['YEAR'] == 2020]['INDIA_ARRIVALS_MILLION'].iloc[0],
         text="COVID-19",
         showarrow=True,
         arrowhead=1,
@@ -441,13 +441,13 @@ def create_year_over_year_growth_chart(ita_df):
 
     # Growth rate chart - minimalist colors
     ita_df_growth = ita_df.copy()
-    ita_df_growth['Growth Rate'] = ita_df_growth['India Arrivals (million)'].pct_change() * 100
+    ita_df_growth['Growth Rate'] = ita_df_growth['INDIA_ARRIVALS_MILLION'].pct_change() * 100
 
     colors = ['#008080' if x > 0 else '#999' for x in ita_df_growth['Growth Rate'].fillna(0)]
 
     fig.add_trace(
         go.Bar(
-            x=ita_df_growth['Year'][1:],
+            x=ita_df_growth['YEAR'][1:],
             y=ita_df_growth['Growth Rate'][1:],
             name='Growth Rate',
             marker_color=colors[1:],
@@ -499,9 +499,9 @@ def create_decade_comparison_chart(ita_df):
 
     # Decade comparison - minimalist colors
     decades = {
-        '2001-2010': ita_df[(ita_df['Year'] >= 2001) & (ita_df['Year'] <= 2010)]['India Arrivals (million)'].mean(),
-        '2011-2020': ita_df[(ita_df['Year'] >= 2011) & (ita_df['Year'] <= 2020)]['India Arrivals (million)'].mean(),
-        '2021-2023': ita_df[(ita_df['Year'] >= 2021) & (ita_df['Year'] <= 2023)]['India Arrivals (million)'].mean()
+        '2001-2010': ita_df[(ita_df['YEAR'] >= 2001) & (ita_df['YEAR'] <= 2010)]['INDIA_ARRIVALS_MILLION'].mean(),
+        '2011-2020': ita_df[(ita_df['YEAR'] >= 2011) & (ita_df['YEAR'] <= 2020)]['INDIA_ARRIVALS_MILLION'].mean(),
+        '2021-2023': ita_df[(ita_df['YEAR'] >= 2021) & (ita_df['YEAR'] <= 2023)]['INDIA_ARRIVALS_MILLION'].mean()
     }
 
     fig.add_trace(
@@ -559,8 +559,8 @@ def create_gdp_contribution_chart(tourism_gdp_df):
     # Add direct contribution line
     fig.add_trace(
         go.Scatter(
-            x=tourism_gdp_df['Year'],
-            y=tourism_gdp_df['Direct Contribution to GDP (%)'],
+            x=tourism_gdp_df['YEAR'],
+            y=tourism_gdp_df['DIRECT_CONTRIBUTION_GDP_PERCENT'],
             mode='lines+markers',
             name='Direct Contribution',
             line=dict(color='#008080', width=3),
@@ -573,8 +573,8 @@ def create_gdp_contribution_chart(tourism_gdp_df):
     # Add total contribution line
     fig.add_trace(
         go.Scatter(
-            x=tourism_gdp_df['Year'],
-            y=tourism_gdp_df['Total Contribution to GDP (%)'],
+            x=tourism_gdp_df['YEAR'],
+            y=tourism_gdp_df['TOTAL_CONTRIBUTION_GDP_PERCENT'],
             mode='lines+markers',
             name='Total Contribution (Direct + Indirect)',
             line=dict(color='#20B2AA', width=3),
@@ -587,7 +587,7 @@ def create_gdp_contribution_chart(tourism_gdp_df):
     # Add COVID impact annotation
     fig.add_annotation(
         x='2020-21',
-        y=tourism_gdp_df[tourism_gdp_df['Year'] == '2020-21']['Direct Contribution to GDP (%)'].iloc[0],
+        y=tourism_gdp_df[tourism_gdp_df['YEAR'] == '2020-21']['DIRECT_CONTRIBUTION_GDP_PERCENT'].iloc[0],
         text="COVID-19 Impact",
         showarrow=True,
         arrowhead=2,
@@ -626,8 +626,8 @@ def create_employment_trends_chart(tourism_employment_df):
     # Add direct employment
     fig.add_trace(
         go.Scatter(
-            x=tourism_employment_df['Year'],
-            y=tourism_employment_df['Tourism Characteristic Industries (Million)'],
+            x=tourism_employment_df['YEAR'],
+            y=tourism_employment_df['TOURISM_CHARACTERISTIC_INDUSTRIES_MILLION'],
             mode='lines+markers',
             name='Direct Tourism Jobs',
             line=dict(color='#FF6B35', width=3),
@@ -640,8 +640,8 @@ def create_employment_trends_chart(tourism_employment_df):
     # Add total employment
     fig.add_trace(
         go.Scatter(
-            x=tourism_employment_df['Year'],
-            y=tourism_employment_df['Direct and Indirect Tourism Employment (Million)'],
+            x=tourism_employment_df['YEAR'],
+            y=tourism_employment_df['DIRECT_INDIRECT_EMPLOYMENT_MILLION'],
             mode='lines+markers',
             name='Total Tourism Employment',
             line=dict(color='#F18F01', width=3),
@@ -654,8 +654,8 @@ def create_employment_trends_chart(tourism_employment_df):
     # Add employment share percentage as secondary y-axis
     fig.add_trace(
         go.Scatter(
-            x=tourism_employment_df['Year'],
-            y=tourism_employment_df['Direct and Indirect Share of Tourism (%)'],
+            x=tourism_employment_df['YEAR'],
+            y=tourism_employment_df['DIRECT_INDIRECT_SHARE_PERCENT'],
             mode='lines+markers',
             name='Employment Share (%)',
             line=dict(color='#A23B72', width=2, dash='dash'),

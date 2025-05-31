@@ -1,189 +1,244 @@
 import streamlit as st
 import pandas as pd
+import os
+import glob
 
 @st.cache_data
 def load_festivals_data():
     """Load festivals data"""
     try:
-        return pd.read_csv('Festivals.csv')
+        return pd.read_csv('Datasets/Festivals.csv')
     except FileNotFoundError:
-        st.error("Festivals.csv file not found!")
+        st.error("Datasets/Festivals.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
 def load_dance_data():
     """Load dance forms data"""
     try:
-        return pd.read_csv('dance_final.csv')
+        return pd.read_csv('Datasets/dance.csv')
     except FileNotFoundError:
-        st.error("dance_final.csv file not found!")
+        st.error("Datasets/dance.csv file not found!")
+        return pd.DataFrame()
+
+@st.cache_data
+def load_heritage_sites_data():
+    """Load heritage sites data"""
+    try:
+        return pd.read_csv('Datasets/heritage_sites.csv')
+    except FileNotFoundError:
+        st.error("Datasets/heritage_sites.csv file not found!")
+        return pd.DataFrame()
+
+@st.cache_data
+def load_unesco_data():
+    """Load UNESCO World Heritage Sites data"""
+    try:
+        return pd.read_csv('Datasets/Unesco.csv')
+    except FileNotFoundError:
+        st.error("Datasets/Unesco.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
 def load_ita_data():
     """Load International Tourist Arrivals data"""
     try:
-        return pd.read_csv('ITA_YEARLY.csv')
+        return pd.read_csv('Datasets/ITA_YEARLY.csv')
     except FileNotFoundError:
-        st.error("ITAs(1-23).csv file not found!")
+        st.error("Datasets/ITA_YEARLY.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
 def load_ita_monthly_data():
     """Load monthly ITA data"""
     try:
-        return pd.read_csv('ITA_MONTHLY.csv')
+        return pd.read_csv('Datasets/ITA_MONTHLY.csv')
     except FileNotFoundError:
-        st.error("ITAs(21-23)_Month_wise.csv file not found!")
+        st.error("Datasets/ITA_MONTHLY.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
 def load_state_tourism_data():
     """Load state-wise tourism data"""
     try:
-        return pd.read_csv('State_wise_tourist_2022_2023.csv')
-    except FileNotFoundError:
-        st.error("State_wise_tourist_2022_2023.csv file not found!")
+        # Try both possible files
+        for filename in ['State_Wise_Domestic_Tourist_Arrivals_2017_2023.csv',
+                        'State_Wise_Domestic_Total_Arrivals_2017_2023.csv.csv']:
+            filepath = f'Datasets/{filename}'
+            if os.path.exists(filepath):
+                return pd.read_csv(filepath)
+        st.error("State tourism data files not found!")
+        return pd.DataFrame()
+    except Exception as e:
+        st.error(f"Error loading state tourism data: {e}")
         return pd.DataFrame()
 
 @st.cache_data
-def load_centrally_protected_data():
-    """Load centrally protected monuments data"""
+def load_state_foreign_tourism_data():
+    """Load state-wise foreign tourist arrivals data"""
     try:
-        return pd.read_csv('CENTRALLY_PROTECTED_19-20-21.csv')
+        return pd.read_csv('Datasets/State_Wise_Foreign_Tourist_Arrivals_2017_2023.csv.csv')
     except FileNotFoundError:
-        st.error("CENTRALLY_PROTECTED_19-20-21.csv file not found!")
+        st.error("Datasets/State_Wise_Foreign_Tourist_Arrivals_2017_2023.csv.csv file not found!")
+        return pd.DataFrame()
+
+@st.cache_data
+def load_centrally_protected_domestic_data():
+    """Load centrally protected monuments domestic visits data"""
+    try:
+        return pd.read_csv('Datasets/Centrally_Protected_Monuments_Domestic_Visits_2019_2024.csv')
+    except FileNotFoundError:
+        st.error("Datasets/Centrally_Protected_Monuments_Domestic_Visits_2019_2024.csv file not found!")
+        return pd.DataFrame()
+
+@st.cache_data
+def load_centrally_protected_foreign_data():
+    """Load centrally protected monuments foreign visits data"""
+    try:
+        return pd.read_csv('Datasets/Centrally_Protected_Monuments_Foreign_Visits_2019_2024.csv.csv')
+    except FileNotFoundError:
+        st.error("Datasets/Centrally_Protected_Monuments_Foreign_Visits_2019_2024.csv.csv file not found!")
+        return pd.DataFrame()
+
+@st.cache_data
+def load_top_monuments_domestic_data():
+    """Load top 10 monuments domestic visits data"""
+    try:
+        return pd.read_csv('Datasets/Top_10_Monuments_Domestic_Visits_2019_2024.csv')
+    except FileNotFoundError:
+        st.error("Datasets/Top_10_Monuments_Domestic_Visits_2019_2024.csv file not found!")
+        return pd.DataFrame()
+
+@st.cache_data
+def load_top_monuments_foreign_data():
+    """Load top 10 monuments foreign visits data"""
+    try:
+        return pd.read_csv('Datasets/Top_10_Monuments_Foreign_Visits_2019_2024.csv')
+    except FileNotFoundError:
+        st.error("Datasets/Top_10_Monuments_Foreign_Visits_2019_2024.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
 def load_duration_stay_data():
     """Load tourist duration stay data"""
     try:
-        # Load CSV without headers and assign proper column names
-        df = pd.read_csv('DURATION_STAY_2017.csv', header=None)
-        df.columns = ['Region', 'Nationality', 'Average duration of stay (in days)']
-        return df
+        return pd.read_csv('Datasets/Stay_Duration_2017_2023.csv')
     except FileNotFoundError:
-        st.error("DURATION_STAY_2017.csv file not found!")
+        st.error("Datasets/Stay_Duration_2017_2023.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
 def load_fee_earnings_data():
     """Load foreign exchange earnings data"""
     try:
-        # Try different encodings
-        for encoding in ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']:
-            try:
-                return pd.read_csv('FEE_EARNINGS91-2020.csv', encoding=encoding)
-            except UnicodeDecodeError:
-                continue
-        # If all encodings fail, return empty DataFrame
-        st.warning("Could not read fee earnings data due to encoding issues")
-        return pd.DataFrame()
+        return pd.read_csv('Datasets/FEE_EARNINGS_2011-2023.csv')
     except FileNotFoundError:
-        st.error("FEE_EARNINGS91-2020.csv file not found!")
+        st.error("Datasets/FEE_EARNINGS_2011-2023.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
 def load_india_world_share_data():
     """Load India's world tourism share data"""
     try:
-        # Try different encodings
-        for encoding in ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']:
-            try:
-                return pd.read_csv('INDIA_SHARE_ON_WOLRD01-21.csv', encoding=encoding)
-            except UnicodeDecodeError:
-                continue
-        # If all encodings fail, return empty DataFrame
-        st.warning("Could not read India world share data due to encoding issues")
-        return pd.DataFrame()
+        return pd.read_csv('Datasets/India_Share_World_2001_2021.csv')
     except FileNotFoundError:
-        st.error("INDIA_SHARE_ON_WOLRD01-21.csv file not found!")
+        st.error("Datasets/India_Share_World_2001_2021.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
 def load_lean_peak_data():
-    """Load lean and peak month data"""
+    """Load lean and peak month data - combines all years"""
     try:
-        return pd.read_csv('LEAN_PEAK_MONTH_FTA_2017.csv')
-    except FileNotFoundError:
-        st.error("LEAN_PEAK_MONTH_FTA_2017.csv file not found!")
-        return pd.DataFrame()
+        # Load all lean peak month files
+        lean_peak_files = glob.glob('Datasets/Lean_Peak_Months/*.csv')
+        if not lean_peak_files:
+            st.error("No lean peak month files found!")
+            return pd.DataFrame()
 
-@st.cache_data
-def load_monthly_foreigners_data():
-    """Load monthly foreigners arrival data"""
-    try:
-        return pd.read_csv('MONTHLY_FOREIGNERS_ARRIVAL23-24.csv')
-    except FileNotFoundError:
-        st.error("MONTHLY_FOREIGNERS_ARRIVAL23-24.csv file not found!")
-        return pd.DataFrame()
+        all_data = []
+        for file in lean_peak_files:
+            year = os.path.basename(file).split('_')[0]
+            df = pd.read_csv(file)
+            df['YEAR'] = year
+            all_data.append(df)
 
-@st.cache_data
-def load_state_footfall_data():
-    """Load state-wise footfall data"""
-    try:
-        return pd.read_csv('STATE_WISE_FOOTFALL20_22.csv')
-    except FileNotFoundError:
-        st.error("STATE_WISE_FOOTFALL20_22.csv file not found!")
-        return pd.DataFrame()
-
-@st.cache_data
-def load_top_monuments_data():
-    """Load top 10 monuments data"""
-    try:
-        return pd.read_csv('TOP_10_MONUMENTS.csv')
-    except FileNotFoundError:
-        st.error("TOP_10_MONUMENTS.csv file not found!")
+        return pd.concat(all_data, ignore_index=True)
+    except Exception as e:
+        st.error(f"Error loading lean peak data: {e}")
         return pd.DataFrame()
 
 @st.cache_data
 def load_age_statistics_data():
     """Load age-wise tourism statistics data"""
     try:
-        return pd.read_csv('India-Tourism-Statistics-age-2001-2020.csv')
+        return pd.read_csv('Datasets/India-Tourism-Statistics-age-2001-2020.csv')
     except FileNotFoundError:
-        st.error("India-Tourism-Statistics-age-2001-2020.csv file not found!")
+        st.error("Datasets/India-Tourism-Statistics-age-2001-2020.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
 def load_tourism_gdp_data():
     """Load tourism GDP contribution data"""
     try:
-        return pd.read_csv('Tourism_Share_GDP_GVP.csv')
+        return pd.read_csv('Datasets/Tourism_Share_GDP.csv')
     except FileNotFoundError:
-        st.error("Tourism_Share_GDP_GVP.csv file not found!")
+        st.error("Datasets/Tourism_Share_GDP.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
 def load_tourism_employment_data():
     """Load tourism employment data"""
     try:
-        return pd.read_csv('Tourism_Employment.csv')
+        return pd.read_csv('Datasets/Tourism_Employment.csv')
     except FileNotFoundError:
-        st.error("Tourism_Employment.csv file not found!")
+        st.error("Datasets/Tourism_Employment.csv file not found!")
         return pd.DataFrame()
 
 def clear_dance_cache():
     """Clear the cache for dance data"""
     load_dance_data.clear()
 
+def clear_all_cache():
+    """Clear all cached data"""
+    load_festivals_data.clear()
+    load_dance_data.clear()
+    load_heritage_sites_data.clear()
+    load_unesco_data.clear()
+    load_ita_data.clear()
+    load_ita_monthly_data.clear()
+    load_state_tourism_data.clear()
+    load_state_foreign_tourism_data.clear()
+    load_centrally_protected_domestic_data.clear()
+    load_centrally_protected_foreign_data.clear()
+    load_top_monuments_domestic_data.clear()
+    load_top_monuments_foreign_data.clear()
+    load_duration_stay_data.clear()
+    load_fee_earnings_data.clear()
+    load_india_world_share_data.clear()
+    load_lean_peak_data.clear()
+    load_age_statistics_data.clear()
+    load_tourism_gdp_data.clear()
+    load_tourism_employment_data.clear()
+
 def load_all_data():
     """Load all data and return as a dictionary"""
     return {
         'festivals_df': load_festivals_data(),
         'dance_df': load_dance_data(),
+        'heritage_sites_df': load_heritage_sites_data(),
+        'unesco_df': load_unesco_data(),
         'ita_df': load_ita_data(),
         'ita_monthly_df': load_ita_monthly_data(),
         'state_tourism_df': load_state_tourism_data(),
-        'centrally_protected_df': load_centrally_protected_data(),
+        'state_foreign_tourism_df': load_state_foreign_tourism_data(),
+        'centrally_protected_domestic_df': load_centrally_protected_domestic_data(),
+        'centrally_protected_foreign_df': load_centrally_protected_foreign_data(),
+        'top_monuments_domestic_df': load_top_monuments_domestic_data(),
+        'top_monuments_foreign_df': load_top_monuments_foreign_data(),
         'duration_stay_df': load_duration_stay_data(),
         'fee_earnings_df': load_fee_earnings_data(),
         'india_world_share_df': load_india_world_share_data(),
         'lean_peak_df': load_lean_peak_data(),
-        'monthly_foreigners_df': load_monthly_foreigners_data(),
-        'state_footfall_df': load_state_footfall_data(),
-        'top_monuments_df': load_top_monuments_data(),
         'age_statistics_df': load_age_statistics_data(),
         'tourism_gdp_df': load_tourism_gdp_data(),
         'tourism_employment_df': load_tourism_employment_data()

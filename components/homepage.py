@@ -26,7 +26,7 @@ def show_homepage(festivals_df, ita_df, state_tourism_df, tourism_gdp_df=None, t
     with col5:
         # Tourism GDP contribution
         if tourism_gdp_df is not None and not tourism_gdp_df.empty:
-            latest_gdp_contribution = tourism_gdp_df['Direct Contribution to GDP (%)'].iloc[-1]
+            latest_gdp_contribution = tourism_gdp_df['DIRECT_CONTRIBUTION_GDP_PERCENT'].iloc[-1]
             st.markdown(f"""
             <div class="metric-card">
                 <div class="metric-icon">💰</div>
@@ -46,7 +46,7 @@ def show_homepage(festivals_df, ita_df, state_tourism_df, tourism_gdp_df=None, t
     with col6:
         # Tourism employment
         if tourism_employment_df is not None and not tourism_employment_df.empty:
-            latest_employment = tourism_employment_df['Tourism Characteristic Industries (Million)'].iloc[-1]
+            latest_employment = tourism_employment_df['TOURISM_CHARACTERISTIC_INDUSTRIES_MILLION'].iloc[-1]
             st.markdown(f"""
             <div class="metric-card">
                 <div class="metric-icon">👥</div>
@@ -66,7 +66,7 @@ def show_homepage(festivals_df, ita_df, state_tourism_df, tourism_gdp_df=None, t
     with col7:
         # Total tourism employment (direct + indirect)
         if tourism_employment_df is not None and not tourism_employment_df.empty:
-            total_employment = tourism_employment_df['Direct and Indirect Tourism Employment (Million)'].iloc[-1]
+            total_employment = tourism_employment_df['DIRECT_INDIRECT_EMPLOYMENT_MILLION'].iloc[-1]
             st.markdown(f"""
             <div class="metric-card">
                 <div class="metric-icon">🏢</div>
@@ -86,7 +86,7 @@ def show_homepage(festivals_df, ita_df, state_tourism_df, tourism_gdp_df=None, t
     with col8:
         # Tourism's share in total employment
         if tourism_employment_df is not None and not tourism_employment_df.empty:
-            employment_share = tourism_employment_df['Direct and Indirect Share of Tourism (%)'].iloc[-1]
+            employment_share = tourism_employment_df['DIRECT_INDIRECT_SHARE_PERCENT'].iloc[-1]
             st.markdown(f"""
             <div class="metric-card">
                 <div class="metric-icon">📊</div>
@@ -187,19 +187,19 @@ def show_festival_highlights(festivals_df):
 
     # Filter festivals to show only the specified ones
     if not festivals_df.empty:
-        highlight_festivals = festivals_df[festivals_df['Festival Name'].isin(target_festivals)]
+        highlight_festivals = festivals_df[festivals_df['FESTIVAL_NAME'].isin(target_festivals)]
         # If not found, try case-insensitive matching
         if highlight_festivals.empty:
-            highlight_festivals = festivals_df[festivals_df['Festival Name'].str.lower().isin([f.lower() for f in target_festivals])]
+            highlight_festivals = festivals_df[festivals_df['FESTIVAL_NAME'].str.lower().isin([f.lower() for f in target_festivals])]
         # If still empty, create fallback data
         if highlight_festivals.empty:
             fallback_data = []
             for festival in target_festivals:
                 fallback_data.append({
-                    'Festival Name': festival,
-                    'State': 'All India',
-                    'Month/Season': 'Various',
-                    'Description': f'{festival} is one of the most celebrated festivals in India, bringing joy and unity across the nation.'
+                    'FESTIVAL_NAME': festival,
+                    'STATE': 'All India',
+                    'MONTH_SEASON': 'Various',
+                    'DESCRIPTION': f'{festival} is one of the most celebrated festivals in India, bringing joy and unity across the nation.'
                 })
             highlight_festivals = pd.DataFrame(fallback_data)
     else:
@@ -207,10 +207,10 @@ def show_festival_highlights(festivals_df):
         fallback_data = []
         for festival in target_festivals:
             fallback_data.append({
-                'Festival Name': festival,
-                'State': 'All India',
-                'Month/Season': 'Various',
-                'Description': f'{festival} is one of the most celebrated festivals in India, bringing joy and unity across the nation.'
+                'FESTIVAL_NAME': festival,
+                'STATE': 'All India',
+                'MONTH_SEASON': 'Various',
+                'DESCRIPTION': f'{festival} is one of the most celebrated festivals in India, bringing joy and unity across the nation.'
             })
         highlight_festivals = pd.DataFrame(fallback_data)
 
@@ -223,16 +223,16 @@ def show_festival_highlights(festivals_df):
 
         with cols[col_idx]:
             # Create enhanced festival card
-            festival_name = festival_data['Festival Name'].replace(' ', '_').lower()
+            festival_name = festival_data['FESTIVAL_NAME'].replace(' ', '_').lower()
             possible_images = [
-                f"Festivals_images/{festival_name}-national.jpg",
-                f"Festivals_images/{festival_name}-national.jpeg",
-                f"Festivals_images/{festival_name}.jpg",
-                f"Festivals_images/{festival_name}.jpeg",
-                f"Festivals_images/{festival_data['Festival Name']}.jpg",
-                f"Festivals_images/{festival_data['Festival Name']}.jpeg",
-                f"Festivals_images/{festival_data['Festival Name'].replace(' ', '_')}.jpg",
-                f"Festivals_images/{festival_data['Festival Name'].replace(' ', '_')}.jpeg"
+                f"Images/Festivals_images/{festival_name}-national.jpg",
+                f"Images/Festivals_images/{festival_name}-national.jpeg",
+                f"Images/Festivals_images/{festival_name}.jpg",
+                f"Images/Festivals_images/{festival_name}.jpeg",
+                f"Images/Festivals_images/{festival_data['FESTIVAL_NAME']}.jpg",
+                f"Images/Festivals_images/{festival_data['FESTIVAL_NAME']}.jpeg",
+                f"Images/Festivals_images/{festival_data['FESTIVAL_NAME'].replace(' ', '_')}.jpg",
+                f"Images/Festivals_images/{festival_data['FESTIVAL_NAME'].replace(' ', '_')}.jpeg"
             ]
 
             image_found = False
@@ -254,7 +254,7 @@ def show_festival_highlights(festivals_df):
                         img.save(buffered, format="JPEG")
                         img_str = base64.b64encode(buffered.getvalue()).decode()
 
-                        image_html = f'<img src="data:image/jpeg;base64,{img_str}" class="festival-card-image" alt="{festival_data["Festival Name"]}">'
+                        image_html = f'<img src="data:image/jpeg;base64,{img_str}" class="festival-card-image" alt="{festival_data["FESTIVAL_NAME"]}">'
                         image_found = True
                         break
                     except:
@@ -279,19 +279,19 @@ def show_festival_highlights(festivals_df):
                     </div>
                 </div>
                 <div class="festival-card-content">
-                    <h4 class="festival-card-title">{festival_data['Festival Name']}</h4>
+                    <h4 class="festival-card-title">{festival_data['FESTIVAL_NAME']}</h4>
                     <div class="festival-card-details">
                         <div class="festival-detail-item">
                             <span class="detail-icon">📍</span>
-                            <span class="detail-text">{festival_data['State']}</span>
+                            <span class="detail-text">{festival_data['STATE']}</span>
                         </div>
                         <div class="festival-detail-item">
                             <span class="detail-icon">📅</span>
-                            <span class="detail-text">{festival_data['Month/Season']}</span>
+                            <span class="detail-text">{festival_data['MONTH_SEASON']}</span>
                         </div>
                     </div>
                     <p class="festival-card-description">
-                        {festival_data['Description'][:120]}...
+                        {festival_data['DESCRIPTION'][:120]}...
                     </p>
                 </div>
             </div>
@@ -307,7 +307,7 @@ def show_heritage_highlights():
             "type": "Mausoleum",
             "description": "Ivory-white marble mausoleum, symbol of eternal love.",
             "icon": "🕌",
-            "image_path": "heritage_images/Agra_TAJ_MAHAL.jpg"
+            "image_path": "Images/heritage_images/Agra_TAJ_MAHAL.jpg"
         },
         {
             "name": "Red Fort",
@@ -315,7 +315,7 @@ def show_heritage_highlights():
             "type": "Fort Complex",
             "description": "Historic Mughal palace showcasing Indo-Islamic architecture.",
             "icon": "🏰",
-            "image_path": "heritage_images/Agra_RED_FORT.jpg"
+            "image_path": "Images/heritage_images/Agra_RED_FORT.jpg"
         },
         {
             "name": "Thanjavur Temple",
@@ -323,7 +323,7 @@ def show_heritage_highlights():
             "type": "Temple Complex",
             "description": "Magnificent Chola architecture and ancient Tamil temple art.",
             "icon": "🛕",
-            "image_path": "heritage_images/tamil-nadu_thanjavur_brihadeeswarar_temple.jpg"
+            "image_path": "Images/heritage_images/Thanjavur_Bragadeeswarar_Temple.jpg"
         }
     ]
 
@@ -403,7 +403,7 @@ def show_dance_highlights():
             "style": "Classical",
             "description": "Ancient classical dance expressing devotion through movements.",
             "icon": "💃",
-            "image_path": "dance_photos/tamil_nadu_bharatanatyam.jpg"
+            "image_path": "Images/dance_photos/tamil_nadu_bharatanatyam.jpg"
         },
         {
             "name": "Kathakali",
@@ -411,7 +411,7 @@ def show_dance_highlights():
             "style": "Classical",
             "description": "Dramatic dance-drama with elaborate costumes and storytelling.",
             "icon": "🎭",
-            "image_path": "dance_photos/kerala_kathakali.jpg"
+            "image_path": "Images/dance_photos/kerala_kathakali.jpg"
         },
         {
             "name": "Odissi",
@@ -419,7 +419,7 @@ def show_dance_highlights():
             "style": "Classical",
             "description": "Sculptural dance inspired by temple carvings and fluid movements.",
             "icon": "🌊",
-            "image_path": "dance_photos/odisha_odissi.jpg"
+            "image_path": "Images/dance_photos/odisha_odissi.jpg"
         }
     ]
 
