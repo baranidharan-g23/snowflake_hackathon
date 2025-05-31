@@ -99,7 +99,7 @@ def show_heritage_heartbeat(unesco_df, top_monuments_domestic_df, top_monuments_
                 ]
                 if not domestic_match.empty:
                     unesco_with_visitors.loc[
-                        unesco_with_visitors['Site'] == unesco_site, 'Domestic_Visitors_Millions'
+                        unesco_with_visitors['SITE'] == unesco_site, 'Domestic_Visitors_Millions'
                     ] = domestic_match['DOMESTIC_TOTAL_VISITS_MILLIONS'].iloc[0]
 
         if not top_monuments_foreign_df.empty:
@@ -109,13 +109,13 @@ def show_heritage_heartbeat(unesco_df, top_monuments_domestic_df, top_monuments_
                 ]
                 if not foreign_match.empty:
                     unesco_with_visitors.loc[
-                        unesco_with_visitors['Site'] == unesco_site, 'Foreign_Visitors_Lakhs'
+                        unesco_with_visitors['SITE'] == unesco_site, 'Foreign_Visitors_Lakhs'
                     ] = foreign_match['FOREIGN_TOTAL_VISITS_LAKHS'].iloc[0]
 
         # Fill NaN values from centrally protected monuments data
         if not centrally_protected_domestic_df.empty and not centrally_protected_foreign_df.empty:
             for idx, site in unesco_with_visitors.iterrows():
-                site_name = site['Site']
+                site_name = site['SITE']
 
                 # Check if domestic visitors is NaN and try to get from centrally protected data
                 if pd.isna(site.get('Domestic_Visitors_Millions')):
@@ -326,12 +326,12 @@ def display_unesco_heritage_card(site):
     # Site information
     domestic_visitors = site.get('Domestic_Visitors_Millions', 'N/A')
     foreign_visitors = site.get('Foreign_Visitors_Lakhs', 'N/A')
-    year = site.get('Year', 'N/A')
-    location = site.get('Location', 'N/A')
-    site_name = site['Site']
+    year = site.get('YEAR', 'N/A')
+    location = site.get('LOCATION', 'N/A')
+    site_name = site['SITE']
 
     # Load UNESCO site image
-    image_path = f"Images/unesco_india_images/{site.get('Image_Name', 'default.jpg')}"
+    image_path = f"Images/unesco_india_images/{site.get('DOWNLOADED_DANCE_IMAGES', 'default.jpg')}"
 
     # Create the card with festival-style design
     st.markdown(f"""
@@ -389,7 +389,7 @@ def display_unesco_heritage_card(site):
                 </div>
             </div>
             <div style="color: #333; line-height: 1.6; font-family: 'Poppins', sans-serif; font-size: 0.85rem;">
-                {site.get('Description', 'A magnificent UNESCO World Heritage Site showcasing India\'s rich cultural heritage.')[:120]}...
+                {site.get('DESCRIPTION', 'A magnificent UNESCO World Heritage Site showcasing India\'s rich cultural heritage.')[:120]}...
             </div>
         </div>
     </div>
