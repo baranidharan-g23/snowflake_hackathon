@@ -46,7 +46,7 @@ def show_art_forms(festivals_df, dance_df, heritage_sites_df, unesco_df):
         show_dance_section(dance_df)
 
     with tab3:
-        show_heritage_section()
+        show_heritage_section(heritage_sites_df, unesco_df)
 
 def main():
     # Clear cache button for development

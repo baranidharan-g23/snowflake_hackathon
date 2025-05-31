@@ -577,6 +577,30 @@ def apply_custom_css():
     </style>
     """, unsafe_allow_html=True)
 
+def apply_heritage_chapter_background():
+    """Apply heritage-specific background styling for Chapter 1"""
+    st.markdown("""
+    <style>
+        /* Heritage Chapter Specific Background */
+        .stApp {
+            background: linear-gradient(135deg, #F5DEB3 0%, #F8E6C8 50%, #FDF5E6 100%) !important;
+            background-attachment: fixed;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
+def apply_economic_chapter_background():
+    """Apply economic-specific background styling for Chapter 2"""
+    st.markdown("""
+    <style>
+        /* Economic Chapter Specific Background */
+        .stApp {
+            background: linear-gradient(135deg, #B8E6B8 0%, #C8EBC8 50%, #D8F0D8 100%) !important;
+            background-attachment: fixed;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
 def apply_dance_styles():
     """Apply dance-specific CSS styling"""
     st.markdown("""
