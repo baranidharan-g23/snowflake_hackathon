@@ -1,4 +1,4 @@
-Year,"World Tourism Receipts - (US$ billion)",World Tourism - Growth Rate,"World Tourism Receipts - FEE in India, (US$ billion)",Growth Rate,Percentage Share of India in world,India's Rank in world
+YEAR,WORLD_RECEIPTS_BILLION,WORLD_GROWTH_RATE,INDIA_FEE_BILLION,INDIA_GROWTH_RATE,INDIA_WORLD_SHARE_PERCENT,INDIA_WORLD_RANK
 2001,463.8,-2.4,3.2,-7.8,0.69,36th
 2002,481.9,3.9,3.1,-2.8,0.64,37th
 2003,529.3,9.8,4.5,43.9,0.84,37th
@@ -19,4 +19,6 @@ Year,"World Tourism Receipts - (US$ billion)",World Tourism - Growth Rate,"World
 2018,1439,6.7,28.6,4.7,1.99,13th
 2019,1483,3.1,30.1,5.1,2.02,13th
 2020,546,-63.3,6.9,-76.9,1.27,12th
-2021,602,10.3,8.7,26.4,1.46,NA
+2021,602,10.3,8.7,26.4,1.46,22nd
+2022,1126,76.5,21.4,146.0,1.6,15th
+2023,1507,33.8,32.2,50.5,2.1,13th
