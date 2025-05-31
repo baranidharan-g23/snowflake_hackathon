@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import os
 from PIL import Image
-import random
 
 @st.cache_data
 def load_and_cache_image(image_path):
@@ -33,18 +32,15 @@ def load_heritage_data():
         # Load heritage sites data
         heritage_df = pd.read_csv('Datasets/heritage_sites.csv')
 
-        # Load centrally protected monuments data (if exists)
-        try:
-            protected_df = pd.read_csv('Datasets/Centrally_Protected_Monuments_Domestic_Visits_2019_2024.csv')
-        except:
-            protected_df = pd.DataFrame()
+        # Load centrally protected monuments data
+        protected_df = pd.read_csv('Datasets/Top_10_Monuments_Foreign_Visits_2019_2024.csv')
 
         return heritage_df, protected_df
     except Exception as e:
         st.error(f"Error loading heritage data: {e}")
         return pd.DataFrame(), pd.DataFrame()
 
-def show_heritage_section(heritage_sites_df=None, unesco_df=None):
+def show_heritage_section():
     """Display enhanced heritage sites information with real data and creative storytelling"""
     st.markdown('<h2 class="section-header">🏛️ Heritage Sites</h2>', unsafe_allow_html=True)
 
@@ -73,125 +69,77 @@ def show_heritage_section(heritage_sites_df=None, unesco_df=None):
     </div>
     """, unsafe_allow_html=True)
 
-    # Comprehensive Heritage Statistics with Storytelling
-    if not heritage_df.empty:
-        # Calculate comprehensive statistics
-        total_sites = len(heritage_df)
-        unique_states = heritage_df['STATE_NAME'].nunique()
-        unique_cities = heritage_df['CITY_NAME'].nunique()
-        heritage_types = heritage_df['HERITAGE_TYPE'].value_counts()
+    # Calculate comprehensive statistics
+    total_sites = len(heritage_df)
+    unique_states = heritage_df['STATE_NAME'].nunique()
+    unique_cities = heritage_df['CITY_NAME'].nunique()
+    heritage_types = heritage_df['HERITAGE_TYPE'].value_counts()
 
-        # Calculate additional insights
-        temple_count = len(heritage_df[heritage_df['HERITAGE_TYPE'].str.contains('Temple|temple', case=False, na=False)])
-        monument_count = len(heritage_df[heritage_df['HERITAGE_TYPE'].str.contains('Monument|monument', case=False, na=False)])
-        palace_count = len(heritage_df[heritage_df['HERITAGE_TYPE'].str.contains('Palace|palace', case=False, na=False)])
+    # Calculate additional insights
+    temple_count = len(heritage_df[heritage_df['HERITAGE_TYPE'].str.contains('Temple|temple', case=False, na=False)])
+    monument_count = len(heritage_df[heritage_df['HERITAGE_TYPE'].str.contains('Monument|monument', case=False, na=False)])
+    palace_count = len(heritage_df[heritage_df['HERITAGE_TYPE'].str.contains('Palace|palace', case=False, na=False)])
 
-        # Top states by heritage count
-        top_states = heritage_df['STATE_NAME'].value_counts().head(3)
+    # Top states by heritage count
+    top_states = heritage_df['STATE_NAME'].value_counts().head(3)
 
-        col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3, col4 = st.columns(4)
 
-        with col1:
-            st.markdown(f"""
-            <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-                        padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
-                        margin-bottom: 1rem; text-align: center; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
-                        border: 2px solid #20B2AA; transition: transform 0.3s ease;">
-                <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
-                           font-family: 'Poppins', sans-serif;">🏛️ Heritage Treasures</h5>
-                <p style="margin: 0; line-height: 1.6; font-size: 2.5rem; color: #008080;
-                          font-weight: bold; font-family: 'Poppins', sans-serif;">{total_sites}</p>
-                <p style="margin: 0; color: #333; font-size: 1rem; font-weight: 500;">Documented Sites</p>
-            </div>
-            """, unsafe_allow_html=True)
+    with col1:
+        st.markdown(f"""
+        <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+                    padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
+                    margin-bottom: 1rem; text-align: center; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
+                    border: 2px solid #20B2AA; transition: transform 0.3s ease;">
+            <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
+                        font-family: 'Poppins', sans-serif;">🏛️ Heritage Treasures</h5>
+            <p style="margin: 0; line-height: 1.6; font-size: 2.5rem; color: #008080;
+                        font-weight: bold; font-family: 'Poppins', sans-serif;">{total_sites}</p>
+            <p style="margin: 0; color: #333; font-size: 1rem; font-weight: 500;">Documented Sites</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-        with col2:
-            st.markdown(f"""
-            <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-                        padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
-                        margin-bottom: 1rem; text-align: center; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
-                        border: 2px solid #20B2AA; transition: transform 0.3s ease;">
-                <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
-                           font-family: 'Poppins', sans-serif;">🗺️ Cultural Regions</h5>
-                <p style="margin: 0; line-height: 1.6; font-size: 2.5rem; color: #008080;
-                          font-weight: bold; font-family: 'Poppins', sans-serif;">{unique_states}</p>
-                <p style="margin: 0; color: #333; font-size: 1rem; font-weight: 500;">States & Territories</p>
-            </div>
-            """, unsafe_allow_html=True)
+    with col2:
+        st.markdown(f"""
+        <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+                    padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
+                    margin-bottom: 1rem; text-align: center; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
+                    border: 2px solid #20B2AA; transition: transform 0.3s ease;">
+            <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
+                        font-family: 'Poppins', sans-serif;">🗺️ Cultural Regions</h5>
+            <p style="margin: 0; line-height: 1.6; font-size: 2.5rem; color: #008080;
+                        font-weight: bold; font-family: 'Poppins', sans-serif;">{unique_states}</p>
+            <p style="margin: 0; color: #333; font-size: 1rem; font-weight: 500;">States & Territories</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-        with col3:
-            st.markdown(f"""
-            <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-                        padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
-                        margin-bottom: 1rem; text-align: center; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
-                        border: 2px solid #20B2AA; transition: transform 0.3s ease;">
-                <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
-                           font-family: 'Poppins', sans-serif;">🏙️ Heritage Cities</h5>
-                <p style="margin: 0; line-height: 1.6; font-size: 2.5rem; color: #008080;
-                          font-weight: bold; font-family: 'Poppins', sans-serif;">{unique_cities}</p>
-                <p style="margin: 0; color: #333; font-size: 1rem; font-weight: 500;">Historic Centers</p>
-            </div>
-            """, unsafe_allow_html=True)
+    with col3:
+        st.markdown(f"""
+        <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+                    padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
+                    margin-bottom: 1rem; text-align: center; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
+                    border: 2px solid #20B2AA; transition: transform 0.3s ease;">
+            <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
+                        font-family: 'Poppins', sans-serif;">🏙️ Heritage Cities</h5>
+            <p style="margin: 0; line-height: 1.6; font-size: 2.5rem; color: #008080;
+                        font-weight: bold; font-family: 'Poppins', sans-serif;">{unique_cities}</p>
+            <p style="margin: 0; color: #333; font-size: 1rem; font-weight: 500;">Historic Centers</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-        with col4:
-            st.markdown(f"""
-            <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-                        padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
-                        margin-bottom: 1rem; text-align: center; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
-                        border: 2px solid #20B2AA; transition: transform 0.3s ease;">
-                <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
-                           font-family: 'Poppins', sans-serif;">🕉️ Sacred Temples</h5>
-                <p style="margin: 0; line-height: 1.6; font-size: 2.5rem; color: #008080;
-                          font-weight: bold; font-family: 'Poppins', sans-serif;">{temple_count}</p>
-                <p style="margin: 0; color: #333; font-size: 1rem; font-weight: 500;">Divine Architecture</p>
-            </div>
-            """, unsafe_allow_html=True)
-    else:
-        # Fallback statistics if data loading fails
-        col1, col2, col3 = st.columns(3)
-
-        with col1:
-            st.markdown("""
-            <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-                        padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
-                        margin-bottom: 1rem; text-align: center; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
-                        border: 2px solid #20B2AA; transition: transform 0.3s ease;">
-                <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
-                           font-family: 'Poppins', sans-serif;">🏰 Cultural Sites</h5>
-                <p style="margin: 0; line-height: 1.6; font-size: 2.5rem; color: #008080;
-                          font-weight: bold; font-family: 'Poppins', sans-serif;">32+</p>
-                <p style="margin: 0; color: #333; font-size: 1rem; font-weight: 500;">UNESCO Sites</p>
-            </div>
-            """, unsafe_allow_html=True)
-
-        with col2:
-            st.markdown("""
-            <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-                        padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
-                        margin-bottom: 1rem; text-align: center; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
-                        border: 2px solid #20B2AA; transition: transform 0.3s ease;">
-                <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
-                           font-family: 'Poppins', sans-serif;">🌿 Natural Sites</h5>
-                <p style="margin: 0; line-height: 1.6; font-size: 2.5rem; color: #008080;
-                          font-weight: bold; font-family: 'Poppins', sans-serif;">7+</p>
-                <p style="margin: 0; color: #333; font-size: 1rem; font-weight: 500;">UNESCO Sites</p>
-            </div>
-            """, unsafe_allow_html=True)
-
-        with col3:
-            st.markdown("""
-            <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-                        padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
-                        margin-bottom: 1rem; text-align: center; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
-                        border: 2px solid #20B2AA; transition: transform 0.3s ease;">
-                <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
-                           font-family: 'Poppins', sans-serif;">🏛️ Mixed Sites</h5>
-                <p style="margin: 0; line-height: 1.6; font-size: 2.5rem; color: #008080;
-                          font-weight: bold; font-family: 'Poppins', sans-serif;">1+</p>
-                <p style="margin: 0; color: #333; font-size: 1rem; font-weight: 500;">UNESCO Sites</p>
-            </div>
-            """, unsafe_allow_html=True)
-
+    with col4:
+        st.markdown(f"""
+        <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+                    padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
+                    margin-bottom: 1rem; text-align: center; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
+                    border: 2px solid #20B2AA; transition: transform 0.3s ease;">
+            <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
+                        font-family: 'Poppins', sans-serif;">🕉️ Sacred Temples</h5>
+            <p style="margin: 0; line-height: 1.6; font-size: 2.5rem; color: #008080;
+                        font-weight: bold; font-family: 'Poppins', sans-serif;">{temple_count}</p>
+            <p style="margin: 0; color: #333; font-size: 1rem; font-weight: 500;">Divine Architecture</p>
+        </div>
+        """, unsafe_allow_html=True)
     # Interactive Heritage Slideshow
     show_heritage_slideshow()
 
@@ -205,8 +153,6 @@ def show_heritage_section(heritage_sites_df=None, unesco_df=None):
     # Dynamic Heritage Gallery
     if not heritage_df.empty:
         show_heritage_gallery(heritage_df)
-
-
 
     # Enhanced Heritage preservation message
     st.markdown("""
@@ -515,14 +461,14 @@ def display_heritage_site_card(site):
     """, unsafe_allow_html=True)
 
 def show_heritage_gallery(heritage_df):
-    """Display a dynamic gallery of heritage sites from CSV data with enhanced storytelling"""
+    """Display a Pinterest-style gallery of heritage sites from CSV data"""
     if heritage_df.empty:
         return
 
     st.markdown("""
     <h3 style="color: white; text-align: center; margin: 3rem 0 2rem 0; font-family: 'Playfair Display', serif;
                font-size: 2.5rem; text-shadow: 3px 3px 6px rgba(0,0,0,0.5); font-weight: 700;">
-        🎨 Interactive Heritage Gallery
+        🎨 Heritage Gallery - Pinterest Style
     </h3>
     """, unsafe_allow_html=True)
 
@@ -534,13 +480,25 @@ def show_heritage_gallery(heritage_df):
                 text-align: center; border-left: 6px solid #008080;">
         <p style="color: #333; font-size: 1.2rem; line-height: 1.6; margin: 0;
                   font-family: 'Poppins', sans-serif; font-weight: 500;">
-            🔍 Explore India's documented heritage treasures through our interactive gallery.
+            🔍 Explore India's documented heritage treasures through our Pinterest-style gallery.
             Filter by region, heritage type, or city to discover the architectural marvels that define our cultural landscape.
         </p>
     </div>
     """, unsafe_allow_html=True)
 
-    # Filter options
+    # Filter options in a more compact layout
+    st.markdown("""
+    <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+                padding: 1.5rem; border-radius: 15px; margin: 1.5rem 0;
+                box-shadow: 0 8px 25px rgba(0,128,128,0.15); border: 2px solid #20B2AA;
+                border-left: 6px solid #008080;">
+        <h4 style="color: #008080; margin-bottom: 1rem; font-family: 'Playfair Display', serif;
+                   font-size: 1.3rem; font-weight: 700; text-align: center;">
+            🔍 Filter Heritage Sites
+        </h4>
+    </div>
+    """, unsafe_allow_html=True)
+
     col1, col2, col3 = st.columns(3)
 
     with col1:
@@ -578,6 +536,12 @@ def show_heritage_gallery(heritage_df):
     if selected_city != "All Cities":
         filtered_df = filtered_df[filtered_df['CITY_NAME'] == selected_city]
 
+    # Reset pagination when filters change
+    current_filter_key = f"{selected_state}_{selected_type}_{selected_city}"
+    if 'last_heritage_filter' not in st.session_state or st.session_state.last_heritage_filter != current_filter_key:
+        st.session_state.heritage_sites_shown = 20  # Reset to initial page size
+        st.session_state.last_heritage_filter = current_filter_key
+
     # Display filtered results
     if not filtered_df.empty:
         # Results summary with properly sized white box
@@ -596,131 +560,329 @@ def show_heritage_gallery(heritage_df):
         </div>
         """, unsafe_allow_html=True)
 
-        # Create a compact gallery layout without gaps
-        total_sites = len(filtered_df)
-        sites_list = list(filtered_df.iterrows())
-
-        # Display all sites at once
-        sites_to_show = sites_list
-
-        # Add custom CSS for better styling
+        # Enhanced Pinterest-style CSS for better responsive design
         st.markdown("""
         <style>
-        .heritage-card-container {
-            margin-bottom: 0 !important;
+        /* Pinterest-style masonry layout */
+        .pinterest-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+            margin: 20px 0;
+            padding: 0 10px;
         }
 
-        .heritage-card-container > div {
-            margin-bottom: 0 !important;
+        /* Responsive breakpoints */
+        @media (max-width: 1400px) {
+            .pinterest-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
         }
 
-        /* Remove default Streamlit spacing */
+        @media (max-width: 1200px) {
+            .pinterest-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pinterest-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-gap: 12px;
+                padding: 0 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pinterest-container {
+                grid-template-columns: 1fr;
+                grid-gap: 10px;
+                padding: 0;
+            }
+        }
+
+        /* Pinterest card styling */
+        .pinterest-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,128,128,0.15);
+            border: 2px solid #20B2AA;
+            transition: all 0.1s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .pinterest-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,128,128,0.3);
+            border-color: #008080;
+        }
+
+        .pinterest-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .pinterest-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .pinterest-card-content {
+            padding: 15px;
+            background: white;
+        }
+
+        .pinterest-card-title {
+            color: #008080;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .pinterest-card-location {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+        }
+
+        .pinterest-card-type {
+            background: linear-gradient(135deg, #008080, #20B2AA);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            font-family: 'Poppins', sans-serif;
+            text-transform: capitalize;
+            box-shadow: 0 2px 8px rgba(0,128,128,0.3);
+        }
+
+        .pinterest-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #008080, #20B2AA);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            position: relative;
+        }
+
+        .pinterest-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Streamlit column adjustments for Pinterest layout */
+        .stColumn > div {
+            padding: 0 !important;
+        }
+
+        /* Remove default Streamlit margins */
         .element-container {
             margin-bottom: 0 !important;
-        }
-
-        /* Ensure consistent column heights */
-        .stColumn > div {
-            height: 100%;
         }
         </style>
         """, unsafe_allow_html=True)
 
-        # Group images by dimensions for better layout (now using cached function)
+        # Create Pinterest-style gallery using Streamlit columns for better performance
+        total_sites = len(filtered_df)
 
-        def categorize_by_aspect_ratio(width, height):
-            """Categorize images by aspect ratio"""
-            if width is None or height is None:
-                return "placeholder"
+        # Add pagination for better performance with large datasets
+        sites_per_page = 20  # Limit initial load for better performance
 
-            aspect_ratio = width / height
-            if aspect_ratio > 1.5:
-                return "landscape"  # Wide images
-            elif aspect_ratio < 0.75:
-                return "portrait"   # Tall images
+        # Add a "Load More" functionality
+        if 'heritage_sites_shown' not in st.session_state:
+            st.session_state.heritage_sites_shown = sites_per_page
+
+        sites_to_show = min(st.session_state.heritage_sites_shown, total_sites)
+        display_df = filtered_df.head(sites_to_show)
+
+        # Display Pinterest-style gallery using Streamlit's native components
+        # This approach is more efficient than base64 encoding all images
+
+        # Create a container for the Pinterest layout
+        st.markdown('<div class="pinterest-container">', unsafe_allow_html=True)
+
+        # Use Streamlit columns to create a masonry-like effect
+        # Responsive column count based on screen size
+        # Note: Streamlit doesn't have built-in responsive detection, so we use a reasonable default
+        num_columns = 4  # Default for desktop
+        cols = st.columns(num_columns, gap="small")
+
+        # Distribute sites across columns for masonry effect
+        for idx, (_, site) in enumerate(display_df.iterrows()):
+            col_idx = idx % num_columns
+
+            with cols[col_idx]:
+                # Create Pinterest-style card
+                with st.container():
+                    # Custom CSS for this specific card
+                    st.markdown(f"""
+                    <div class="pinterest-card" style="
+                        break-inside: avoid;
+                        margin-bottom: 20px;
+                        background: white;
+                        border-radius: 15px;
+                        overflow: hidden;
+                        box-shadow: 0 8px 25px rgba(0,128,128,0.15);
+                        border: 2px solid #20B2AA;
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    ">
+                    """, unsafe_allow_html=True)
+
+                    # Display image
+                    image_path = f"Images/heritage_images/{site['IMAGE_NAME']}"
+                    image = load_and_cache_image(image_path)
+
+                    if image:
+                        st.image(image, use_container_width=True, caption="")
+                    else:
+                        st.markdown(f"""
+                        <div style="
+                            width: 100%;
+                            height: 200px;
+                            background: linear-gradient(135deg, #008080, #20B2AA);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: white;
+                            font-size: 1.2rem;
+                            font-family: 'Poppins', sans-serif;
+                            text-align: center;
+                        ">
+                            🏛️<br>{site["HERITAGE_NAME"][:20]}...
+                        </div>
+                        """, unsafe_allow_html=True)
+
+                    # Card content
+                    st.markdown(f"""
+                    <div style="padding: 5px;">
+                        <div style="
+                            background: linear-gradient(135deg, #004d4d);
+                            color: white;
+                            padding: 4px 10px;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                            font-weight: 600;
+                            margin-bottom: 10px;
+                            font-family: 'Poppins', sans-serif;
+                            line-height: 1.3;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+                        ">{site["HERITAGE_NAME"]}<br>
+                        <div style="
+                            background: white;
+                            color: black;
+                            padding: 4px 12px;
+                            border-radius: 8px;
+                            font-size: 0.8rem;
+                            margin-top:10px;
+                            margin-bottom: 10px;
+                            font-family: 'Poppins', sans-serif;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                        ">📍 {site["CITY_NAME"]}, {site["STATE_NAME"]}</div>
+                        <div style="
+                            background: white;
+                            color: black;
+                            padding: 4px 12px;
+                            margin-bottom:8px;
+                            border-radius: 8px;
+                            font-size: 0.8rem;
+                            display: inline-block;
+                            font-family: 'Poppins', sans-serif;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                        ">{site["HERITAGE_TYPE"]}</div></div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+                    st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown('</div>', unsafe_allow_html=True)
+
+        # Status text and Load More button on same line
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            # Create a container with both text and button on same line
+            if sites_to_show < total_sites:
+                col_text, col_button = st.columns([2, 1])
+                with col_text:
+                    st.markdown(f"""
+                    <div style="text-align: center; padding: 0.5rem;">
+                        <span style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.1rem;
+                                   text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-weight: 600;">
+                            📊 Showing {sites_to_show} of {total_sites} heritage sites
+                        </span>
+                    </div>
+                    """, unsafe_allow_html=True)
+                with col_button:
+                    # Add custom CSS for button styling
+                    st.markdown("""
+                    <style>
+                    div.stButton > button[key="load_more_heritage"] {
+                        background: linear-gradient(135deg, #008080, #20B2AA) !important;
+                        color: white !important;
+                        border: none !important;
+                        border-radius: 25px !important;
+                        padding: 0.5rem 1rem !important;
+                        font-weight: 600 !important;
+                        font-family: 'Poppins', sans-serif !important;
+                        box-shadow: 0 4px 12px rgba(0,128,128,0.3) !important;
+                        transition: all 0.3s ease !important;
+                    }
+                    div.stButton > button[key="load_more_heritage"]:hover {
+                        background: linear-gradient(135deg, #20B2AA, #008080) !important;
+                        transform: translateY(-2px) !important;
+                        box-shadow: 0 6px 16px rgba(0,128,128,0.4) !important;
+                    }
+                    </style>
+                    """, unsafe_allow_html=True)
+
+                    if st.button(f"🔄 Load 20 More",
+                               key="load_more_heritage",
+                               help="Load more heritage sites"):
+                        st.session_state.heritage_sites_shown += sites_per_page
+                        st.rerun()
             else:
-                return "square"     # Square-ish images
-
-        # Group sites by image dimensions
-        grouped_sites = {"landscape": [], "square": [], "portrait": [], "placeholder": []}
-
-        for _, site in sites_to_show:
-            image_path = f"Images/heritage_images/{site['IMAGE_NAME']}"
-            image_info = get_image_info(image_path)  # Use cached function
-            if image_info["exists"] and image_info["size"]:
-                category = categorize_by_aspect_ratio(image_info["size"][0], image_info["size"][1])
-            else:
-                category = "placeholder"
-            grouped_sites[category].append((_, site))
-
-        # Display groups in order: landscape, square, portrait, placeholder
-        for group_name in ["landscape", "square", "portrait", "placeholder"]:
-            group_sites = grouped_sites[group_name]
-            if not group_sites:
-                continue
-
-            # Determine columns per row based on image type
-            if group_name == "landscape":
-                cols_per_row = 2  # Fewer columns for wide images
-            elif group_name == "portrait":
-                cols_per_row = 4  # More columns for tall images
-            else:
-                cols_per_row = 3  # Standard for square and placeholder
-
-            # Display sites in this group
-            for i in range(0, len(group_sites), cols_per_row):
-                cols = st.columns(cols_per_row, gap="small")
-
-                for j in range(cols_per_row):
-                    if i + j < len(group_sites):
-                        _, site = group_sites[i + j]
-
-                        with cols[j]:
-                            # Create a styled container for each heritage site
-                            st.markdown(f"""
-                            <div style="background: white; backdrop-filter: blur(10px);
-                                        border-radius: 15px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
-                                        border: 2px solid #20B2AA; margin-bottom: 1rem; height: 100%;
-                                        transition: transform 0.3s ease;">
-                            """, unsafe_allow_html=True)
-
-                            # Display image using cached loading
-                            image_path = f"Images/heritage_images/{site['IMAGE_NAME']}"
-                            image = load_and_cache_image(image_path)
-                            if image:
-                                st.image(image, use_container_width=True, caption="")
-                            else:
-                                st.markdown("""
-                                <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #008080, #20B2AA);
-                                            display: flex; align-items: center; justify-content: center; color: white;
-                                            font-size: 1rem; font-family: 'Poppins', sans-serif;">
-                                    🏛️<br>Image Coming Soon
-                                </div>
-                                """, unsafe_allow_html=True)
-
-                            # Display content
-                            st.markdown(f"""
-                            <div style="padding: 1.5rem;">
-                                <div style="color: white; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;
-                                            font-family: 'Playfair Display', serif; line-height: 1.3;">
-                                    {site['HERITAGE_NAME']}
-                                </div>
-                                <div style="color: white; font-size: 0.9rem; margin-bottom: 0.8rem;
-                                            font-family: 'Poppins', sans-serif;">
-                                    📍 {site['CITY_NAME']}, {site['STATE_NAME']}
-                                </div>
-                                <div style="background: linear-gradient(135deg, #008080, #20B2AA); color: white;
-                                            padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;
-                                            font-weight: 600; display: inline-block; font-family: 'Poppins', sans-serif;">
-                                    {site['HERITAGE_TYPE']}
-                                </div>
-                            </div>
-                            """, unsafe_allow_html=True)
-
-                            st.markdown("</div>", unsafe_allow_html=True)
-
-        # Display summary
-        st.success(f"Displaying all {total_sites} heritage sites")
+                st.markdown(f"""
+                        <div style="background: linear-gradient(135deg, #008080, #20B2AA); 
+                            color: white; 
+                            padding: 0.5rem 0.5rem; border-radius: 15px; 
+                            text-align: center; 
+                            font-size: 1.2rem;
+                            font-family: 'Poppins', sans-serif;
+                            font-weight: 600;
+                            margin: 1rem 0;">
+                            ✨ Displaying all {total_sites} heritage sites
+                        </div>
+                        """, unsafe_allow_html=True)
     else:
         st.markdown("""
         <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);

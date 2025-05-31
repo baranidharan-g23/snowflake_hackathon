@@ -251,26 +251,97 @@ def show_festivals_section(festivals_df):
     if selected_month != "All Months":
         filtered_df = filtered_df[filtered_df['MONTH_SEASON'].str.contains(selected_month, case=False, na=False)]
 
+    # Pagination logic for "All States" and "All Months" selection
+    festivals_per_page = 10
+    show_pagination = (selected_state == "All States" and selected_month == "All Months")
+
+    # Reset pagination when filters change
+    current_filter_key = f"{selected_state}_{selected_month}"
+    if 'last_festival_filter' not in st.session_state or st.session_state.last_festival_filter != current_filter_key:
+        st.session_state.current_page = 0  # Reset to first page
+        st.session_state.last_festival_filter = current_filter_key
+
+    # Initialize session state for festivals pagination
+    if 'current_page' not in st.session_state:
+        st.session_state.current_page = 0
+
+    # Apply pagination if showing all festivals
+    total_festivals = len(filtered_df)
+    if show_pagination and total_festivals > festivals_per_page:
+        start_idx = st.session_state.current_page * festivals_per_page
+        end_idx = start_idx + festivals_per_page
+        display_df = filtered_df.iloc[start_idx:end_idx]
+        festivals_displayed = len(display_df)
+        current_page_num = st.session_state.current_page + 1
+        total_pages = (total_festivals + festivals_per_page - 1) // festivals_per_page
+    else:
+        display_df = filtered_df
+        festivals_displayed = total_festivals
+        current_page_num = 1
+        total_pages = 1
+
     # Count festivals with images
-    festivals_with_images = sum(1 for _, festival in filtered_df.iterrows()
+    festivals_with_images = sum(1 for _, festival in display_df.iterrows()
                                if festival['FESTIVAL_NAME'] in FESTIVAL_IMAGE_MAPPING)
 
     # Display count with beautiful styling
+    if show_pagination and total_festivals > festivals_per_page:
+        count_text = f"🎭 Page {current_page_num} of {total_pages} - Showing {festivals_displayed} Amazing Festivals"
+    else:
+        count_text = f"🎭 Discovered {festivals_displayed} Amazing Festivals"
+
     st.markdown(f"""
     <div style="text-align: center; margin: 2rem 0; padding: 1.5rem;
                 background: linear-gradient(135deg, #008080, #20B2AA);
                 border-radius: 15px; color: white; font-weight: bold;
                 font-family: 'Poppins', sans-serif; font-size: 1.1rem;
                 box-shadow: 0 5px 15px rgba(0,128,128,0.3);">
-        🎭 Discovered {len(filtered_df)} Amazing Festivals
+        {count_text}
         <br><small style="opacity: 0.9;">📸 {festivals_with_images} festivals with beautiful images!</small>
     </div>
     """, unsafe_allow_html=True)
 
     # Display festivals in beautiful cards
-    if not filtered_df.empty:
-        for _, festival in filtered_df.iterrows():
+    if not display_df.empty:
+        for _, festival in display_df.iterrows():
             display_festival_card(festival)
+
+        # Add pagination navigation
+        if show_pagination and total_pages > 1:
+            # Create a vertically centered container for pagination
+            st.markdown("""
+            <div style="display: flex; justify-content: center; align-items: center;
+                        min-height: 120px; margin: 3rem 0;">
+            """, unsafe_allow_html=True)
+
+            # Center the navigation
+            _, center_col, _ = st.columns([1, 2, 1])
+
+            with center_col:
+                # Show current page info
+                st.markdown(f"""
+                <div style="text-align: center; margin-bottom: 1rem; color: #008080; font-weight: bold;">
+                    📄 Page {current_page_num} of {total_pages}
+                </div>
+                """, unsafe_allow_html=True)
+
+                # Navigation buttons
+                nav_col1, nav_col2 = st.columns(2)
+
+                with nav_col1:
+                    if current_page_num > 1:
+                        if st.button("⬅️ Previous", key="prev_festivals", use_container_width=True):
+                            st.session_state.current_page -= 1
+                            st.rerun()
+
+                with nav_col2:
+                    if current_page_num < total_pages:
+                        if st.button("Next ➡️", key="next_festivals", use_container_width=True):
+                            st.session_state.current_page += 1
+                            st.rerun()
+
+            st.markdown("</div>", unsafe_allow_html=True)
+
     else:
         st.markdown("""
         <div style="text-align: center; margin: 3rem 0; padding: 2rem;

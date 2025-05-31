@@ -108,7 +108,7 @@ def show_automatic_dance_slideshow(dance_df):
     with nav_col3:
         st.markdown(f"""
         <div style="text-align: center; padding: 0.5rem; display: flex; align-items: center; justify-content: center; height: 38px;">
-            <span style="color: #008080; font-weight: bold; font-size: 1.5rem;">
+            <span style="color: white; font-weight: bold; font-size: 1.5rem;">
                 {current_dance['FOLK_DANCE']}
             </span>
         </div>
