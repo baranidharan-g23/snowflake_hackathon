@@ -603,7 +603,7 @@ def show_economic_multiplier(tourism_gdp_df, tourism_employment_df, fee_earnings
                 <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">76+ Million Jobs</p>
             </div>
             <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; backdrop-filter: blur(10px);">
-                <h4 style="margin: 0 0 0.5rem 0; color: #87CEEB;">🌍 Global Rank</h4>
+                <h4 style="margin: 0 0 0.5rem 0; color: cyan;">🌍 Global Rank</h4>
                 <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">13th Position Worldwide</p>
             </div>
         </div>

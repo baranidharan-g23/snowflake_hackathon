@@ -73,7 +73,7 @@ def show_heritage_heartbeat(unesco_df, top_monuments_domestic_df, top_monuments_
     """, unsafe_allow_html=True)
 
     # Interactive UNESCO Sites Showcase
-    if not unesco_df.empty:
+    if not unesco_df.empty and 'SITE' in unesco_df.columns:
         # Create UNESCO sites with visitor data integration
         unesco_with_visitors = unesco_df.copy()
 
@@ -177,6 +177,16 @@ def show_heritage_heartbeat(unesco_df, top_monuments_domestic_df, top_monuments_
                     with cols[col_idx]:
                         # Create festival-style card for UNESCO site
                         display_unesco_heritage_card(site)
+    else:
+        # Fallback message if UNESCO data is not available
+        st.markdown("""
+        <div style="background: rgba(139,69,19,0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0; text-align: center;">
+            <h3 style="color: #8B4513; margin-bottom: 1rem;">📚 UNESCO Heritage Sites</h3>
+            <p style="color: #666; font-size: 1.1rem;">
+                UNESCO data is currently being loaded. Please check back shortly to explore India's magnificent World Heritage Sites.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
 
     # Interactive Monument Comparison - Single Page Layout
     if not top_monuments_domestic_df.empty and not top_monuments_foreign_df.empty:
@@ -304,7 +314,7 @@ def show_heritage_heartbeat(unesco_df, top_monuments_domestic_df, top_monuments_
                     <p style="margin: 0; font-size: 1rem; opacity: 0.9; line-height: 1.5;">₹1.92 multiplier effect supporting millions of livelihoods</p>
                 </div>
                 <div style="background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
-                    <h3 style="margin: 0 0 1rem 0; color: #87CEEB; font-size: 1.5rem;">🎓 Living Classrooms</h3>
+                    <h3 style="margin: 0 0 1rem 0; color: cyan; font-size: 1.5rem;">🎓 Living Classrooms</h3>
                     <p style="margin: 0; font-size: 1rem; opacity: 0.9; line-height: 1.5;">Educational experiences connecting past with present</p>
                 </div>
             </div>

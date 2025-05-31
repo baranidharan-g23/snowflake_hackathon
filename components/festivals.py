@@ -143,14 +143,14 @@ def show_monthly_festival_chart(festivals_df):
         'Festival Count': list(monthly_counts.values())
     })
 
-    # Create a beautiful bar chart with better gradient colors
+    # Create a beautiful bar chart with neon orange colors
     fig = px.bar(
         chart_data,
         x='Month',
         y='Festival Count',
         title="📊 Festival Calendar - Monthly Distribution",
         color='Festival Count',
-        color_continuous_scale=['#FF6B6B', '#FFEAA7'],
+        color_continuous_scale=["#8D2207", "#FF0000", "#FF6200", "#E19909", "#FFE600"],
         text='Festival Count'
     )
 
@@ -178,7 +178,7 @@ def show_monthly_festival_chart(festivals_df):
         textfont=dict(size=12, color='#008080'),
         marker=dict(
             line=dict(color='#008080', width=2),
-            opacity=0.8
+            opacity=1.0
         )
     )
 
@@ -190,10 +190,10 @@ def show_monthly_festival_chart(festivals_df):
     max_count = monthly_counts[max_month]
 
     st.markdown(f"""
-    <div style="background: linear-gradient(135deg, #FF6B6B, #FECDC4);
+    <div style="background: linear-gradient(135deg, #FF6600);
                 padding: 1rem; border-radius: 15px; margin: 1rem 0;
                 text-align: center; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
-        <strong>🎉 Peak Festival Season: {max_month} with {max_count} festivals!</strong>
+        <strong>🎉 Peak Festival Season: April & August with {max_count} festivals!</strong>
     </div>
     """, unsafe_allow_html=True)
 
@@ -212,7 +212,7 @@ def show_festivals_section(festivals_df):
     st.markdown("""
     <div style="margin: 3rem 0 2rem 0;">
         <hr style="border: none; height: 3px;
-                   background: linear-gradient(90deg, white, #FF6B6B);
+                   background: linear-gradient(90deg, white, #FF3300, #FF6600);
                    border-radius: 2px; margin: 2rem 0;">
         <div style="text-align: center; margin: 1rem 0;">
         </div>

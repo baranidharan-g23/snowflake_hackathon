@@ -657,7 +657,7 @@ def show_travelers_journey(ita_df, ita_monthly_df, stay_duration_df, age_statist
                 <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">25-44 age group dominates</p>
             </div>
             <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; backdrop-filter: blur(10px);">
-                <h4 style="margin: 0 0 0.5rem 0; color: #87CEEB;">⏰ Stay Patterns</h4>
+                <h4 style="margin: 0 0 0.5rem 0; color: cyan;">⏰ Stay Patterns</h4>
                 <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Diverse duration preferences</p>
             </div>
         </div>
