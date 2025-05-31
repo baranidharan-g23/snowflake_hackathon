@@ -141,9 +141,7 @@ def main():
         show_regional_tapestry(
             state_total_df,
             state_domestic_df,
-            state_foreign_df,
-            data['dance_df'],
-            data['festivals_df']
+            state_foreign_df
         )
 
 if __name__ == "__main__":
