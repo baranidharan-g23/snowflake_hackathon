@@ -33,40 +33,36 @@ apply_custom_css()
 apply_dance_styles()
 apply_sidebar_styles()
 
-def show_art_forms(festivals_df, dance_df, heritage_sites_df, unesco_df):
-    """Display traditional art forms section"""
-    st.markdown('<h1 class="main-header">🎭 Traditional Art Forms</h1>', unsafe_allow_html=True)
-
-    tab1, tab2, tab3 = st.tabs(["🎪 Festivals", "💃 Dance Forms", "🏛️ Heritage Sites"])
-
-    with tab1:
-        show_festivals_section(festivals_df)
-
-    with tab2:
-        show_dance_section(dance_df)
-
-    with tab3:
-        show_heritage_section(heritage_sites_df, unesco_df)
-
 def main():
-    # Clear cache button for development
-    if st.sidebar.button("🔄 Refresh Data"):
-        st.cache_data.clear()
-        st.rerun()
+    # Home
+    if st.sidebar.button("🏠 Home", use_container_width=True):
+        st.session_state.page = "🏠 Home"
 
-    # Sidebar navigation
-    st.sidebar.markdown("# 🏛️ Navigation")
-    page = st.sidebar.selectbox(
-        "Choose a section:",
-        [
-            "🏠 Home",
-            "🎭 Traditional Art Forms",
-            "🏛️ Chapter 1: Heritage Heartbeat",
-            "💰 Chapter 2: Economic Multiplier",
-            "🌍 Chapter 3: Traveler's Journey",
-            "🗺️ Chapter 4: Regional Tapestry"
-        ]
-    )
+    # Arts & Culture Section
+    st.sidebar.markdown("### 🎭 Arts & Culture")
+    if st.sidebar.button("🎪 Festivals", use_container_width=True):
+        st.session_state.page = "🎪 Festivals"
+    if st.sidebar.button("💃 Dance Forms", use_container_width=True):
+        st.session_state.page = "💃 Dance Forms"
+    if st.sidebar.button("🏛️ Heritage Sites", use_container_width=True):
+        st.session_state.page = "🏛️ Heritage Sites"
+
+    # Tourism Story Section
+    st.sidebar.markdown("### 📖 India's Tourism Story")
+    if st.sidebar.button("🏛️ Chapter 1: Heritage Heartbeat", use_container_width=True):
+        st.session_state.page = "🏛️ Chapter 1: Heritage Heartbeat"
+    if st.sidebar.button("💰 Chapter 2: Economic Multiplier", use_container_width=True):
+        st.session_state.page = "💰 Chapter 2: Economic Multiplier"
+    if st.sidebar.button("🌍 Chapter 3: Traveler's Journey", use_container_width=True):
+        st.session_state.page = "🌍 Chapter 3: Traveler's Journey"
+    if st.sidebar.button("🗺️ Chapter 4: Regional Tapestry", use_container_width=True):
+        st.session_state.page = "🗺️ Chapter 4: Regional Tapestry"
+
+    # Initialize page if not set
+    if 'page' not in st.session_state:
+        st.session_state.page = "🏠 Home"
+
+    page = st.session_state.page
 
     # Load all data using the data loader (for existing components)
     data = load_all_data()
@@ -79,13 +75,12 @@ def main():
             data['tourism_gdp_df'],
             data['tourism_employment_df']
         )
-    elif page == "🎭 Traditional Art Forms":
-        show_art_forms(
-            data['festivals_df'],
-            data['dance_df'],
-            data['heritage_sites_df'],
-            data['unesco_df']
-        )
+    elif page == "🎪 Festivals":
+        show_festivals_section(data['festivals_df'])
+    elif page == "💃 Dance Forms":
+        show_dance_section(data['dance_df'])
+    elif page == "🏛️ Heritage Sites":
+        show_heritage_section()
     elif page == "🏛️ Chapter 1: Heritage Heartbeat":
         # Load heritage data
         unesco_df = load_unesco_data()
@@ -146,7 +141,9 @@ def main():
         show_regional_tapestry(
             state_total_df,
             state_domestic_df,
-            state_foreign_df
+            state_foreign_df,
+            data['dance_df'],
+            data['festivals_df']
         )
 
 if __name__ == "__main__":

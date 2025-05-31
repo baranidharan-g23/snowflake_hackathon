@@ -2,8 +2,8 @@ import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
 
-def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, dance_df, festivals_df):
-    """Chapter 4: The Regional Tapestry - State-wise Tourism and Cultural Diversity"""
+def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df):
+    """Chapter 4: The Regional Tapestry - State-wise Tourism Analysis"""
 
     # Chapter Header
     st.markdown("""
@@ -25,10 +25,6 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
             India's tourism isn't just about numbers - it's about the <strong>incredible diversity</strong> across regions.
             From the <strong>snow-capped Himalayas of the North</strong> to the <strong>tropical backwaters of the South</strong>,
             from the <strong>desert kingdoms of the West</strong> to the <strong>tribal cultures of the Northeast</strong>,
-            each region offers unique experiences. With <strong>123+ dance forms</strong> and countless festivals,
-            India's tourism isn't just about numbers - it's about the <strong>incredible diversity</strong> across regions.
-            From the <strong>snow-capped Himalayas of the North</strong> to the <strong>tropical backwaters of the South</strong>,
-            from the <strong>desert kingdoms of the West</strong> to the <strong>tribal cultures of the Northeast</strong>,
             each region offers unique experiences. With countless festivals and dance forms,
             India presents a living museum of human culture and tradition.
         </p>
@@ -38,7 +34,7 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
     # Regional Tourism Distribution
     if not state_total_df.empty:
         st.markdown("""
-        <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 15px; margin: 1rem 0; padding: 1rem;">
+        <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 15px; margin: 1rem; padding: 2rem;">
             <h4 style="color: white; text-align: center; font-family: 'Georgia', serif;">
                 🎯 Regional Tourism Distribution: Where India Shines
             </h4>
@@ -80,51 +76,15 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
         regional_totals['YEAR_2023'] = regional_totals['YEAR_2023'] / 10 / 1_000_000  # Apply correction and convert to millions
         regional_totals = regional_totals.sort_values('YEAR_2023', ascending=False)
 
-        col1, col2 = st.columns([2, 1])
-
         col1, col2 = st.columns([1, 2])
 
         with col1:
-            # Regional distribution chart
-            colors = ['#FF6347', '#FF7F50', '#FFA07A', '#FFB6C1', '#FFC0CB']
-
-            fig = go.Figure(data=[
-                go.Bar(
-                    x=regional_totals['REGION'],
-                    y=regional_totals['YEAR_2023'],
-                    marker_color=colors[:len(regional_totals)],
-                    text=[f"{x:.1f}M" for x in regional_totals['YEAR_2023']],
-                    textposition='outside',
-                    hovertemplate='<b>%{x}</b><br>Visitors: %{y:.1f}M<extra></extra>'
-                )
-            ])
-
-            fig.update_layout(
-                title=dict(
-                    text="🌟 Regional Tourism Leaders (2023)",
-                    font=dict(size=18, color='#FF6347'),
-                    x=0.5
-                ),
-                xaxis_title="Region",
-                yaxis_title="Visitors (Millions)",
-                plot_bgcolor='rgba(248,249,250,0.8)',
-                paper_bgcolor='rgba(0,0,0,0)',
-                font=dict(color='#333'),
-                height=500,
-                showlegend=False
-            )
-
-            st.plotly_chart(fig, use_container_width=True)
-
-        with col2:
-            # Regional insights
             # Regional insights - compact header
             st.markdown("""
             <div style="background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 0.3rem">
                 <h6 style="color: #FF6347; text-align: center; font-size: 1.8rem;">🏆 Regional Champions</h6>
             </div>
             """, unsafe_allow_html=True)
-
 
             # Darker, more intense colors for better contrast
             colors = ['#DC2626', '#B91C1C', '#EA580C', '#D97706', '#059669']
@@ -133,8 +93,6 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
                 region = row['REGION']
                 visitors = row['YEAR_2023']
                 percentage = (visitors / regional_totals['YEAR_2023'].sum()) * 100
-
-                # Regional descriptions
 
                 # Regional descriptions for new 5-region structure
                 descriptions = {
@@ -145,9 +103,7 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
                     'CENTER': '🏛️ Heart of India'
                 }
 
-
                 desc = descriptions.get(region, '🌟 Unique Experiences')
-
 
                 st.markdown(f"""
                 <div style="background: {colors[i]}; padding: 0.5rem; border-radius: 6px; margin: 0.25rem 0; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
@@ -216,17 +172,12 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
     # Top Performing States
     if not state_total_df.empty:
         st.markdown("""
-        <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 15px; margin: 1rem 0; padding: 1rem;">
+        <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 15px; margin: 1rem 0; padding: 2rem;">
             <h3 style="color: white; text-align: center; font-family: 'Georgia', serif;">
                 🏆 State Champions: Tourism Powerhouses
             </h3>
         </div>
         """, unsafe_allow_html=True)
-
-        # Top 10 states by total visitors
-        top_states = state_total_df.nlargest(10, 'YEAR_2023')
-
-        col1, col2 = st.columns(2)
 
         # Top 10 states by total visitors with new regional mapping (apply correction: divide by 10, convert to millions)
         top_states = state_df_copy.nlargest(10, 'YEAR_2023').copy()
@@ -236,20 +187,6 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
         col1, col2 = st.columns([1.2, 0.8])
 
         with col1:
-            # Top states chart
-            fig = go.Figure(data=[
-                go.Bar(
-                    y=top_states['STATE'],
-                    x=top_states['YEAR_2023'],
-                    orientation='h',
-                    marker_color='#FF7F50',
-                    text=[f"{x:.1f}M" for x in top_states['YEAR_2023']],
-                    textposition='outside',
-                    hovertemplate='<b>%{y}</b><br>Visitors: %{x:.1f}M<br>Region: %{customdata}<extra></extra>',
-                    customdata=top_states['REGION']
-                )
-            ])
-
             # Top states treemap with better contrast using discrete colors
             # Create discrete color mapping for better visibility
             discrete_colors = [
@@ -295,93 +232,186 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
                 plot_bgcolor='black',
                 font=dict(color='#333', family='Arial'),
                 height=500,
-                margin=dict(l=120)
+                margin=dict(t=50, l=25, r=25, b=25),
+                # Add annotations for better text visibility on smaller segments
+                annotations=[
+                    dict(
+                        text="<i>Hover over segments for detailed information</i>",
+                        x=0.5, y=-0.1,
+                        xref="paper", yref="paper",
+                        showarrow=False,
+                        font=dict(size=10, color='#666')
+                    )
+                ]
             )
 
             st.plotly_chart(fig, use_container_width=True)
 
         with col2:
-            # Growth analysis
-            if 'YEAR_2017' in state_total_df.columns:
-                # Calculate growth rates
-                growth_data = state_total_df.copy()
-                growth_data['Growth_Rate'] = ((growth_data['YEAR_2023'] - growth_data['YEAR_2017']) / growth_data['YEAR_2017']) * 100
-                growth_data = growth_data.dropna(subset=['Growth_Rate'])
-                top_growth = growth_data.nlargest(10, 'Growth_Rate')
+            # Tourism Champions Story
+            st.markdown("""
+            <div style="background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); height: 40px;margin-bottom: 0.5rem;">
+                <h5 style="color: #FF6347; text-align: center; font-family: 'Georgia', serif;">📖 Insights</h5>
+            </div>
+            """, unsafe_allow_html=True)
 
-                fig = go.Figure(data=[
-                    go.Bar(
-                        y=top_growth['STATE'],
-                        x=top_growth['Growth_Rate'],
-                        orientation='h',
-                        marker_color='#FFA07A',
-                        text=[f"{x:.1f}%" for x in top_growth['Growth_Rate']],
-                        textposition='outside',
-                        hovertemplate='<b>%{y}</b><br>Growth: %{x:.1f}%<br>Region: %{customdata}<extra></extra>',
-                        customdata=top_growth['REGION']
-                    )
-                ])
+            # Generate dynamic stories based on top states data
+            if not top_states.empty:
+                # Get top 3 states for detailed stories
+                champion_states = top_states.head(3)
 
-                fig.update_layout(
-                    title=dict(
-                        text="🚀 Fastest Growing States (2017-2023)",
-                        font=dict(size=16, color='#FFA07A'),
-                        x=0.5
-                    ),
-                    xaxis_title="Growth Rate (%)",
-                    plot_bgcolor='rgba(248,249,250,0.8)',
-                    paper_bgcolor='rgba(0,0,0,0)',
-                    font=dict(color='#333'),
-                    height=500,
-                    margin=dict(l=120)
-                )
+                # Create stories for each champion
+                stories = []
+                for i, (_, state_row) in enumerate(champion_states.iterrows()):
+                    state_name = state_row['STATE']
+                    visitors = state_row['YEAR_2023']
+                    region = state_row['REGION']
 
-                st.plotly_chart(fig, use_container_width=True)
+                    # Define state-specific stories
+                    state_stories = {
+                        'Uttar Pradesh': {
+                            'icon': '🕌',
+                            'title': 'Heritage Capital',
+                            'story': f'Home to the iconic Taj Mahal and Agra Fort, UP dominates with {visitors:.1f}M visitors. The Golden Triangle circuit makes it India\'s tourism crown jewel.',
+                            'highlight': 'Taj Mahal alone attracts 6-8M visitors annually'
+                        },
+                        'Tamil Nadu': {
+                            'icon': '🏛️',
+                            'title': 'Temple Trail Leader',
+                            'story': f'With {visitors:.1f}M visitors, TN showcases Dravidian architecture and cultural heritage. From Meenakshi Temple to Marina Beach, it\'s a complete experience.',
+                            'highlight': 'Over 30,000 temples across the state'
+                        },
+                        'Karnataka': {
+                            'icon': '🏰',
+                            'title': 'Tech & Heritage Hub',
+                            'story': f'Attracting {visitors:.1f}M visitors, Karnataka blends IT capital Bangalore with Mysore\'s royal heritage and Hampi\'s ruins.',
+                            'highlight': 'Mysore Palace receives 6M+ visitors yearly'
+                        },
+                        'Andhra Pradesh': {
+                            'icon': '⛰️',
+                            'title': 'Spiritual Destination',
+                            'story': f'With {visitors:.1f}M visitors, AP offers Tirupati\'s spiritual magnetism and Araku Valley\'s natural beauty.',
+                            'highlight': 'Tirupati temple sees 50,000+ daily visitors'
+                        },
+                        'Rajasthan': {
+                            'icon': '🏜️',
+                            'title': 'Desert Kingdom',
+                            'story': f'The royal state welcomes {visitors:.1f}M visitors to its palaces, forts, and desert experiences across Jaipur, Udaipur, and Jodhpur.',
+                            'highlight': 'Hawa Mahal and City Palace are iconic draws'
+                        }
+                    }
 
-    # Cultural Diversity Analysis
-    if not dance_df.empty:
+                    # Get story or create default
+                    story_data = state_stories.get(state_name, {
+                        'icon': '🌟',
+                        'title': f'{region} Gem',
+                        'story': f'This {region.lower()} region champion attracts {visitors:.1f}M visitors with its unique cultural and natural offerings.',
+                        'highlight': 'A rising star in Indian tourism'
+                    })
+
+                    stories.append(f"""
+                    <div style="background: linear-gradient(135deg, #FF6347, #FF7F50); padding: 0.7rem; border-radius: 10px; margin: 0.2rem 0; color: white;">
+                        <div style="display: flex; align-items: center; margin-bottom: 0.2rem;">
+                            <span style="font-size: 1.3rem; margin-right: 0.5rem;">{story_data['icon']}</span>
+                            <div>
+                                <h6 style="margin: 0; font-size: 1rem; font-weight: bold;">{state_name}</h6>
+                                <small style="opacity: 0.9; font-size: 0.8rem;">{story_data['title']}</small>
+                            </div>
+                        </div>
+                        <p style="margin: 0.5rem 0; font-size: 0.85rem; line-height: 1.2;">{story_data['story']}</p>
+                        <div style="background: rgba(255,255,255,0.2); padding: 0.1rem; border-radius: 5px; margin-top: 0.2rem;">
+                            <small style="font-size: 0.65rem; font-style: italic;">💡 {story_data['highlight']}</small>
+                        </div>
+                    </div>
+                    """)
+
+                # Display stories
+                for story in stories:
+                    st.markdown(story, unsafe_allow_html=True)
+
+
+
+    # Tourism trends line chart (moved below market analysis, full width)
+    if 'YEAR_2017' in state_total_df.columns:
         st.markdown("""
-        <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 15px; margin: 1rem 0; padding: 1rem;">
+        <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 15px; margin: 1rem 0; padding: 2rem;">
+            <h4 style="color: white; text-align: center; font-family: 'Georgia', serif;">
+                📈 Tourism Growth Trends: Top 5 States Journey (2017-2023)
+            </h4>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # Get top 5 states for trend analysis
+        top_5_states = state_total_df.nlargest(5, 'YEAR_2023').copy()
+
+        fig = go.Figure()
+
+        # Create line for each top state
+        years = ['YEAR_2017', 'YEAR_2018', 'YEAR_2019', 'YEAR_2020', 'YEAR_2021', 'YEAR_2022', 'YEAR_2023']
+        year_labels = ['2017', '2018', '2019', '2020', '2021', '2022', '2023']
+
+        colors_line = ['#FF6347', '#FF7F50', '#FFA07A', '#FFB6C1', '#FFC0CB']
+
+        for i, (_, state_row) in enumerate(top_5_states.iterrows()):
+            # Apply correction: divide by 10 and convert to millions, trim decimals
+            values = [int(state_row[year] / 10 / 1_000_000) for year in years if year in state_row and pd.notna(state_row[year])]
+            valid_years = [year_labels[j] for j, year in enumerate(years) if year in state_row and pd.notna(state_row[year])]
+
+            fig.add_trace(go.Scatter(
+                x=valid_years,
+                y=values,
+                mode='lines+markers',
+                name=state_row['STATE'],
+                line=dict(color=colors_line[i], width=3),
+                marker=dict(size=8, color=colors_line[i]),
+                hovertemplate='<b>%{fullData.name}</b><br>Year: %{x}<br>Visitors: %{y}M<extra></extra>'
+            ))
+
+        fig.update_layout(
+            title=dict(
+                text="📊 State-wise Tourism Evolution: The Champions' Journey",
+                font=dict(size=18, color='#FF6347'),
+                x=0.3
+            ),
+            xaxis_title="Year",
+            yaxis_title="Visitors (Millions)",
+            plot_bgcolor='rgba(248,249,250,0.8)',
+            paper_bgcolor='rgba(0,0,0,0)',
+            font=dict(color='#333'),
+            height=550,
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="center",
+                x=0.5
+            ),
+            hovermode='x unified'
+        )
+
+        st.plotly_chart(fig, use_container_width=True)
+
+
+
+    # Calculate recovery metrics for storytelling
+    if not state_total_df.empty and 'YEAR_2019' in state_total_df.columns and 'YEAR_2020' in state_total_df.columns:
+        # Calculate recovery rate (2023 vs 2019 - pre-COVID)
+        state_total_df['Recovery_Rate'] = ((state_total_df['YEAR_2023'] - state_total_df['YEAR_2019']) / state_total_df['YEAR_2019']) * 100
+        state_total_df['Recovery_Rate'] = state_total_df['Recovery_Rate'].fillna(0)
+
+        # Calculate pandemic impact (2020 vs 2019)
+        state_total_df['Pandemic_Impact'] = ((state_total_df['YEAR_2020'] - state_total_df['YEAR_2019']) / state_total_df['YEAR_2019']) * 100
+        state_total_df['Pandemic_Impact'] = state_total_df['Pandemic_Impact'].fillna(0)
+
+        # Recovery Champions Section - Full Width for Better Visibility
+        st.markdown("""
+        <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 15px; margin: 1rem 0; padding: 2rem;">
             <h4 style="color: white; text-align: center; font-family: 'Georgia', serif;">
                 🏆 Recovery Champions: States Leading the Tourism Comeback
             </h4>
         </div>
         """, unsafe_allow_html=True)
 
-        # Dance forms by state
-        dance_counts = dance_df['STATE'].value_counts().head(10)
-
-        col1, col2 = st.columns(2)
-
-        with col1:
-            # States with most dance forms
-            fig = go.Figure(data=[
-                go.Bar(
-                    x=dance_counts.index,
-                    y=dance_counts.values,
-                    marker_color='#FF6347',
-                    text=dance_counts.values,
-                    textposition='outside',
-                    hovertemplate='<b>%{x}</b><br>Dance Forms: %{y}<extra></extra>'
-                )
-            ])
-
-            fig.update_layout(
-                title=dict(
-                    text="🎭 States with Most Dance Forms",
-                    font=dict(size=16, color='#FF6347'),
-                    x=0.5
-                ),
-                xaxis_title="State",
-                yaxis_title="Number of Dance Forms",
-                plot_bgcolor='rgba(248,249,250,0.8)',
-                paper_bgcolor='rgba(0,0,0,0)',
-                font=dict(color='#333'),
-                height=400,
-                xaxis=dict(tickangle=45)
-            )
-
-            st.plotly_chart(fig, use_container_width=True)
         # Recovery Champions vs Strugglers - Full width for better visibility
         top_recoverers = state_total_df.nlargest(12, 'Recovery_Rate')[['STATE', 'Recovery_Rate', 'YEAR_2019', 'YEAR_2023']].copy()
         top_recoverers['YEAR_2019_M'] = top_recoverers['YEAR_2019'] / 10 / 1_000_000  # Apply correction
@@ -427,36 +457,9 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
 
         st.plotly_chart(fig, use_container_width=True)
 
-        with col2:
-            # Featured dance forms
-            st.markdown("""
-            <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                <h5 style="color: #FF6347; text-align: center; margin-bottom: 1rem;">🌟 Iconic Dance Forms</h5>
-            </div>
-            """, unsafe_allow_html=True)
-
-            # Highlight some famous dance forms
-            famous_dances = [
-                ('Bharatanatyam', 'Tamil Nadu', '🎭 Classical Grace'),
-                ('Kathak', 'Uttar Pradesh', '💫 Storytelling Spins'),
-                ('Bhangra', 'Punjab', '🌾 Harvest Celebration'),
-                ('Kuchipudi', 'Andhra Pradesh', '🎪 Dance Drama'),
-                ('Garba', 'Gujarat', '🌙 Divine Circles')
-            ]
-
-            for dance, state, desc in famous_dances:
-                st.markdown(f"""
-                <div style="background: linear-gradient(135deg, #FF6347, #FF7F50); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0; color: white;">
-                    <div style="font-weight: bold; font-size: 0.9rem;">{dance}</div>
-                    <div style="font-size: 0.8rem; opacity: 0.9;">{state} • {desc}</div>
-                </div>
-                """, unsafe_allow_html=True)
-
-    # Festival Distribution
-    if not festivals_df.empty:
         # COVID Impact and Recovery Analysis - Simplified View
         st.markdown("""
-        <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 15px; margin: 1rem 0; padding: 1rem;">
+        <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 15px; margin: 1rem 0; padding: 2rem;">
             <h4 style="color: white; text-align: center; font-family: 'Georgia', serif;">
                 🎯 COVID Impact and Recovery: Before, During, and After
             </h4>
@@ -466,20 +469,7 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
         # Create side-by-side comparison charts
         col1, col2 = st.columns(2)
 
-
         with col1:
-            # Festivals by type
-            if 'TYPE' in festivals_df.columns:
-                festival_types = festivals_df['TYPE'].value_counts()
-
-                fig = go.Figure(data=[go.Pie(
-                    labels=festival_types.index,
-                    values=festival_types.values,
-                    hole=0.4,
-                    marker_colors=['#FF6347', '#FF7F50', '#FFA07A'],
-                    hovertemplate='<b>%{label}</b><br>Festivals: %{value}<br>Percentage: %{percent}<extra></extra>'
-                )])
-
             # Most affected states during pandemic (2020 vs 2019)
             if 'Pandemic_Impact' in state_total_df.columns:
                 worst_hit = state_total_df.nsmallest(10, 'Pandemic_Impact')[['STATE', 'Pandemic_Impact']].copy()
@@ -507,28 +497,19 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
                         font=dict(size=16, color='#DC143C'),
                         x=0.5
                     ),
-                    font=dict(color='#333'),
-                    height=400
+                    xaxis_title="Impact (%)",
+                    yaxis_title="",
+                    plot_bgcolor='rgba(248,249,250,0.8)',
+                    paper_bgcolor='rgba(0,0,0,0)',
+                    font=dict(color='black'),
+                    height=400,
+                    yaxis={'categoryorder':'total ascending'},
+                    margin=dict(l=100, r=50, t=60, b=40)
                 )
 
                 st.plotly_chart(fig, use_container_width=True)
 
         with col2:
-            # Seasonal festival distribution
-            if 'MONTH_SEASON' in festivals_df.columns:
-                seasonal_festivals = festivals_df['MONTH_SEASON'].value_counts().head(8)
-
-                fig = go.Figure(data=[
-                    go.Bar(
-                        x=seasonal_festivals.index,
-                        y=seasonal_festivals.values,
-                        marker_color='#FFA07A',
-                        text=seasonal_festivals.values,
-                        textposition='outside',
-                        hovertemplate='<b>%{x}</b><br>Festivals: %{y}<extra></extra>'
-                    )
-                ])
-
             # Best recovery states (2023 vs 2019)
             if 'Recovery_Rate' in state_total_df.columns:
                 best_recovery = state_total_df.nlargest(10, 'Recovery_Rate')[['STATE', 'Recovery_Rate']].copy()
@@ -574,7 +555,6 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
                     margin=dict(l=100, r=50, t=60, b=40)
                 )
 
-
                 st.plotly_chart(fig, use_container_width=True)
 
         # Recovery Story Narrative
@@ -591,7 +571,7 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
 
                 # Create the narrative section
                 st.markdown("""
-                <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 20px; color: white; margin: 1rem 0; padding: 1rem;">
+                <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 20px; color: white; margin: 2rem 0; padding: 2rem;">
                     <h4 style="text-align: center; font-size: 1.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
                         📖 The Great Recovery Story: Insights from the Data
                     </h4>
@@ -650,47 +630,13 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
     # Domestic vs Foreign Tourism Trends (2017-2023)
     if not state_domestic_df.empty and not state_foreign_df.empty:
         st.markdown("""
-        <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 15px; margin: 1rem 0; padding: 1rem;">
+        <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 15px; margin: 1rem 0; padding: 2rem;">
             <h4 style="color: white; text-align: center; font-family: 'Georgia', serif;">
                 📈 Domestic vs International Tourism Trends (2017-2023)
             </h4>
         </div>
         """, unsafe_allow_html=True)
 
-        # Top states for domestic vs foreign tourists
-        top_domestic = state_domestic_df.nlargest(8, 'YEAR_2023')[['STATE', 'YEAR_2023']]
-        top_foreign = state_foreign_df.nlargest(8, 'YEAR_2023')[['STATE', 'YEAR_2023']]
-
-        col1, col2 = st.columns(2)
-
-        with col1:
-            fig = go.Figure(data=[
-                go.Bar(
-                    y=top_domestic['STATE'],
-                    x=top_domestic['YEAR_2023'],
-                    orientation='h',
-                    marker_color='#FF6347',
-                    text=[f"{x:.1f}M" for x in top_domestic['YEAR_2023']],
-                    textposition='outside',
-                    hovertemplate='<b>%{y}</b><br>Domestic Visitors: %{x:.1f}M<extra></extra>'
-                )
-            ])
-
-            fig.update_layout(
-                title=dict(
-                    text="🇮🇳 Top States - Domestic Tourists",
-                    font=dict(size=16, color='#FF6347'),
-                    x=0.5
-                ),
-                xaxis_title="Visitors (Millions)",
-                plot_bgcolor='rgba(248,249,250,0.8)',
-                paper_bgcolor='rgba(0,0,0,0)',
-                font=dict(color='#333'),
-                height=450,
-                margin=dict(l=100)
-            )
-
-            st.plotly_chart(fig, use_container_width=True)
         # Calculate total domestic and foreign visitors by year
         years = ['YEAR_2017', 'YEAR_2018', 'YEAR_2019', 'YEAR_2020', 'YEAR_2021', 'YEAR_2022', 'YEAR_2023']
         year_labels = ['2017', '2018', '2019', '2020', '2021', '2022', '2023']
@@ -785,62 +731,6 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
 
         st.plotly_chart(fig, use_container_width=True)
 
-        with col2:
-            fig = go.Figure(data=[
-                go.Bar(
-                    y=top_foreign['STATE'],
-                    x=top_foreign['YEAR_2023'],
-                    orientation='h',
-                    marker_color='#FFA07A',
-                    text=[f"{x:.1f}M" for x in top_foreign['YEAR_2023']],
-                    textposition='outside',
-                    hovertemplate='<b>%{y}</b><br>Foreign Visitors: %{x:.1f}M<extra></extra>'
-                )
-            ])
-
-            fig.update_layout(
-                title=dict(
-                    text="🌍 Top States - International Tourists",
-                    font=dict(size=16, color='#FFA07A'),
-                    x=0.5
-                ),
-                xaxis_title="Visitors (Millions)",
-                plot_bgcolor='rgba(248,249,250,0.8)',
-                paper_bgcolor='rgba(0,0,0,0)',
-                font=dict(color='#333'),
-                height=450,
-                margin=dict(l=100)
-            )
-
-            st.plotly_chart(fig, use_container_width=True)
-
-    # Regional Tapestry Summary
-    st.markdown("""
-    <div style="background: linear-gradient(135deg, #FF6347, #FF7F50); padding: 2.5rem; border-radius: 20px; margin: 3rem 0; color: white; text-align: center;">
-        <h3 style="margin-bottom: 1.5rem; font-size: 1.8rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
-            🌈 India's Regional Tapestry: Unity in Diversity
-        </h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0;">
-            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; backdrop-filter: blur(10px);">
-                <h4 style="margin: 0 0 0.5rem 0; color: #FFD700;">🗺️ Regional Diversity</h4>
-                <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">5 distinct tourism regions</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; backdrop-filter: blur(10px);">
-                <h4 style="margin: 0 0 0.5rem 0; color: #98FB98;">💃 Cultural Forms</h4>
-                <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">123+ dance traditions</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; backdrop-filter: blur(10px);">
-                <h4 style="margin: 0 0 0.5rem 0; color: #87CEEB;">🎉 Celebrations</h4>
-                <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Year-round festivals</p>
-            </div>
-        </div>
-        <p style="margin: 2rem 0 0 0; font-size: 1.1rem; line-height: 1.6; opacity: 0.9;">
-            From the <strong>spiritual Ganges</strong> to the <strong>beaches of Goa</strong>, from <strong>Rajasthani folk dances</strong>
-            to <strong>Bengali literature festivals</strong>, India's regional tapestry offers infinite experiences,
-            making every journey a discovery of new cultures, traditions, and stories.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
         # Tourism Trends Analysis Narrative
         if domestic_totals and foreign_totals:
             # Calculate key insights
@@ -861,7 +751,7 @@ def show_regional_tapestry(state_total_df, state_domestic_df, state_foreign_df, 
 
                 # Create insights section
                 st.markdown("""
-                <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 20px; margin: 1rem 0; color: white; padding: 1rem;">
+                <div style="background: linear-gradient(135deg, #FF6347, #FF7F50, #FFA07A); border-radius: 20px; margin: 1rem 0; color: white; padding: 2rem;">
                     <h4 style="text-align: center; font-size: 1.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
                         📊 Tourism Trends: Key Insights from the Data
                     </h4>
