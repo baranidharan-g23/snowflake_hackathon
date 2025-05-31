@@ -95,9 +95,9 @@ def load_centrally_protected_domestic_data():
 def load_centrally_protected_foreign_data():
     """Load centrally protected monuments foreign visits data"""
     try:
-        return pd.read_csv('Datasets/Centrally_Protected_Monuments_Foreign_Visits_2019_2024.csv.csv')
+        return pd.read_csv('Datasets/Centrally_Protected_Monuments_Foreign_Visits_2019_2024.csv')
     except FileNotFoundError:
-        st.error("Datasets/Centrally_Protected_Monuments_Foreign_Visits_2019_2024.csv.csv file not found!")
+        st.error("Datasets/Centrally_Protected_Monuments_Foreign_Visits_2019_2024.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
@@ -207,9 +207,9 @@ def load_centrally_protected_domestic_data():
 def load_centrally_protected_foreign_data():
     """Load centrally protected monuments foreign visits data"""
     try:
-        return pd.read_csv('Datasets/Centrally_Protected_Monuments_Foreign_Visits_2019_2024.csv.csv')
+        return pd.read_csv('Datasets/Centrally_Protected_Monuments_Foreign_Visits_2019_2024.csv')
     except FileNotFoundError:
-        st.error("Datasets/Centrally_Protected_Monuments_Foreign_Visits_2019_2024.csv.csv file not found!")
+        st.error("Datasets/Centrally_Protected_Monuments_Foreign_Visits_2019_2024.csv file not found!")
         return pd.DataFrame()
 
 @st.cache_data
