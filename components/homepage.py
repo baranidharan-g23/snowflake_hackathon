@@ -484,7 +484,7 @@ def create_tourism_story_section(ita_df, tourism_gdp_df, tourism_employment_df):
     if not ita_df.empty:
 
         # Interactive Tourism Trend Visualization
-        st.markdown('<h3 style="color: #667eea; text-align: center; margin: 2rem 0 1rem 0;">📊 India\'s Tourism Journey Through Time</h3>', unsafe_allow_html=True)
+        st.markdown('<h3 style="color: white; text-align: center; margin: 2rem 0 1rem 0;">📊 India\'s Tourism Journey Through Time</h3>', unsafe_allow_html=True)
         fig_trend = create_tourism_growth_trend_chart(ita_df)
         st.plotly_chart(fig_trend, use_container_width=True)
 

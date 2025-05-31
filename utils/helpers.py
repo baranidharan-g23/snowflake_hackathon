@@ -137,7 +137,7 @@ def create_india_map(state_tourism_df):
                 title=dict(
                     text='🗺️ India Tourism Map - Total Tourist Arrivals (2017-2023)',
                     font=dict(size=18, color='#008080', family="Arial Black"),
-                    x=0.5,
+                    x=0.25,
                     y=0.95
                 ),
                 margin={"r":0,"t":60,"l":0,"b":0},
