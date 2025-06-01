@@ -872,10 +872,10 @@ def show_heritage_gallery(heritage_df):
                         st.rerun()
             else:
                 st.markdown(f"""
-                        <div style="background: linear-gradient(135deg, #008080, #20B2AA); 
-                            color: white; 
-                            padding: 0.5rem 0.5rem; border-radius: 15px; 
-                            text-align: center; 
+                        <div style="background: linear-gradient(135deg, #008080, #20B2AA);
+                            color: white;
+                            padding: 0.5rem 0.5rem; border-radius: 15px;
+                            text-align: center;
                             font-size: 1.2rem;
                             font-family: 'Poppins', sans-serif;
                             font-weight: 600;
