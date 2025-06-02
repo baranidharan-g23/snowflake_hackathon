@@ -143,9 +143,6 @@ def show_heritage_section():
     # Interactive Heritage Slideshow
     show_heritage_slideshow()
 
-    # Heritage Information Section
-    show_heritage_information()
-
     # Regional Heritage Insights
     if not heritage_df.empty:
         show_regional_heritage_insights(heritage_df)
@@ -327,85 +324,7 @@ def show_heritage_slideshow():
         </p>
     </div>
     """, unsafe_allow_html=True)
-
-def show_heritage_information():
-    """Display general information about Indian Heritage similar to dance info section"""
-    st.markdown("""
-    <h3 style="color: white; text-align: center; margin: 3rem 0 2rem 0; font-family: 'Playfair Display', serif;
-               font-size: 2.3rem; text-shadow: 3px 3px 6px rgba(0,0,0,0.5); font-weight: 700;">
-        🏛️ Guardians of India's Timeless Legacy
-    </h3>
-    """, unsafe_allow_html=True)
-
-    # Create columns for heritage information
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.markdown("""
-        <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-                    padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
-                    margin-bottom: 1rem; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
-                    border: 2px solid #20B2AA;">
-            <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
-                       font-family: 'Poppins', sans-serif;">🏛️ Cultural Heritage</h5>
-            <p style="margin: 0; line-height: 1.7; color: #333; font-family: 'Poppins', sans-serif;">
-                India's cultural heritage sites represent over 5,000 years of continuous civilization.
-                From ancient rock-cut caves to magnificent Mughal architecture, these monuments showcase
-                the artistic genius, spiritual devotion, and architectural innovations of various dynasties
-                and cultures that flourished on Indian soil.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-                    padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
-                    margin-bottom: 1rem; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
-                    border: 2px solid #20B2AA;">
-            <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
-                       font-family: 'Poppins', sans-serif;">🎨 Artistic Excellence</h5>
-            <p style="margin: 0; line-height: 1.7; color: #333; font-family: 'Poppins', sans-serif;">
-                Each heritage site tells a unique story through intricate carvings, magnificent frescoes,
-                and architectural marvels. From the delicate inlay work of the Taj Mahal to the elaborate
-                sculptures of Khajuraho, these sites represent the pinnacle of Indian artistic achievement
-                across different periods and regions.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with col2:
-        st.markdown("""
-        <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-                    padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
-                    margin-bottom: 1rem; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
-                    border: 2px solid #20B2AA;">
-            <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
-                       font-family: 'Poppins', sans-serif;">🌿 Natural Wonders</h5>
-            <p style="margin: 0; line-height: 1.7; color: #333; font-family: 'Poppins', sans-serif;">
-                India's natural heritage sites protect unique ecosystems and biodiversity hotspots.
-                From the mangrove forests of Sundarbans to the Western Ghats, these sites preserve
-                critical habitats for endangered species and maintain ecological balance essential
-                for environmental sustainability.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-                    padding: 2rem; border-radius: 15px; border-left: 6px solid #008080;
-                    margin-bottom: 1rem; box-shadow: 0 8px 25px rgba(0,128,128,0.15);
-                    border: 2px solid #20B2AA;">
-            <h5 style="color: #008080; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;
-                       font-family: 'Poppins', sans-serif;">🛡️ Conservation Legacy</h5>
-            <p style="margin: 0; line-height: 1.7; color: #333; font-family: 'Poppins', sans-serif;">
-                UNESCO recognition brings global attention to conservation efforts, ensuring these
-                irreplaceable treasures are preserved for future generations. Through scientific
-                conservation, community involvement, and sustainable tourism, India continues to
-                protect its heritage while sharing it with the world.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-
+ 
 def display_heritage_site_card(site):
     """Display an enhanced heritage site card with better styling"""
     # Determine icon based on type
