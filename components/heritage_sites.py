@@ -405,19 +405,6 @@ def show_heritage_gallery(heritage_df):
     </div>
     """, unsafe_allow_html=True)
 
-    # Filter options in a more compact layout
-    st.markdown("""
-    <div style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-                padding: 1.5rem; border-radius: 15px; margin: 1.5rem 0;
-                box-shadow: 0 8px 25px rgba(0,128,128,0.15); border: 2px solid #20B2AA;
-                border-left: 6px solid #008080;">
-        <h4 style="color: #008080; margin-bottom: 1rem; font-family: 'Playfair Display', serif;
-                   font-size: 1.3rem; font-weight: 700; text-align: center;">
-            🔍 Filter Heritage Sites
-        </h4>
-    </div>
-    """, unsafe_allow_html=True)
-
     col1, col2, col3 = st.columns(3)
 
     with col1:
